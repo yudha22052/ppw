@@ -1,0 +1,1350 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Crawling Web Berita &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'CrawlingWebBerita';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Crawling Web Berita</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FCrawlingWebBerita.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/CrawlingWebBerita.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Crawling Web Berita</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crowling">crowling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#berikut-adalah-lagkah-langkah-melakukan-crowling-web-berita">berikut adalah lagkah - langkah melakukan crowling web berita</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menginstal-pustaka">menginstal pustaka</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengimport-pustaka">mengimport pustaka</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-konten-dari-halaman-web">mengambil konten dari halaman web</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memparsing-konten-html">memparsing konten HTML</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-artikel-dengan-kelas-text-card">Mengambil Artikel dengan Kelas ‘text-card’</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-judul-dan-link">Mengambil Judul dan Link</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ambil-isi-artikel">Ambil isi artikel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ambil-tanggal-publikasi">Ambil tanggal publikasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menyatukan-semua-code-dan-menampilkan-dalam-bentuk-tabular">menyatukan semua code dan menampilkan dalam bentuk tabular</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="crawling-web-berita">
+<h1>Crawling Web Berita<a class="headerlink" href="#crawling-web-berita" title="Link to this heading">#</a></h1>
+<section id="crowling">
+<h2>crowling<a class="headerlink" href="#crowling" title="Link to this heading">#</a></h2>
+<p>Crawling, atau dikenal juga sebagai web crawling, adalah proses mengunjungi halaman-halaman web secara otomatis menggunakan program komputer yang disebut crawler atau spider.</p>
+<p>Tujuan crawling adalah untuk untuk mengidentifikasi suatu laman website agar mesin pencari dapat mengelompokkannya ke kategori tertentu dengan mudah.</p>
+<p>dalam mengambil data kita juga pasti tau tentang scraping, perbedaan antara scrapin dan crowling sendiri adalah!</p>
+<p><strong>Scraping</strong>, atau dikenal juga sebagai web scraping, adalah proses mengambil data spesifik dari halaman web dan mengubahnya menjadi format yang berguna (seperti CSV, Excel, atau database). Scraping melibatkan pengambilan konten tertentu dari halaman web (seperti teks, gambar, harga produk, dll.) untuk keperluan analisis, penelitian, atau aplikasi bisnis lainnya.</p>
+</section>
+<section id="berikut-adalah-lagkah-langkah-melakukan-crowling-web-berita">
+<h2>berikut adalah lagkah - langkah melakukan crowling web berita<a class="headerlink" href="#berikut-adalah-lagkah-langkah-melakukan-crowling-web-berita" title="Link to this heading">#</a></h2>
+<section id="menginstal-pustaka">
+<h3>menginstal pustaka<a class="headerlink" href="#menginstal-pustaka" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>beautifulsoup4<span class="w"> </span>requests
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.10/dist-packages (4.12.3)
+Requirement already satisfied: requests in /usr/local/lib/python3.10/dist-packages (2.32.3)
+Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dist-packages (from beautifulsoup4) (2.6)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.10/dist-packages (from requests) (3.3.2)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests) (3.8)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests) (2.0.7)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests) (2024.8.30)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>digunakan untuk menginstal dua pustaka Python yaitu BeautifulSoup dan requests</p></li>
+</ul>
+</section>
+<section id="mengimport-pustaka">
+<h3>mengimport pustaka<a class="headerlink" href="#mengimport-pustaka" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>requests digunakan untuk mendapatkan HTML dari web</p></li>
+<li><p>BeautifulSoup digunakan untuk memparsing HTML tersebut</p></li>
+<li><p>datetime serta timedelta digunakan untuk mengelola dan memanipulasi data waktu</p></li>
+</ul>
+</section>
+<section id="mengambil-konten-dari-halaman-web">
+<h3>mengambil konten dari halaman web<a class="headerlink" href="#mengambil-konten-dari-halaman-web" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.tempo.co/terpopuler&#39;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>digunakan untuk memparsing HTML dengan BeautifulSoup</p></li>
+</ul>
+</section>
+<section id="memparsing-konten-html">
+<h3>memparsing konten HTML<a class="headerlink" href="#memparsing-konten-html" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Digunakan untuk mencari tag tertentu, mendapatkan teks dari elemen, atau mengakses atribut dari tag HTML.</p></li>
+</ul>
+</section>
+<section id="mengambil-artikel-dengan-kelas-text-card">
+<h3>Mengambil Artikel dengan Kelas ‘text-card’<a class="headerlink" href="#mengambil-artikel-dengan-kelas-text-card" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Temukan semua artikel dengan kelas &#39;text-card&#39;</span>
+<span class="n">articles</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;article&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;text-card&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>find_all mengembalikan daftar semua elemen yang cocok dengan kriteria yang ditentukan, dalam hal ini semua elemen <article> dengan kelas text-card.</p>
+</section>
+<section id="mengambil-judul-dan-link">
+<h3>Mengambil Judul dan Link<a class="headerlink" href="#mengambil-judul-dan-link" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">article_counter</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">articles</span><span class="p">:</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;h2&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;title&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
+        <span class="n">title_text</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">link</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Judul: </span><span class="si">{</span><span class="n">title_text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Link: </span><span class="si">{</span><span class="n">link</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Judul: Respons MUI, PBNU, dan Muhammadiyah Soal Azan di TV Diganti Running Text Saat Misa Paus Fransiskus
+   Link: https://nasional.tempo.co/read/1912307/respons-mui-pbnu-dan-muhammadiyah-soal-azan-di-tv-diganti-running-text-saat-misa-paus-fransiskus
+Judul: Pj Wako Padang Soal Isu Megathrust: Jangan Panik, Tetap Waspada
+   Link: https://nasional.tempo.co/read/1911458/pj-wako-padang-soal-isu-megathrust-jangan-panik-tetap-waspada
+Judul: Jusuf Kalla Sarankan Televisi Tak Ganti Azan dengan Running Teks saat Perayaan Misa
+   Link: https://nasional.tempo.co/read/1912313/jusuf-kalla-sarankan-televisi-tak-ganti-azan-dengan-running-teks-saat-perayaan-misa
+Judul: Kata Keuskupan Agung Jakarta Soal Azan di TV Diganti Running Text Saat Misa Paus Fransiskus
+   Link: https://nasional.tempo.co/read/1912578/kata-keuskupan-agung-jakarta-soal-azan-di-tv-diganti-running-text-saat-misa-paus-fransiskus
+Judul: Faisal Basri Wafat, Anies Baswedan hingga Mahfud Md Ucapkan Belasungkawa
+   Link: https://bisnis.tempo.co/read/1912569/faisal-basri-wafat-anies-baswedan-hingga-mahfud-md-ucapkan-belasungkawa
+Judul: Pengamat Ekonomi dan Politik, Faisal Basri Wafat
+   Link: https://nasional.tempo.co/read/1912542/pengamat-ekonomi-dan-politik-faisal-basri-wafat
+Judul: Paus Fransiskus Ingatkan Bahaya Kekuasaan dalam Pidato di Hadapan Jokowi
+   Link: https://nasional.tempo.co/read/1912540/paus-fransiskus-ingatkan-bahaya-kekuasaan-dalam-pidato-di-hadapan-jokowi
+Judul: 4 Cara Cek Keaslian e-Meterai untuk Daftar Seleksi CPNS 2024
+   Link: https://nasional.tempo.co/read/1912411/4-cara-cek-keaslian-e-meterai-untuk-daftar-seleksi-cpns-2024
+Judul: Paus Fransiskus Pakai Jam Casio, Ini Harganya di Tokped
+   Link: https://bisnis.tempo.co/read/1912381/paus-fransiskus-pakai-jam-casio-ini-harganya-di-tokped
+Judul: Cara Beli e-Meterai di Kantor Pos untuk Daftar CPNS
+   Link: https://nasional.tempo.co/read/1912560/cara-beli-e-meterai-di-kantor-pos-untuk-daftar-cpns
+Judul: Faisal Basri Wafat, Mantan Menkeu Chatib Basri: Kehilangan Besar buat Negeri Ini
+   Link: https://bisnis.tempo.co/read/1912582/faisal-basri-wafat-mantan-menkeu-chatib-basri-kehilangan-besar-buat-negeri-ini
+Judul: Pemerintah dan DPR Minta Azan Magrib Lewat Running Text di TV Tak Jadi Polemik
+   Link: https://nasional.tempo.co/read/1912402/pemerintah-dan-dpr-minta-azan-magrib-lewat-running-text-di-tv-tak-jadi-polemik
+Judul: Uni Eropa Kecewa Mongolia Tak Patuhi ICC dengan Menahan Vladimir Putin
+   Link: https://dunia.tempo.co/read/1912261/uni-eropa-kecewa-mongolia-tak-patuhi-icc-dengan-menahan-vladimir-putin
+Judul: 5 Cara Mengubah Ukuran Foto menjadi 100 KB untuk Daftar CPNS
+   Link: https://tekno.tempo.co/read/1912407/5-cara-mengubah-ukuran-foto-menjadi-100-kb-untuk-daftar-cpns
+Judul: Azan Berupa Running Text saat Live Paus Fransiskus Pimpin Misa: MUI Membolehkan, Dewan Masjid Tak Setuju
+   Link: https://bisnis.tempo.co/read/1912437/azan-berupa-running-text-saat-live-paus-fransiskus-pimpin-misa-mui-membolehkan-dewan-masjid-tak-setuju
+Judul: Jaksa ICC Khawatirkan &#39;Ancaman&#39; dan Tekanan AS terhadap Penyelidikan Israel
+   Link: https://dunia.tempo.co/read/1912516/jaksa-icc-khawatirkan-ancaman-dan-tekanan-as-terhadap-penyelidikan-israel
+Judul: Profil Ekonom Senior Faisal Basri yang Wafat pada Hari Ini
+   Link: https://bisnis.tempo.co/read/1912554/profil-ekonom-senior-faisal-basri-yang-wafat-pada-hari-ini
+Judul: Sebelum Meninggal, Faisal Basri Soroti 3 Hal Ini: Utang Pemerintah, Bagi-bagi Izin Tambang, dan PPN
+   Link: https://bisnis.tempo.co/read/1912611/sebelum-meninggal-faisal-basri-soroti-3-hal-ini-utang-pemerintah-bagi-bagi-izin-tambang-dan-ppn
+Judul: Paralimpiade Paris 2024: Atlet Para Angkat Berat Indonesia Ni Nengah Widiasih Pecahkan Rekor Pribadi tapi Gagal Raih Medali
+   Link: https://sport.tempo.co/read/1912634/paralimpiade-paris-2024-atlet-para-angkat-berat-indonesia-ni-nengah-widiasih-pecahkan-rekor-pribadi-tapi-gagal-raih-medali
+Judul: Faisal Basri dalam Kenangan Anies Baswedan dan Novel Baswedan
+   Link: https://bisnis.tempo.co/read/1912615/faisal-basri-dalam-kenangan-anies-baswedan-dan-novel-baswedan
+Judul: Paus Fransiskus Puji Keluarga di Indonesia Masih Ingin Punya Anak: Di Banyak Negara Lebih Memilih Memiliki Binatang
+   Link: https://nasional.tempo.co/read/1912333/paus-fransiskus-puji-keluarga-di-indonesia-masih-ingin-punya-anak-di-banyak-negara-lebih-memilih-memiliki-binatang
+Judul: 21 Link Alternatif Resmi Beli e-Meterai untuk Daftar Seleksi CPNS 2024
+   Link: https://nasional.tempo.co/read/1912395/21-link-alternatif-resmi-beli-e-meterai-untuk-daftar-seleksi-cpns-2024
+Judul: Azan Mahgrib di TV Diganti Running Text saat Paus Fransiskus Pimpin Misa, Wamenkominfo: Ormas Islam Setuju
+   Link: https://bisnis.tempo.co/read/1912421/azan-mahgrib-di-tv-diganti-running-text-saat-paus-fransiskus-pimpin-misa-wamenkominfo-ormas-islam-setuju
+Judul: Fakta-fakta Nisya Ahmad, Adik Raffi Ahmad Tak Lolos Pileg Tapi Dilantik DPRD Jabar
+   Link: https://nasional.tempo.co/read/1912506/fakta-fakta-nisya-ahmad-adik-raffi-ahmad-tak-lolos-pileg-tapi-dilantik-dprd-jabar
+Judul: Uskup Agung Pastikan Paus Fransiskus Tidak Datangi Aksi Kamisan
+   Link: https://nasional.tempo.co/read/1912352/uskup-agung-pastikan-paus-fransiskus-tidak-datangi-aksi-kamisan
+Judul: Paus Fransiskus Pilih Pesawat ITA Airways daripada Jet Pribadi, Simak Profil Maskapai Itu
+   Link: https://travel.tempo.co/read/1912513/paus-fransiskus-pilih-pesawat-ita-airways-daripada-jet-pribadi-simak-profil-maskapai-itu
+Judul: Panitia Tegaskan Tiket Misa Agung Paus Fransiskus Tanpa Biaya
+   Link: https://nasional.tempo.co/read/1912427/panitia-tegaskan-tiket-misa-agung-paus-fransiskus-tanpa-biaya
+Judul: DPR Umumkan 5 Calon Anggota BPK Terpilih, Terdiri dari Politikus dan Pejabat Kemenhan
+   Link: https://bisnis.tempo.co/read/1912384/dpr-umumkan-5-calon-anggota-bpk-terpilih-terdiri-dari-politikus-dan-pejabat-kemenhan
+Judul: Luhut Cium Tangan Paus Fransiskus saat Beri Bibit Mangrove di Gereja Katedral
+   Link: https://nasional.tempo.co/read/1912497/luhut-cium-tangan-paus-fransiskus-saat-beri-bibit-mangrove-di-gereja-katedral
+Judul: Wafat karena Serangan Jantung, Faisal Basri akan Dimakamkan di TPU Menteng Pulo Sore Ini
+   Link: https://bisnis.tempo.co/read/1912663/wafat-karena-serangan-jantung-faisal-basri-akan-dimakamkan-di-tpu-menteng-pulo-sore-ini
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Mengambil judul:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">article.find('h2',</span> <span class="pre">class_='title')</span></code> mencari elemen <code class="docutils literal notranslate"><span class="pre">&lt;h2&gt;</span></code> di dalam artikel yang memiliki kelas <code class="docutils literal notranslate"><span class="pre">title</span></code>.</p></li>
+<li><p>Jika elemen ini ditemukan (<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">title:</span></code>), teks dari elemen tersebut diambil dan dipangkas whitespace di kedua ujungnya (<code class="docutils literal notranslate"><span class="pre">strip()</span></code>), kemudian disimpan dalam variabel <code class="docutils literal notranslate"><span class="pre">title_text</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Mengambil Link:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">title.find('a')['href']</span></code> mencari elemen <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code> (link) di dalam elemen <code class="docutils literal notranslate"><span class="pre">&lt;h2&gt;</span></code> yang ditemukan, lalu mengambil atribut <code class="docutils literal notranslate"><span class="pre">href</span></code> (yang berisi URL dari link tersebut).</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="ambil-isi-artikel">
+<h3>Ambil isi artikel<a class="headerlink" href="#ambil-isi-artikel" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">articles</span><span class="p">:</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">content</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Isi: </span><span class="si">{</span><span class="n">content</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Ambil tanggal publikasi</span>
+    <span class="n">date</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;h4&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">date</span><span class="p">:</span>
+        <span class="n">date_text</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Isi: MUI menyatakan penggantian tayangan azan magrib di TV dengan teks berjalan saat misa akbar Paus Fransiskus tak melanggar syariat Islam.
+   Isi: Dalam keadaan bencana gedung-gedung pemerintah bisa dimanfaatkan sebagai TES (Tempat Evakuasi Sementara).
+   Isi: Jusuf Kalla menyarankan stasiun televisi untuk tetap menyiarkan azan bersamaan dengan laporan perayaan misa
+   Isi: Keuskupan Agung Jakarta menanggapi imbauan azan magrib di televisi hari ini disiarkan lewat running text saat misa Paus Fransiskus.
+   Isi: Wafatnya Faisal Basri meninggalkan duka, bukan hanya bagi keluarga, tapi dari sejumlah tokoh di Indonesia.
+   Isi: Pengamat ekononomi dan politik, Faisal Basri meninggal pada Kamis dinihari ini.
+   Isi: Paus Fransiskus menyatakan berbagai ketegangan yang berujung kekerasan kerap timbul karena kekuasaan yang tidak bertanggung jawab.
+   Isi: Setelah membeli e-meterai, sebaiknya cek keaslian e-meterai. Berikut beberapa metode cek keaslian e-meterai untuk dokumen seleksi CPNS 2024.
+   Isi: Paus Fransiskus mengenakan jam tangan bermerek Casio dengan jenis MQ24-7B2, yang di Tokopedia harganya tak sampai Rp130 ribu.
+   Isi: Salah satu syarat pendaftaran CPNS 2024 adalah dengan membubuhkan e-meterai. Berikut ini cara beli e-meterai di kantor Pos dan aplikasi Pospay.
+   Isi: Ekonom senior Faisal Basri wafat di Jakarta, hari ini, Kamis, 5 September 2024.
+   Isi: Imbauan Kemenag kepada stasiun tv agar menampilkan azan magrib menjadi running text saat misa akbar Paus Fransiskus menuai polemik.
+   Isi: Vladimir Putin bisa melenggang bebas kunjungan kerja ke Mongolia, tanpa ditahan oleh Ulaanbaatar.
+   Isi: Cara mengubah ukuran foto menjadi 100KB untuk daftar CPNS gratis dan bisa dilakukan mandiri dalam waktu singkat. Berikut tutorialnya.
+   Isi: MUI dan DMI beda pendapat soal imbauan agar TV yang siaran langsung Paus Fransiskus memimpin misa di GBK mengganti azan Mahgrib dengan running text
+   Isi: Dalam wawancara dengan sebuah media Jepang, Jaksa ICC, Karim Khan, mendesak kerja sama Jepang dalam mempengaruhi AS.
+   Isi: Ekonom dan politikus senior dari Universitas Indonesia, Faisal Basri, wafat pada hari ini. Seperti apa profil dan rekam jejaknya?
+   Isi: Ekonom senior Faisal Basri yang meninggal dunia pada Kamis dini hari, 5 September 2024, sempat menyoroti tiga hal ini.
+   Isi: Catatan angkatan Ni Nengah Widiasih di Paralimpiade Paris 2024 lebih bagus dibandingkan saat meraih medali perak di Paralimpade Tokyo 2020.
+   Isi: Anies Baswedan dan Novel Baswedan punya kenangan terhadap Faisal Basri yang meninggal dunia pada hari ini.
+   Isi: Paus Fransiskus memuji  masyarakat Indonesia yang masih ingin memiliki anak. Ia membandingkan dengan negara lain.
+   Isi: Ketahui  tautan alternatif kanal penjualan e-meterai resmi untuk dokumen seleksi CPNS 2024. Anda bisa menggunakan link ini jika sulit mengakses Peruri
+   Isi: &quot;Tayangan azan Mahgrib diganti running text di televisi yang menyiarkan live Misa Akbar yang dihadiri Paus Fransiskus, sudah disetujui Ormas Islam&quot;
+   Isi: Nisya Ahmad adalah adik dari Raffi Ahmad sekaligus kakak dari Syahnaz Sadiqah.
+   Isi: Media sosial diramaikan dengan permintaan agar Paus Fransiskus ikut menghadiri Aksi Kamisan yang akan digelar besok di depan Istana Negara Jakarta.
+   Isi: Kisah ITA Airways, yang dinaiki Paus Fransiskus bermula Oktober 2020 ketika Italia mengizinkan restrukturisasi Alitalia, maskapai nasional lagi kolops
+   Isi: Tiket Misa Agung bersama Paus Fransiskus di Stadion Gelora Bung Karno dibagikan secara gratis. Tiket itu sudah terdistribusi lewat keuskupan.
+   Isi: Komisi XI DPR resmi mengumumkan lima anggota calon anggota Badan Pemeriksa Keuangan (BPK) terpilih periode 2024-2029
+   Isi: Bibit mangrove yang ditanam dan disiram oleh Paus Fransiskus akan dibawa ke upacara pembukaan Indonesia International Sustainability Forum 2024.
+   Isi: Ekonom senior Faisal Basri wafat di usia 65 tahun pada Kamis, 5 September 2024. Faisal mangkat pada pukul 03.50 WIB di Rumah Sakit Mayapada, Kuningan, Jakarta Selatan.
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Bagian ini mencari elemen <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code> di dalam artikel, yang biasanya berisi teks utama atau cuplikan isi artikel.</p></li>
+<li><p>Jika elemen <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code> ditemukan (<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">content:</span></code>), teks di dalamnya diambil, whitespace di kedua ujungnya dihilangkan (<code class="docutils literal notranslate"><span class="pre">strip()</span></code>), dan dicetak.</p></li>
+</ul>
+</section>
+<section id="ambil-tanggal-publikasi">
+<h3>Ambil tanggal publikasi<a class="headerlink" href="#ambil-tanggal-publikasi" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">articles</span><span class="p">:</span>
+    <span class="n">date</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;h4&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">date</span><span class="p">:</span>
+        <span class="n">date_text</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+        <span class="c1"># Konversi &quot;X jam lalu&quot; ke waktu spesifik</span>
+        <span class="k">if</span> <span class="s2">&quot;jam lalu&quot;</span> <span class="ow">in</span> <span class="n">date_text</span><span class="p">:</span>
+            <span class="n">hours_ago</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">date_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">publish_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="n">hours_ago</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Tanggal: </span><span class="si">{</span><span class="n">publish_time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">-%m-%Y %H:%M&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Tanggal: </span><span class="si">{</span><span class="n">date_text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Tanggal: 04-09-2024 07:49
+   Tanggal: 1 detik lalu
+   Tanggal: 04-09-2024 07:49
+   Tanggal: 05-09-2024 00:49
+   Tanggal: 05-09-2024 00:49
+   Tanggal: 04-09-2024 23:49
+   Tanggal: 04-09-2024 23:49
+   Tanggal: 04-09-2024 11:49
+   Tanggal: 04-09-2024 10:49
+   Tanggal: 05-09-2024 00:49
+   Tanggal: 05-09-2024 00:49
+   Tanggal: 04-09-2024 10:49
+   Tanggal: 04-09-2024 08:49
+   Tanggal: 04-09-2024 11:49
+   Tanggal: 04-09-2024 13:49
+   Tanggal: 04-09-2024 19:49
+   Tanggal: 04-09-2024 23:49
+   Tanggal: 05-09-2024 02:49
+   Tanggal: 05-09-2024 03:49
+   Tanggal: 05-09-2024 02:49
+   Tanggal: 04-09-2024 07:49
+   Tanggal: 04-09-2024 10:49
+   Tanggal: 04-09-2024 11:49
+   Tanggal: 04-09-2024 16:49
+   Tanggal: 04-09-2024 08:49
+   Tanggal: 04-09-2024 17:49
+   Tanggal: 04-09-2024 12:49
+   Tanggal: 04-09-2024 10:49
+   Tanggal: 04-09-2024 15:49
+   Tanggal: 05-09-2024 04:49
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Mengambil Tanggal</strong>:</p>
+<ul>
+<li><p>Elemen <code class="docutils literal notranslate"><span class="pre">&lt;h4&gt;</span></code> dengan kelas <code class="docutils literal notranslate"><span class="pre">date</span></code> dicari untuk mendapatkan tanggal atau waktu publikasi artikel.</p></li>
+<li><p>Jika elemen tersebut ditemukan (<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">date:</span></code>), teks di dalamnya diambil dan dipangkas whitespace di sekitarnya (<code class="docutils literal notranslate"><span class="pre">strip()</span></code>).</p></li>
+</ul>
+</li>
+<li><p><strong>Konversi “X jam lalu”</strong>:</p>
+<ul>
+<li><p>Jika teks tanggal berisi frasa seperti “X jam lalu”, teks tersebut diproses untuk mengekstrak jumlah jam (<code class="docutils literal notranslate"><span class="pre">int(date_text.split('</span> <span class="pre">')[0])</span></code>), dan waktu spesifik dihitung dengan mengurangkan jumlah jam tersebut dari waktu saat ini (<code class="docutils literal notranslate"><span class="pre">datetime.now()</span></code>).</p></li>
+<li><p>Waktu yang dihitung kemudian diformat sebagai <code class="docutils literal notranslate"><span class="pre">dd-mm-yyyy</span> <span class="pre">HH:MM</span></code> dan dicetak.</p></li>
+</ul>
+</li>
+<li><p><strong>Jika Tanggal dalam Format Lain</strong>:</p>
+<ul>
+<li><p>Jika teks tanggal tidak berisi “jam lalu”, teks tersebut langsung dicetak.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="menyatukan-semua-code-dan-menampilkan-dalam-bentuk-tabular">
+<h3>menyatukan semua code dan menampilkan dalam bentuk tabular<a class="headerlink" href="#menyatukan-semua-code-dan-menampilkan-dalam-bentuk-tabular" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">article_counter</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">articles</span><span class="p">:</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;h2&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;title&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
+        <span class="n">title_text</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">link</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">article_counter</span><span class="si">}</span><span class="s2">. Judul: </span><span class="si">{</span><span class="n">title_text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Link: </span><span class="si">{</span><span class="n">link</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">content</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">content</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Isi: </span><span class="si">{</span><span class="n">content</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">date</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;h4&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">date</span><span class="p">:</span>
+        <span class="n">date_text</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="s2">&quot;jam lalu&quot;</span> <span class="ow">in</span> <span class="n">date_text</span><span class="p">:</span>
+            <span class="n">hours_ago</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">date_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">publish_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="n">hours_ago</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Tanggal: </span><span class="si">{</span><span class="n">publish_time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">-%m-%Y %H:%M&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Tanggal: </span><span class="si">{</span><span class="n">date_text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+    <span class="n">category_from_url</span> <span class="o">=</span> <span class="n">link</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;https://&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;http://&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Kategori: </span><span class="si">{</span><span class="n">category_from_url</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">article_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1. Judul: Respons MUI, PBNU, dan Muhammadiyah Soal Azan di TV Diganti Running Text Saat Misa Paus Fransiskus
+   Link: https://nasional.tempo.co/read/1912307/respons-mui-pbnu-dan-muhammadiyah-soal-azan-di-tv-diganti-running-text-saat-misa-paus-fransiskus
+   Isi: MUI menyatakan penggantian tayangan azan magrib di TV dengan teks berjalan saat misa akbar Paus Fransiskus tak melanggar syariat Islam.
+   Tanggal: 04-09-2024 07:49
+   Kategori: Nasional
+2. Judul: Pj Wako Padang Soal Isu Megathrust: Jangan Panik, Tetap Waspada
+   Link: https://nasional.tempo.co/read/1911458/pj-wako-padang-soal-isu-megathrust-jangan-panik-tetap-waspada
+   Isi: Dalam keadaan bencana gedung-gedung pemerintah bisa dimanfaatkan sebagai TES (Tempat Evakuasi Sementara).
+   Tanggal: 1 detik lalu
+   Kategori: Nasional
+3. Judul: Jusuf Kalla Sarankan Televisi Tak Ganti Azan dengan Running Teks saat Perayaan Misa
+   Link: https://nasional.tempo.co/read/1912313/jusuf-kalla-sarankan-televisi-tak-ganti-azan-dengan-running-teks-saat-perayaan-misa
+   Isi: Jusuf Kalla menyarankan stasiun televisi untuk tetap menyiarkan azan bersamaan dengan laporan perayaan misa
+   Tanggal: 04-09-2024 07:49
+   Kategori: Nasional
+4. Judul: Kata Keuskupan Agung Jakarta Soal Azan di TV Diganti Running Text Saat Misa Paus Fransiskus
+   Link: https://nasional.tempo.co/read/1912578/kata-keuskupan-agung-jakarta-soal-azan-di-tv-diganti-running-text-saat-misa-paus-fransiskus
+   Isi: Keuskupan Agung Jakarta menanggapi imbauan azan magrib di televisi hari ini disiarkan lewat running text saat misa Paus Fransiskus.
+   Tanggal: 05-09-2024 00:49
+   Kategori: Nasional
+5. Judul: Faisal Basri Wafat, Anies Baswedan hingga Mahfud Md Ucapkan Belasungkawa
+   Link: https://bisnis.tempo.co/read/1912569/faisal-basri-wafat-anies-baswedan-hingga-mahfud-md-ucapkan-belasungkawa
+   Isi: Wafatnya Faisal Basri meninggalkan duka, bukan hanya bagi keluarga, tapi dari sejumlah tokoh di Indonesia.
+   Tanggal: 05-09-2024 00:49
+   Kategori: Bisnis
+6. Judul: Pengamat Ekonomi dan Politik, Faisal Basri Wafat
+   Link: https://nasional.tempo.co/read/1912542/pengamat-ekonomi-dan-politik-faisal-basri-wafat
+   Isi: Pengamat ekononomi dan politik, Faisal Basri meninggal pada Kamis dinihari ini.
+   Tanggal: 04-09-2024 23:49
+   Kategori: Nasional
+7. Judul: Paus Fransiskus Ingatkan Bahaya Kekuasaan dalam Pidato di Hadapan Jokowi
+   Link: https://nasional.tempo.co/read/1912540/paus-fransiskus-ingatkan-bahaya-kekuasaan-dalam-pidato-di-hadapan-jokowi
+   Isi: Paus Fransiskus menyatakan berbagai ketegangan yang berujung kekerasan kerap timbul karena kekuasaan yang tidak bertanggung jawab.
+   Tanggal: 04-09-2024 23:49
+   Kategori: Nasional
+8. Judul: 4 Cara Cek Keaslian e-Meterai untuk Daftar Seleksi CPNS 2024
+   Link: https://nasional.tempo.co/read/1912411/4-cara-cek-keaslian-e-meterai-untuk-daftar-seleksi-cpns-2024
+   Isi: Setelah membeli e-meterai, sebaiknya cek keaslian e-meterai. Berikut beberapa metode cek keaslian e-meterai untuk dokumen seleksi CPNS 2024.
+   Tanggal: 04-09-2024 11:49
+   Kategori: Nasional
+9. Judul: Paus Fransiskus Pakai Jam Casio, Ini Harganya di Tokped
+   Link: https://bisnis.tempo.co/read/1912381/paus-fransiskus-pakai-jam-casio-ini-harganya-di-tokped
+   Isi: Paus Fransiskus mengenakan jam tangan bermerek Casio dengan jenis MQ24-7B2, yang di Tokopedia harganya tak sampai Rp130 ribu.
+   Tanggal: 04-09-2024 10:49
+   Kategori: Bisnis
+10. Judul: Cara Beli e-Meterai di Kantor Pos untuk Daftar CPNS
+   Link: https://nasional.tempo.co/read/1912560/cara-beli-e-meterai-di-kantor-pos-untuk-daftar-cpns
+   Isi: Salah satu syarat pendaftaran CPNS 2024 adalah dengan membubuhkan e-meterai. Berikut ini cara beli e-meterai di kantor Pos dan aplikasi Pospay.
+   Tanggal: 05-09-2024 00:49
+   Kategori: Nasional
+11. Judul: Faisal Basri Wafat, Mantan Menkeu Chatib Basri: Kehilangan Besar buat Negeri Ini
+   Link: https://bisnis.tempo.co/read/1912582/faisal-basri-wafat-mantan-menkeu-chatib-basri-kehilangan-besar-buat-negeri-ini
+   Isi: Ekonom senior Faisal Basri wafat di Jakarta, hari ini, Kamis, 5 September 2024.
+   Tanggal: 05-09-2024 00:49
+   Kategori: Bisnis
+12. Judul: Pemerintah dan DPR Minta Azan Magrib Lewat Running Text di TV Tak Jadi Polemik
+   Link: https://nasional.tempo.co/read/1912402/pemerintah-dan-dpr-minta-azan-magrib-lewat-running-text-di-tv-tak-jadi-polemik
+   Isi: Imbauan Kemenag kepada stasiun tv agar menampilkan azan magrib menjadi running text saat misa akbar Paus Fransiskus menuai polemik.
+   Tanggal: 04-09-2024 10:49
+   Kategori: Nasional
+13. Judul: Uni Eropa Kecewa Mongolia Tak Patuhi ICC dengan Menahan Vladimir Putin
+   Link: https://dunia.tempo.co/read/1912261/uni-eropa-kecewa-mongolia-tak-patuhi-icc-dengan-menahan-vladimir-putin
+   Isi: Vladimir Putin bisa melenggang bebas kunjungan kerja ke Mongolia, tanpa ditahan oleh Ulaanbaatar.
+   Tanggal: 04-09-2024 08:49
+   Kategori: Dunia
+14. Judul: 5 Cara Mengubah Ukuran Foto menjadi 100 KB untuk Daftar CPNS
+   Link: https://tekno.tempo.co/read/1912407/5-cara-mengubah-ukuran-foto-menjadi-100-kb-untuk-daftar-cpns
+   Isi: Cara mengubah ukuran foto menjadi 100KB untuk daftar CPNS gratis dan bisa dilakukan mandiri dalam waktu singkat. Berikut tutorialnya.
+   Tanggal: 04-09-2024 11:49
+   Kategori: Tekno
+15. Judul: Azan Berupa Running Text saat Live Paus Fransiskus Pimpin Misa: MUI Membolehkan, Dewan Masjid Tak Setuju
+   Link: https://bisnis.tempo.co/read/1912437/azan-berupa-running-text-saat-live-paus-fransiskus-pimpin-misa-mui-membolehkan-dewan-masjid-tak-setuju
+   Isi: MUI dan DMI beda pendapat soal imbauan agar TV yang siaran langsung Paus Fransiskus memimpin misa di GBK mengganti azan Mahgrib dengan running text
+   Tanggal: 04-09-2024 13:49
+   Kategori: Bisnis
+16. Judul: Jaksa ICC Khawatirkan &#39;Ancaman&#39; dan Tekanan AS terhadap Penyelidikan Israel
+   Link: https://dunia.tempo.co/read/1912516/jaksa-icc-khawatirkan-ancaman-dan-tekanan-as-terhadap-penyelidikan-israel
+   Isi: Dalam wawancara dengan sebuah media Jepang, Jaksa ICC, Karim Khan, mendesak kerja sama Jepang dalam mempengaruhi AS.
+   Tanggal: 04-09-2024 19:49
+   Kategori: Dunia
+17. Judul: Profil Ekonom Senior Faisal Basri yang Wafat pada Hari Ini
+   Link: https://bisnis.tempo.co/read/1912554/profil-ekonom-senior-faisal-basri-yang-wafat-pada-hari-ini
+   Isi: Ekonom dan politikus senior dari Universitas Indonesia, Faisal Basri, wafat pada hari ini. Seperti apa profil dan rekam jejaknya?
+   Tanggal: 04-09-2024 23:49
+   Kategori: Bisnis
+18. Judul: Sebelum Meninggal, Faisal Basri Soroti 3 Hal Ini: Utang Pemerintah, Bagi-bagi Izin Tambang, dan PPN
+   Link: https://bisnis.tempo.co/read/1912611/sebelum-meninggal-faisal-basri-soroti-3-hal-ini-utang-pemerintah-bagi-bagi-izin-tambang-dan-ppn
+   Isi: Ekonom senior Faisal Basri yang meninggal dunia pada Kamis dini hari, 5 September 2024, sempat menyoroti tiga hal ini.
+   Tanggal: 05-09-2024 02:49
+   Kategori: Bisnis
+19. Judul: Paralimpiade Paris 2024: Atlet Para Angkat Berat Indonesia Ni Nengah Widiasih Pecahkan Rekor Pribadi tapi Gagal Raih Medali
+   Link: https://sport.tempo.co/read/1912634/paralimpiade-paris-2024-atlet-para-angkat-berat-indonesia-ni-nengah-widiasih-pecahkan-rekor-pribadi-tapi-gagal-raih-medali
+   Isi: Catatan angkatan Ni Nengah Widiasih di Paralimpiade Paris 2024 lebih bagus dibandingkan saat meraih medali perak di Paralimpade Tokyo 2020.
+   Tanggal: 05-09-2024 03:49
+   Kategori: Sport
+20. Judul: Faisal Basri dalam Kenangan Anies Baswedan dan Novel Baswedan
+   Link: https://bisnis.tempo.co/read/1912615/faisal-basri-dalam-kenangan-anies-baswedan-dan-novel-baswedan
+   Isi: Anies Baswedan dan Novel Baswedan punya kenangan terhadap Faisal Basri yang meninggal dunia pada hari ini.
+   Tanggal: 05-09-2024 02:49
+   Kategori: Bisnis
+21. Judul: Paus Fransiskus Puji Keluarga di Indonesia Masih Ingin Punya Anak: Di Banyak Negara Lebih Memilih Memiliki Binatang
+   Link: https://nasional.tempo.co/read/1912333/paus-fransiskus-puji-keluarga-di-indonesia-masih-ingin-punya-anak-di-banyak-negara-lebih-memilih-memiliki-binatang
+   Isi: Paus Fransiskus memuji  masyarakat Indonesia yang masih ingin memiliki anak. Ia membandingkan dengan negara lain.
+   Tanggal: 04-09-2024 07:49
+   Kategori: Nasional
+22. Judul: 21 Link Alternatif Resmi Beli e-Meterai untuk Daftar Seleksi CPNS 2024
+   Link: https://nasional.tempo.co/read/1912395/21-link-alternatif-resmi-beli-e-meterai-untuk-daftar-seleksi-cpns-2024
+   Isi: Ketahui  tautan alternatif kanal penjualan e-meterai resmi untuk dokumen seleksi CPNS 2024. Anda bisa menggunakan link ini jika sulit mengakses Peruri
+   Tanggal: 04-09-2024 10:49
+   Kategori: Nasional
+23. Judul: Azan Mahgrib di TV Diganti Running Text saat Paus Fransiskus Pimpin Misa, Wamenkominfo: Ormas Islam Setuju
+   Link: https://bisnis.tempo.co/read/1912421/azan-mahgrib-di-tv-diganti-running-text-saat-paus-fransiskus-pimpin-misa-wamenkominfo-ormas-islam-setuju
+   Isi: &quot;Tayangan azan Mahgrib diganti running text di televisi yang menyiarkan live Misa Akbar yang dihadiri Paus Fransiskus, sudah disetujui Ormas Islam&quot;
+   Tanggal: 04-09-2024 11:49
+   Kategori: Bisnis
+24. Judul: Fakta-fakta Nisya Ahmad, Adik Raffi Ahmad Tak Lolos Pileg Tapi Dilantik DPRD Jabar
+   Link: https://nasional.tempo.co/read/1912506/fakta-fakta-nisya-ahmad-adik-raffi-ahmad-tak-lolos-pileg-tapi-dilantik-dprd-jabar
+   Isi: Nisya Ahmad adalah adik dari Raffi Ahmad sekaligus kakak dari Syahnaz Sadiqah.
+   Tanggal: 04-09-2024 16:49
+   Kategori: Nasional
+25. Judul: Uskup Agung Pastikan Paus Fransiskus Tidak Datangi Aksi Kamisan
+   Link: https://nasional.tempo.co/read/1912352/uskup-agung-pastikan-paus-fransiskus-tidak-datangi-aksi-kamisan
+   Isi: Media sosial diramaikan dengan permintaan agar Paus Fransiskus ikut menghadiri Aksi Kamisan yang akan digelar besok di depan Istana Negara Jakarta.
+   Tanggal: 04-09-2024 08:49
+   Kategori: Nasional
+26. Judul: Paus Fransiskus Pilih Pesawat ITA Airways daripada Jet Pribadi, Simak Profil Maskapai Itu
+   Link: https://travel.tempo.co/read/1912513/paus-fransiskus-pilih-pesawat-ita-airways-daripada-jet-pribadi-simak-profil-maskapai-itu
+   Isi: Kisah ITA Airways, yang dinaiki Paus Fransiskus bermula Oktober 2020 ketika Italia mengizinkan restrukturisasi Alitalia, maskapai nasional lagi kolops
+   Tanggal: 04-09-2024 17:49
+   Kategori: Travel
+27. Judul: Panitia Tegaskan Tiket Misa Agung Paus Fransiskus Tanpa Biaya
+   Link: https://nasional.tempo.co/read/1912427/panitia-tegaskan-tiket-misa-agung-paus-fransiskus-tanpa-biaya
+   Isi: Tiket Misa Agung bersama Paus Fransiskus di Stadion Gelora Bung Karno dibagikan secara gratis. Tiket itu sudah terdistribusi lewat keuskupan.
+   Tanggal: 04-09-2024 12:49
+   Kategori: Nasional
+28. Judul: DPR Umumkan 5 Calon Anggota BPK Terpilih, Terdiri dari Politikus dan Pejabat Kemenhan
+   Link: https://bisnis.tempo.co/read/1912384/dpr-umumkan-5-calon-anggota-bpk-terpilih-terdiri-dari-politikus-dan-pejabat-kemenhan
+   Isi: Komisi XI DPR resmi mengumumkan lima anggota calon anggota Badan Pemeriksa Keuangan (BPK) terpilih periode 2024-2029
+   Tanggal: 04-09-2024 10:49
+   Kategori: Bisnis
+29. Judul: Luhut Cium Tangan Paus Fransiskus saat Beri Bibit Mangrove di Gereja Katedral
+   Link: https://nasional.tempo.co/read/1912497/luhut-cium-tangan-paus-fransiskus-saat-beri-bibit-mangrove-di-gereja-katedral
+   Isi: Bibit mangrove yang ditanam dan disiram oleh Paus Fransiskus akan dibawa ke upacara pembukaan Indonesia International Sustainability Forum 2024.
+   Tanggal: 04-09-2024 15:49
+   Kategori: Nasional
+30. Judul: Wafat karena Serangan Jantung, Faisal Basri akan Dimakamkan di TPU Menteng Pulo Sore Ini
+   Link: https://bisnis.tempo.co/read/1912663/wafat-karena-serangan-jantung-faisal-basri-akan-dimakamkan-di-tpu-menteng-pulo-sore-ini
+   Isi: Ekonom senior Faisal Basri wafat di usia 65 tahun pada Kamis, 5 September 2024. Faisal mangkat pada pukul 03.50 WIB di Rumah Sakit Mayapada, Kuningan, Jakarta Selatan.
+   Tanggal: 05-09-2024 04:49
+   Kategori: Bisnis
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+
+<span class="c1"># Mengambil data dari situs web</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.tempo.co/terpopuler&#39;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mengambil artikel dari HTML</span>
+<span class="n">articles</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;article&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;text-card&#39;</span><span class="p">)</span>
+
+<span class="c1"># Inisialisasi list untuk menampung data artikel</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Looping melalui artikel dan ekstraksi informasi</span>
+<span class="n">article_counter</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Inisialisasi penomoran mulai dari 1</span>
+<span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">articles</span><span class="p">:</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;h2&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;title&#39;</span><span class="p">)</span>
+    <span class="n">title_text</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">if</span> <span class="n">title</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="n">content</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+    <span class="n">content_text</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">if</span> <span class="n">content</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="n">date</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;h4&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">date</span><span class="p">:</span>
+        <span class="n">date_text</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="c1"># Konversi tanggal jika ada &quot;jam lalu&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;jam lalu&quot;</span> <span class="ow">in</span> <span class="n">date_text</span><span class="p">:</span>
+            <span class="n">hours_ago</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">date_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">publish_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="n">hours_ago</span><span class="p">)</span>
+            <span class="n">date_text</span> <span class="o">=</span> <span class="n">publish_time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">-%m-%Y %H:%M&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">date_text</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># Ekstraksi kategori dari URL jika ada</span>
+    <span class="n">link</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">title</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="n">category_from_url</span> <span class="o">=</span> <span class="n">link</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;https://&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;http://&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">link</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="n">category</span> <span class="o">=</span> <span class="n">category_from_url</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="k">if</span> <span class="n">category_from_url</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="c1"># Masukkan data ke list</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s1">&#39;Judul Berita&#39;</span><span class="p">:</span> <span class="n">title_text</span><span class="p">,</span>
+        <span class="s1">&#39;Isi Berita&#39;</span><span class="p">:</span> <span class="n">content_text</span><span class="p">,</span>
+        <span class="s1">&#39;Tanggal Berita&#39;</span><span class="p">:</span> <span class="n">date_text</span><span class="p">,</span>
+        <span class="s1">&#39;Kategori Berita&#39;</span><span class="p">:</span> <span class="n">category</span>
+    <span class="p">})</span>
+
+    <span class="n">article_counter</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># Inkrementasi penomoran</span>
+
+<span class="c1"># Membuat DataFrame dari data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Mengatur ulang indeks DataFrame agar dimulai dari 1</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="c1"># Menggunakan Styler untuk menampilkan tabel dengan border</span>
+<span class="n">styled_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">set_table_styles</span><span class="p">(</span>
+    <span class="p">[{</span><span class="s1">&#39;selector&#39;</span><span class="p">:</span> <span class="s1">&#39;table&#39;</span><span class="p">,</span> <span class="s1">&#39;props&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;border-collapse&#39;</span><span class="p">,</span> <span class="s1">&#39;collapse&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;100%&#39;</span><span class="p">)]},</span>
+     <span class="p">{</span><span class="s1">&#39;selector&#39;</span><span class="p">:</span> <span class="s1">&#39;th, td&#39;</span><span class="p">,</span> <span class="s1">&#39;props&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;border&#39;</span><span class="p">,</span> <span class="s1">&#39;1px solid black&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;padding&#39;</span><span class="p">,</span> <span class="s1">&#39;8px&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;text-align&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">)]}]</span>
+<span class="p">)</span>
+
+<span class="c1"># Menampilkan DataFrame dengan gaya border</span>
+<span class="n">display</span><span class="p">(</span><span class="n">styled_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+#T_94d1b table {
+  border-collapse: collapse;
+  width: 100%;
+}
+#T_94d1b th {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+#T_94d1b  td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+</style>
+<table id="T_94d1b" class="dataframe">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_94d1b_level0_col0" class="col_heading level0 col0" >Judul Berita</th>
+      <th id="T_94d1b_level0_col1" class="col_heading level0 col1" >Isi Berita</th>
+      <th id="T_94d1b_level0_col2" class="col_heading level0 col2" >Tanggal Berita</th>
+      <th id="T_94d1b_level0_col3" class="col_heading level0 col3" >Kategori Berita</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_94d1b_level0_row0" class="row_heading level0 row0" >1</th>
+      <td id="T_94d1b_row0_col0" class="data row0 col0" >Respons MUI, PBNU, dan Muhammadiyah Soal Azan di TV Diganti Running Text Saat Misa Paus Fransiskus</td>
+      <td id="T_94d1b_row0_col1" class="data row0 col1" >MUI menyatakan penggantian tayangan azan magrib di TV dengan teks berjalan saat misa akbar Paus Fransiskus tak melanggar syariat Islam.</td>
+      <td id="T_94d1b_row0_col2" class="data row0 col2" >04-09-2024 07:49</td>
+      <td id="T_94d1b_row0_col3" class="data row0 col3" >Nasional</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row1" class="row_heading level0 row1" >2</th>
+      <td id="T_94d1b_row1_col0" class="data row1 col0" >Pj Wako Padang Soal Isu Megathrust: Jangan Panik, Tetap Waspada</td>
+      <td id="T_94d1b_row1_col1" class="data row1 col1" >Dalam keadaan bencana gedung-gedung pemerintah bisa dimanfaatkan sebagai TES (Tempat Evakuasi Sementara).</td>
+      <td id="T_94d1b_row1_col2" class="data row1 col2" >1 detik lalu</td>
+      <td id="T_94d1b_row1_col3" class="data row1 col3" >Nasional</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row2" class="row_heading level0 row2" >3</th>
+      <td id="T_94d1b_row2_col0" class="data row2 col0" >Jusuf Kalla Sarankan Televisi Tak Ganti Azan dengan Running Teks saat Perayaan Misa</td>
+      <td id="T_94d1b_row2_col1" class="data row2 col1" >Jusuf Kalla menyarankan stasiun televisi untuk tetap menyiarkan azan bersamaan dengan laporan perayaan misa</td>
+      <td id="T_94d1b_row2_col2" class="data row2 col2" >04-09-2024 07:49</td>
+      <td id="T_94d1b_row2_col3" class="data row2 col3" >Nasional</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row3" class="row_heading level0 row3" >4</th>
+      <td id="T_94d1b_row3_col0" class="data row3 col0" >Kata Keuskupan Agung Jakarta Soal Azan di TV Diganti Running Text Saat Misa Paus Fransiskus</td>
+      <td id="T_94d1b_row3_col1" class="data row3 col1" >Keuskupan Agung Jakarta menanggapi imbauan azan magrib di televisi hari ini disiarkan lewat running text saat misa Paus Fransiskus.</td>
+      <td id="T_94d1b_row3_col2" class="data row3 col2" >05-09-2024 00:49</td>
+      <td id="T_94d1b_row3_col3" class="data row3 col3" >Nasional</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row4" class="row_heading level0 row4" >5</th>
+      <td id="T_94d1b_row4_col0" class="data row4 col0" >Faisal Basri Wafat, Anies Baswedan hingga Mahfud Md Ucapkan Belasungkawa</td>
+      <td id="T_94d1b_row4_col1" class="data row4 col1" >Wafatnya Faisal Basri meninggalkan duka, bukan hanya bagi keluarga, tapi dari sejumlah tokoh di Indonesia.</td>
+      <td id="T_94d1b_row4_col2" class="data row4 col2" >05-09-2024 00:49</td>
+      <td id="T_94d1b_row4_col3" class="data row4 col3" >Bisnis</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row5" class="row_heading level0 row5" >6</th>
+      <td id="T_94d1b_row5_col0" class="data row5 col0" >Pengamat Ekonomi dan Politik, Faisal Basri Wafat</td>
+      <td id="T_94d1b_row5_col1" class="data row5 col1" >Pengamat ekononomi dan politik, Faisal Basri meninggal pada Kamis dinihari ini.</td>
+      <td id="T_94d1b_row5_col2" class="data row5 col2" >04-09-2024 23:49</td>
+      <td id="T_94d1b_row5_col3" class="data row5 col3" >Nasional</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row6" class="row_heading level0 row6" >7</th>
+      <td id="T_94d1b_row6_col0" class="data row6 col0" >Paus Fransiskus Ingatkan Bahaya Kekuasaan dalam Pidato di Hadapan Jokowi</td>
+      <td id="T_94d1b_row6_col1" class="data row6 col1" >Paus Fransiskus menyatakan berbagai ketegangan yang berujung kekerasan kerap timbul karena kekuasaan yang tidak bertanggung jawab.</td>
+      <td id="T_94d1b_row6_col2" class="data row6 col2" >04-09-2024 23:49</td>
+      <td id="T_94d1b_row6_col3" class="data row6 col3" >Nasional</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row7" class="row_heading level0 row7" >8</th>
+      <td id="T_94d1b_row7_col0" class="data row7 col0" >4 Cara Cek Keaslian e-Meterai untuk Daftar Seleksi CPNS 2024</td>
+      <td id="T_94d1b_row7_col1" class="data row7 col1" >Setelah membeli e-meterai, sebaiknya cek keaslian e-meterai. Berikut beberapa metode cek keaslian e-meterai untuk dokumen seleksi CPNS 2024.</td>
+      <td id="T_94d1b_row7_col2" class="data row7 col2" >04-09-2024 11:49</td>
+      <td id="T_94d1b_row7_col3" class="data row7 col3" >Nasional</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row8" class="row_heading level0 row8" >9</th>
+      <td id="T_94d1b_row8_col0" class="data row8 col0" >Paus Fransiskus Pakai Jam Casio, Ini Harganya di Tokped</td>
+      <td id="T_94d1b_row8_col1" class="data row8 col1" >Paus Fransiskus mengenakan jam tangan bermerek Casio dengan jenis MQ24-7B2, yang di Tokopedia harganya tak sampai Rp130 ribu.</td>
+      <td id="T_94d1b_row8_col2" class="data row8 col2" >04-09-2024 10:49</td>
+      <td id="T_94d1b_row8_col3" class="data row8 col3" >Bisnis</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row9" class="row_heading level0 row9" >10</th>
+      <td id="T_94d1b_row9_col0" class="data row9 col0" >Cara Beli e-Meterai di Kantor Pos untuk Daftar CPNS</td>
+      <td id="T_94d1b_row9_col1" class="data row9 col1" >Salah satu syarat pendaftaran CPNS 2024 adalah dengan membubuhkan e-meterai. Berikut ini cara beli e-meterai di kantor Pos dan aplikasi Pospay.</td>
+      <td id="T_94d1b_row9_col2" class="data row9 col2" >05-09-2024 00:49</td>
+      <td id="T_94d1b_row9_col3" class="data row9 col3" >Nasional</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row10" class="row_heading level0 row10" >11</th>
+      <td id="T_94d1b_row10_col0" class="data row10 col0" >Faisal Basri Wafat, Mantan Menkeu Chatib Basri: Kehilangan Besar buat Negeri Ini</td>
+      <td id="T_94d1b_row10_col1" class="data row10 col1" >Ekonom senior Faisal Basri wafat di Jakarta, hari ini, Kamis, 5 September 2024.</td>
+      <td id="T_94d1b_row10_col2" class="data row10 col2" >05-09-2024 00:49</td>
+      <td id="T_94d1b_row10_col3" class="data row10 col3" >Bisnis</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row11" class="row_heading level0 row11" >12</th>
+      <td id="T_94d1b_row11_col0" class="data row11 col0" >Pemerintah dan DPR Minta Azan Magrib Lewat Running Text di TV Tak Jadi Polemik</td>
+      <td id="T_94d1b_row11_col1" class="data row11 col1" >Imbauan Kemenag kepada stasiun tv agar menampilkan azan magrib menjadi running text saat misa akbar Paus Fransiskus menuai polemik.</td>
+      <td id="T_94d1b_row11_col2" class="data row11 col2" >04-09-2024 10:49</td>
+      <td id="T_94d1b_row11_col3" class="data row11 col3" >Nasional</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row12" class="row_heading level0 row12" >13</th>
+      <td id="T_94d1b_row12_col0" class="data row12 col0" >Uni Eropa Kecewa Mongolia Tak Patuhi ICC dengan Menahan Vladimir Putin</td>
+      <td id="T_94d1b_row12_col1" class="data row12 col1" >Vladimir Putin bisa melenggang bebas kunjungan kerja ke Mongolia, tanpa ditahan oleh Ulaanbaatar.</td>
+      <td id="T_94d1b_row12_col2" class="data row12 col2" >04-09-2024 08:49</td>
+      <td id="T_94d1b_row12_col3" class="data row12 col3" >Dunia</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row13" class="row_heading level0 row13" >14</th>
+      <td id="T_94d1b_row13_col0" class="data row13 col0" >5 Cara Mengubah Ukuran Foto menjadi 100 KB untuk Daftar CPNS</td>
+      <td id="T_94d1b_row13_col1" class="data row13 col1" >Cara mengubah ukuran foto menjadi 100KB untuk daftar CPNS gratis dan bisa dilakukan mandiri dalam waktu singkat. Berikut tutorialnya.</td>
+      <td id="T_94d1b_row13_col2" class="data row13 col2" >04-09-2024 11:49</td>
+      <td id="T_94d1b_row13_col3" class="data row13 col3" >Tekno</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row14" class="row_heading level0 row14" >15</th>
+      <td id="T_94d1b_row14_col0" class="data row14 col0" >Azan Berupa Running Text saat Live Paus Fransiskus Pimpin Misa: MUI Membolehkan, Dewan Masjid Tak Setuju</td>
+      <td id="T_94d1b_row14_col1" class="data row14 col1" >MUI dan DMI beda pendapat soal imbauan agar TV yang siaran langsung Paus Fransiskus memimpin misa di GBK mengganti azan Mahgrib dengan running text</td>
+      <td id="T_94d1b_row14_col2" class="data row14 col2" >04-09-2024 13:49</td>
+      <td id="T_94d1b_row14_col3" class="data row14 col3" >Bisnis</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row15" class="row_heading level0 row15" >16</th>
+      <td id="T_94d1b_row15_col0" class="data row15 col0" >Jaksa ICC Khawatirkan 'Ancaman' dan Tekanan AS terhadap Penyelidikan Israel</td>
+      <td id="T_94d1b_row15_col1" class="data row15 col1" >Dalam wawancara dengan sebuah media Jepang, Jaksa ICC, Karim Khan, mendesak kerja sama Jepang dalam mempengaruhi AS.</td>
+      <td id="T_94d1b_row15_col2" class="data row15 col2" >04-09-2024 19:49</td>
+      <td id="T_94d1b_row15_col3" class="data row15 col3" >Dunia</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row16" class="row_heading level0 row16" >17</th>
+      <td id="T_94d1b_row16_col0" class="data row16 col0" >Profil Ekonom Senior Faisal Basri yang Wafat pada Hari Ini</td>
+      <td id="T_94d1b_row16_col1" class="data row16 col1" >Ekonom dan politikus senior dari Universitas Indonesia, Faisal Basri, wafat pada hari ini. Seperti apa profil dan rekam jejaknya?</td>
+      <td id="T_94d1b_row16_col2" class="data row16 col2" >04-09-2024 23:49</td>
+      <td id="T_94d1b_row16_col3" class="data row16 col3" >Bisnis</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row17" class="row_heading level0 row17" >18</th>
+      <td id="T_94d1b_row17_col0" class="data row17 col0" >Sebelum Meninggal, Faisal Basri Soroti 3 Hal Ini: Utang Pemerintah, Bagi-bagi Izin Tambang, dan PPN</td>
+      <td id="T_94d1b_row17_col1" class="data row17 col1" >Ekonom senior Faisal Basri yang meninggal dunia pada Kamis dini hari, 5 September 2024, sempat menyoroti tiga hal ini.</td>
+      <td id="T_94d1b_row17_col2" class="data row17 col2" >05-09-2024 02:49</td>
+      <td id="T_94d1b_row17_col3" class="data row17 col3" >Bisnis</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row18" class="row_heading level0 row18" >19</th>
+      <td id="T_94d1b_row18_col0" class="data row18 col0" >Paralimpiade Paris 2024: Atlet Para Angkat Berat Indonesia Ni Nengah Widiasih Pecahkan Rekor Pribadi tapi Gagal Raih Medali</td>
+      <td id="T_94d1b_row18_col1" class="data row18 col1" >Catatan angkatan Ni Nengah Widiasih di Paralimpiade Paris 2024 lebih bagus dibandingkan saat meraih medali perak di Paralimpade Tokyo 2020.</td>
+      <td id="T_94d1b_row18_col2" class="data row18 col2" >05-09-2024 03:49</td>
+      <td id="T_94d1b_row18_col3" class="data row18 col3" >Sport</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row19" class="row_heading level0 row19" >20</th>
+      <td id="T_94d1b_row19_col0" class="data row19 col0" >Faisal Basri dalam Kenangan Anies Baswedan dan Novel Baswedan</td>
+      <td id="T_94d1b_row19_col1" class="data row19 col1" >Anies Baswedan dan Novel Baswedan punya kenangan terhadap Faisal Basri yang meninggal dunia pada hari ini.</td>
+      <td id="T_94d1b_row19_col2" class="data row19 col2" >05-09-2024 02:49</td>
+      <td id="T_94d1b_row19_col3" class="data row19 col3" >Bisnis</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row20" class="row_heading level0 row20" >21</th>
+      <td id="T_94d1b_row20_col0" class="data row20 col0" >Paus Fransiskus Puji Keluarga di Indonesia Masih Ingin Punya Anak: Di Banyak Negara Lebih Memilih Memiliki Binatang</td>
+      <td id="T_94d1b_row20_col1" class="data row20 col1" >Paus Fransiskus memuji  masyarakat Indonesia yang masih ingin memiliki anak. Ia membandingkan dengan negara lain.</td>
+      <td id="T_94d1b_row20_col2" class="data row20 col2" >04-09-2024 07:49</td>
+      <td id="T_94d1b_row20_col3" class="data row20 col3" >Nasional</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row21" class="row_heading level0 row21" >22</th>
+      <td id="T_94d1b_row21_col0" class="data row21 col0" >21 Link Alternatif Resmi Beli e-Meterai untuk Daftar Seleksi CPNS 2024</td>
+      <td id="T_94d1b_row21_col1" class="data row21 col1" >Ketahui  tautan alternatif kanal penjualan e-meterai resmi untuk dokumen seleksi CPNS 2024. Anda bisa menggunakan link ini jika sulit mengakses Peruri</td>
+      <td id="T_94d1b_row21_col2" class="data row21 col2" >04-09-2024 10:49</td>
+      <td id="T_94d1b_row21_col3" class="data row21 col3" >Nasional</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row22" class="row_heading level0 row22" >23</th>
+      <td id="T_94d1b_row22_col0" class="data row22 col0" >Azan Mahgrib di TV Diganti Running Text saat Paus Fransiskus Pimpin Misa, Wamenkominfo: Ormas Islam Setuju</td>
+      <td id="T_94d1b_row22_col1" class="data row22 col1" >"Tayangan azan Mahgrib diganti running text di televisi yang menyiarkan live Misa Akbar yang dihadiri Paus Fransiskus, sudah disetujui Ormas Islam"</td>
+      <td id="T_94d1b_row22_col2" class="data row22 col2" >04-09-2024 11:49</td>
+      <td id="T_94d1b_row22_col3" class="data row22 col3" >Bisnis</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row23" class="row_heading level0 row23" >24</th>
+      <td id="T_94d1b_row23_col0" class="data row23 col0" >Fakta-fakta Nisya Ahmad, Adik Raffi Ahmad Tak Lolos Pileg Tapi Dilantik DPRD Jabar</td>
+      <td id="T_94d1b_row23_col1" class="data row23 col1" >Nisya Ahmad adalah adik dari Raffi Ahmad sekaligus kakak dari Syahnaz Sadiqah.</td>
+      <td id="T_94d1b_row23_col2" class="data row23 col2" >04-09-2024 16:49</td>
+      <td id="T_94d1b_row23_col3" class="data row23 col3" >Nasional</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row24" class="row_heading level0 row24" >25</th>
+      <td id="T_94d1b_row24_col0" class="data row24 col0" >Uskup Agung Pastikan Paus Fransiskus Tidak Datangi Aksi Kamisan</td>
+      <td id="T_94d1b_row24_col1" class="data row24 col1" >Media sosial diramaikan dengan permintaan agar Paus Fransiskus ikut menghadiri Aksi Kamisan yang akan digelar besok di depan Istana Negara Jakarta.</td>
+      <td id="T_94d1b_row24_col2" class="data row24 col2" >04-09-2024 08:49</td>
+      <td id="T_94d1b_row24_col3" class="data row24 col3" >Nasional</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row25" class="row_heading level0 row25" >26</th>
+      <td id="T_94d1b_row25_col0" class="data row25 col0" >Paus Fransiskus Pilih Pesawat ITA Airways daripada Jet Pribadi, Simak Profil Maskapai Itu</td>
+      <td id="T_94d1b_row25_col1" class="data row25 col1" >Kisah ITA Airways, yang dinaiki Paus Fransiskus bermula Oktober 2020 ketika Italia mengizinkan restrukturisasi Alitalia, maskapai nasional lagi kolops</td>
+      <td id="T_94d1b_row25_col2" class="data row25 col2" >04-09-2024 17:49</td>
+      <td id="T_94d1b_row25_col3" class="data row25 col3" >Travel</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row26" class="row_heading level0 row26" >27</th>
+      <td id="T_94d1b_row26_col0" class="data row26 col0" >Panitia Tegaskan Tiket Misa Agung Paus Fransiskus Tanpa Biaya</td>
+      <td id="T_94d1b_row26_col1" class="data row26 col1" >Tiket Misa Agung bersama Paus Fransiskus di Stadion Gelora Bung Karno dibagikan secara gratis. Tiket itu sudah terdistribusi lewat keuskupan.</td>
+      <td id="T_94d1b_row26_col2" class="data row26 col2" >04-09-2024 12:49</td>
+      <td id="T_94d1b_row26_col3" class="data row26 col3" >Nasional</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row27" class="row_heading level0 row27" >28</th>
+      <td id="T_94d1b_row27_col0" class="data row27 col0" >DPR Umumkan 5 Calon Anggota BPK Terpilih, Terdiri dari Politikus dan Pejabat Kemenhan</td>
+      <td id="T_94d1b_row27_col1" class="data row27 col1" >Komisi XI DPR resmi mengumumkan lima anggota calon anggota Badan Pemeriksa Keuangan (BPK) terpilih periode 2024-2029</td>
+      <td id="T_94d1b_row27_col2" class="data row27 col2" >04-09-2024 10:49</td>
+      <td id="T_94d1b_row27_col3" class="data row27 col3" >Bisnis</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row28" class="row_heading level0 row28" >29</th>
+      <td id="T_94d1b_row28_col0" class="data row28 col0" >Luhut Cium Tangan Paus Fransiskus saat Beri Bibit Mangrove di Gereja Katedral</td>
+      <td id="T_94d1b_row28_col1" class="data row28 col1" >Bibit mangrove yang ditanam dan disiram oleh Paus Fransiskus akan dibawa ke upacara pembukaan Indonesia International Sustainability Forum 2024.</td>
+      <td id="T_94d1b_row28_col2" class="data row28 col2" >04-09-2024 15:49</td>
+      <td id="T_94d1b_row28_col3" class="data row28 col3" >Nasional</td>
+    </tr>
+    <tr>
+      <th id="T_94d1b_level0_row29" class="row_heading level0 row29" >30</th>
+      <td id="T_94d1b_row29_col0" class="data row29 col0" >Wafat karena Serangan Jantung, Faisal Basri akan Dimakamkan di TPU Menteng Pulo Sore Ini</td>
+      <td id="T_94d1b_row29_col1" class="data row29 col1" >Ekonom senior Faisal Basri wafat di usia 65 tahun pada Kamis, 5 September 2024. Faisal mangkat pada pukul 03.50 WIB di Rumah Sakit Mayapada, Kuningan, Jakarta Selatan.</td>
+      <td id="T_94d1b_row29_col2" class="data row29 col2" >05-09-2024 04:49</td>
+      <td id="T_94d1b_row29_col3" class="data row29 col3" >Bisnis</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crowling">crowling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#berikut-adalah-lagkah-langkah-melakukan-crowling-web-berita">berikut adalah lagkah - langkah melakukan crowling web berita</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menginstal-pustaka">menginstal pustaka</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengimport-pustaka">mengimport pustaka</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-konten-dari-halaman-web">mengambil konten dari halaman web</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memparsing-konten-html">memparsing konten HTML</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-artikel-dengan-kelas-text-card">Mengambil Artikel dengan Kelas ‘text-card’</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-judul-dan-link">Mengambil Judul dan Link</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ambil-isi-artikel">Ambil isi artikel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ambil-tanggal-publikasi">Ambil tanggal publikasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menyatukan-semua-code-dan-menampilkan-dalam-bentuk-tabular">menyatukan semua code dan menampilkan dalam bentuk tabular</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
