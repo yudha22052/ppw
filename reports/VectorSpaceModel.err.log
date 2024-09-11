@@ -30,8 +30,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['import re', 'import pandas as pd', 'from sklearn.feature_extraction.text import CountVectorizer', 'from bs4 import BeautifulSoup', 'import requests']
+['import re', 'import pandas as pd', 'from sklearn.feature_extraction.text import TfidfVectorizer', 'from bs4 import BeautifulSoup', 'import requests']
 ...
-["     {'selector': 'th, td', 'props': [('border', '1px solid black'), ('padding', '8px'), ('text-align', 'left')]}]", ')', '', '# Menampilkan DataFrame dengan *Bag of Words* dan gaya border', 'display(styled_df_bow)']
+["     {'selector': 'th, td', 'props': [('border', '1px solid black'), ('padding', '8px'), ('text-align', 'left')]}]", ')', '', '# Menampilkan DataFrame dengan TF-IDF', 'display(styled_df_tfidf)']
 -------------------
 
