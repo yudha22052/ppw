@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Crawling Web Berita &#8212; My sample book</title>
+    <title>Tugas 1 : Crawling Web Berita tempo.co &#8212; My sample book</title>
   
   
   
@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'CrawlingWebBerita';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tugas 2 : TF-IDF &amp; Vector Space Model" href="VectorSpaceModel.html" />
     <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -179,7 +180,11 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Crawling Web Berita</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tugas 1 : Crawling Web Berita tempo.co</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VectorSpaceModel.html">Tugas 2 : TF-IDF &amp; Vector Space Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implementasi_hasil_vsm.html">Tugas 3 : Implementasi Algoritma Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ringkasan_Berita.html">Tugas 4 : meringkas tugas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tugas_5.html">Tugas 5 : meringkas satu berita</a></li>
 </ul>
 
     </div>
@@ -365,7 +370,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Crawling Web Berita</h1>
+    <h1>Tugas 1 : Crawling Web Berita tempo.co</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -388,6 +393,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menyatukan-semua-code-dan-menampilkan-dalam-bentuk-tabular">menyatukan semua code dan menampilkan dalam bentuk tabular</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-crawling">Main Crawling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-dataframe">Convert Dataframe</a></li>
 </ul>
             </nav>
         </div>
@@ -399,8 +406,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="crawling-web-berita">
-<h1>Crawling Web Berita<a class="headerlink" href="#crawling-web-berita" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="tugas-1-crawling-web-berita-tempo-co">
+<h1>Tugas 1 : Crawling Web Berita <a class="reference external" href="http://tempo.co">tempo.co</a><a class="headerlink" href="#tugas-1-crawling-web-berita-tempo-co" title="Link to this heading">#</a></h1>
 <section id="crowling">
 <h2>crowling<a class="headerlink" href="#crowling" title="Link to this heading">#</a></h2>
 <p>Crawling, atau dikenal juga sebagai web crawling, adalah proses mengunjungi halaman-halaman web secara otomatis menggunakan program komputer yang disebut crawler atau spider.</p>
@@ -422,9 +429,9 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.10/dist-packages (4.12.3)
 Requirement already satisfied: requests in /usr/local/lib/python3.10/dist-packages (2.32.3)
 Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dist-packages (from beautifulsoup4) (2.6)
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.10/dist-packages (from requests) (3.3.2)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests) (3.8)
-Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests) (2.0.7)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.10/dist-packages (from requests) (3.4.0)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests) (3.10)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests) (2.2.3)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests) (2024.8.30)
 </pre></div>
 </div>
@@ -507,66 +514,66 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Judul: Respons MUI, PBNU, dan Muhammadiyah Soal Azan di TV Diganti Running Text Saat Misa Paus Fransiskus
-   Link: https://nasional.tempo.co/read/1912307/respons-mui-pbnu-dan-muhammadiyah-soal-azan-di-tv-diganti-running-text-saat-misa-paus-fransiskus
-Judul: Pj Wako Padang Soal Isu Megathrust: Jangan Panik, Tetap Waspada
-   Link: https://nasional.tempo.co/read/1911458/pj-wako-padang-soal-isu-megathrust-jangan-panik-tetap-waspada
-Judul: Jusuf Kalla Sarankan Televisi Tak Ganti Azan dengan Running Teks saat Perayaan Misa
-   Link: https://nasional.tempo.co/read/1912313/jusuf-kalla-sarankan-televisi-tak-ganti-azan-dengan-running-teks-saat-perayaan-misa
-Judul: Kata Keuskupan Agung Jakarta Soal Azan di TV Diganti Running Text Saat Misa Paus Fransiskus
-   Link: https://nasional.tempo.co/read/1912578/kata-keuskupan-agung-jakarta-soal-azan-di-tv-diganti-running-text-saat-misa-paus-fransiskus
-Judul: Faisal Basri Wafat, Anies Baswedan hingga Mahfud Md Ucapkan Belasungkawa
-   Link: https://bisnis.tempo.co/read/1912569/faisal-basri-wafat-anies-baswedan-hingga-mahfud-md-ucapkan-belasungkawa
-Judul: Pengamat Ekonomi dan Politik, Faisal Basri Wafat
-   Link: https://nasional.tempo.co/read/1912542/pengamat-ekonomi-dan-politik-faisal-basri-wafat
-Judul: Paus Fransiskus Ingatkan Bahaya Kekuasaan dalam Pidato di Hadapan Jokowi
-   Link: https://nasional.tempo.co/read/1912540/paus-fransiskus-ingatkan-bahaya-kekuasaan-dalam-pidato-di-hadapan-jokowi
-Judul: 4 Cara Cek Keaslian e-Meterai untuk Daftar Seleksi CPNS 2024
-   Link: https://nasional.tempo.co/read/1912411/4-cara-cek-keaslian-e-meterai-untuk-daftar-seleksi-cpns-2024
-Judul: Paus Fransiskus Pakai Jam Casio, Ini Harganya di Tokped
-   Link: https://bisnis.tempo.co/read/1912381/paus-fransiskus-pakai-jam-casio-ini-harganya-di-tokped
-Judul: Cara Beli e-Meterai di Kantor Pos untuk Daftar CPNS
-   Link: https://nasional.tempo.co/read/1912560/cara-beli-e-meterai-di-kantor-pos-untuk-daftar-cpns
-Judul: Faisal Basri Wafat, Mantan Menkeu Chatib Basri: Kehilangan Besar buat Negeri Ini
-   Link: https://bisnis.tempo.co/read/1912582/faisal-basri-wafat-mantan-menkeu-chatib-basri-kehilangan-besar-buat-negeri-ini
-Judul: Pemerintah dan DPR Minta Azan Magrib Lewat Running Text di TV Tak Jadi Polemik
-   Link: https://nasional.tempo.co/read/1912402/pemerintah-dan-dpr-minta-azan-magrib-lewat-running-text-di-tv-tak-jadi-polemik
-Judul: Uni Eropa Kecewa Mongolia Tak Patuhi ICC dengan Menahan Vladimir Putin
-   Link: https://dunia.tempo.co/read/1912261/uni-eropa-kecewa-mongolia-tak-patuhi-icc-dengan-menahan-vladimir-putin
-Judul: 5 Cara Mengubah Ukuran Foto menjadi 100 KB untuk Daftar CPNS
-   Link: https://tekno.tempo.co/read/1912407/5-cara-mengubah-ukuran-foto-menjadi-100-kb-untuk-daftar-cpns
-Judul: Azan Berupa Running Text saat Live Paus Fransiskus Pimpin Misa: MUI Membolehkan, Dewan Masjid Tak Setuju
-   Link: https://bisnis.tempo.co/read/1912437/azan-berupa-running-text-saat-live-paus-fransiskus-pimpin-misa-mui-membolehkan-dewan-masjid-tak-setuju
-Judul: Jaksa ICC Khawatirkan &#39;Ancaman&#39; dan Tekanan AS terhadap Penyelidikan Israel
-   Link: https://dunia.tempo.co/read/1912516/jaksa-icc-khawatirkan-ancaman-dan-tekanan-as-terhadap-penyelidikan-israel
-Judul: Profil Ekonom Senior Faisal Basri yang Wafat pada Hari Ini
-   Link: https://bisnis.tempo.co/read/1912554/profil-ekonom-senior-faisal-basri-yang-wafat-pada-hari-ini
-Judul: Sebelum Meninggal, Faisal Basri Soroti 3 Hal Ini: Utang Pemerintah, Bagi-bagi Izin Tambang, dan PPN
-   Link: https://bisnis.tempo.co/read/1912611/sebelum-meninggal-faisal-basri-soroti-3-hal-ini-utang-pemerintah-bagi-bagi-izin-tambang-dan-ppn
-Judul: Paralimpiade Paris 2024: Atlet Para Angkat Berat Indonesia Ni Nengah Widiasih Pecahkan Rekor Pribadi tapi Gagal Raih Medali
-   Link: https://sport.tempo.co/read/1912634/paralimpiade-paris-2024-atlet-para-angkat-berat-indonesia-ni-nengah-widiasih-pecahkan-rekor-pribadi-tapi-gagal-raih-medali
-Judul: Faisal Basri dalam Kenangan Anies Baswedan dan Novel Baswedan
-   Link: https://bisnis.tempo.co/read/1912615/faisal-basri-dalam-kenangan-anies-baswedan-dan-novel-baswedan
-Judul: Paus Fransiskus Puji Keluarga di Indonesia Masih Ingin Punya Anak: Di Banyak Negara Lebih Memilih Memiliki Binatang
-   Link: https://nasional.tempo.co/read/1912333/paus-fransiskus-puji-keluarga-di-indonesia-masih-ingin-punya-anak-di-banyak-negara-lebih-memilih-memiliki-binatang
-Judul: 21 Link Alternatif Resmi Beli e-Meterai untuk Daftar Seleksi CPNS 2024
-   Link: https://nasional.tempo.co/read/1912395/21-link-alternatif-resmi-beli-e-meterai-untuk-daftar-seleksi-cpns-2024
-Judul: Azan Mahgrib di TV Diganti Running Text saat Paus Fransiskus Pimpin Misa, Wamenkominfo: Ormas Islam Setuju
-   Link: https://bisnis.tempo.co/read/1912421/azan-mahgrib-di-tv-diganti-running-text-saat-paus-fransiskus-pimpin-misa-wamenkominfo-ormas-islam-setuju
-Judul: Fakta-fakta Nisya Ahmad, Adik Raffi Ahmad Tak Lolos Pileg Tapi Dilantik DPRD Jabar
-   Link: https://nasional.tempo.co/read/1912506/fakta-fakta-nisya-ahmad-adik-raffi-ahmad-tak-lolos-pileg-tapi-dilantik-dprd-jabar
-Judul: Uskup Agung Pastikan Paus Fransiskus Tidak Datangi Aksi Kamisan
-   Link: https://nasional.tempo.co/read/1912352/uskup-agung-pastikan-paus-fransiskus-tidak-datangi-aksi-kamisan
-Judul: Paus Fransiskus Pilih Pesawat ITA Airways daripada Jet Pribadi, Simak Profil Maskapai Itu
-   Link: https://travel.tempo.co/read/1912513/paus-fransiskus-pilih-pesawat-ita-airways-daripada-jet-pribadi-simak-profil-maskapai-itu
-Judul: Panitia Tegaskan Tiket Misa Agung Paus Fransiskus Tanpa Biaya
-   Link: https://nasional.tempo.co/read/1912427/panitia-tegaskan-tiket-misa-agung-paus-fransiskus-tanpa-biaya
-Judul: DPR Umumkan 5 Calon Anggota BPK Terpilih, Terdiri dari Politikus dan Pejabat Kemenhan
-   Link: https://bisnis.tempo.co/read/1912384/dpr-umumkan-5-calon-anggota-bpk-terpilih-terdiri-dari-politikus-dan-pejabat-kemenhan
-Judul: Luhut Cium Tangan Paus Fransiskus saat Beri Bibit Mangrove di Gereja Katedral
-   Link: https://nasional.tempo.co/read/1912497/luhut-cium-tangan-paus-fransiskus-saat-beri-bibit-mangrove-di-gereja-katedral
-Judul: Wafat karena Serangan Jantung, Faisal Basri akan Dimakamkan di TPU Menteng Pulo Sore Ini
-   Link: https://bisnis.tempo.co/read/1912663/wafat-karena-serangan-jantung-faisal-basri-akan-dimakamkan-di-tpu-menteng-pulo-sore-ini
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Judul: Klasemen Grup C Kualifikasi Piala Dunia 2026 setelah Timnas Indonesia Kalah 1-2 dari Cina
+   Link: https://bola.tempo.co/read/1929005/klasemen-grup-c-kualifikasi-piala-dunia-2026-setelah-timnas-indonesia-kalah-1-2-dari-cina
+Judul: Serba-serbi Acara Pembekalan Calon Menteri Prabowo di Hambalang
+   Link: https://nasional.tempo.co/read/1929147/serba-serbi-acara-pembekalan-calon-menteri-prabowo-di-hambalang
+Judul: Bahlil Sidang Promosi Doktor Siang Ini, Selesaikan S3 Kurang dari 2 Tahun
+   Link: https://nasional.tempo.co/read/1929112/bahlil-sidang-promosi-doktor-siang-ini-selesaikan-s3-kurang-dari-2-tahun
+Judul: Diberhentikan Sepihak, Konsil Tenaga Kesehatan Indonesia Laporkan Kemenkes ke Ombudsman
+   Link: https://nasional.tempo.co/read/1929214/diberhentikan-sepihak-konsil-tenaga-kesehatan-indonesia-laporkan-kemenkes-ke-ombudsman
+Judul: Bahlil Lahadalia Resmi Sandang Gelar Doktor dengan Predikat Cumlaude dari Universitas Indonesia
+   Link: https://bisnis.tempo.co/read/1929291/bahlil-lahadalia-resmi-sandang-gelar-doktor-dengan-predikat-cumlaude-dari-universitas-indonesia
+Judul: PPN 12 Persen Berlaku 1 Januari 2025, Ini Daftar Barang yang Terdampak
+   Link: https://bisnis.tempo.co/read/1929102/ppn-12-persen-berlaku-1-januari-2025-ini-daftar-barang-yang-terdampak
+Judul: Prabowo Bekali Calon Menteri dengan Materi Geopolitik sampai Anti-Korupsi
+   Link: https://bisnis.tempo.co/read/1929260/prabowo-bekali-calon-menteri-dengan-materi-geopolitik-sampai-anti-korupsi
+Judul: Exco PSSI Arya Sinulingga Klarifikasi Kabar Penolakan AFC atas Surat Protes Wasit Laga Bahrain vs Indonesia
+   Link: https://sport.tempo.co/read/1929194/exco-pssi-arya-sinulingga-klarifikasi-kabar-penolakan-afc-atas-surat-protes-wasit-laga-bahrain-vs-indonesia
+Judul: Penjelasan Pramono Anung seusai Temui Prabowo di Kertanegara
+   Link: https://nasional.tempo.co/read/1929187/penjelasan-pramono-anung-seusai-temui-prabowo-di-kertanegara
+Judul: Bahlil Sidang Promosi Doktor di UI, Disertasinya Temukan Hilirisasi Nikel Belum Untungkan Warga Lokal
+   Link: https://bisnis.tempo.co/read/1929155/bahlil-sidang-promosi-doktor-di-ui-disertasinya-temukan-hilirisasi-nikel-belum-untungkan-warga-lokal
+Judul: Kualifikasi Piala Dunia 2026: Menpora Dito Ariotedjo Nilai Timnas Indonesia Mulai Berkembang dari Segi Permainan
+   Link: https://sport.tempo.co/read/1929202/kualifikasi-piala-dunia-2026-menpora-dito-ariotedjo-nilai-timnas-indonesia-mulai-berkembang-dari-segi-permainan
+Judul: Indikator Politik Indonesia: Survei Kepuasan Publik Terhadap Jokowi Masih Tinggi
+   Link: https://nasional.tempo.co/read/1929056/indikator-politik-indonesia-survei-kepuasan-publik-terhadap-jokowi-masih-tinggi
+Judul: Timnas Indonesia Kalah 1-2 dari Cina di Kualifikasi Piala Dunia 2026,  Shin Tae-yong Tak Menduga Lawan Pakai Taktik Klasik
+   Link: https://bola.tempo.co/read/1928999/timnas-indonesia-kalah-1-2-dari-cina-di-kualifikasi-piala-dunia-2026shin-tae-yong-tak-menduga-lawan-pakai-taktik-klasik
+Judul: Pramono Anung Ungkap Alasan Tak Gabung Kabinet Prabowo: Berjuang Menangi Pilgub Jakarta
+   Link: https://pemilu.tempo.co/read/1929377/pramono-anung-ungkap-alasan-tak-gabung-kabinet-prabowo-berjuang-menangi-pilgub-jakarta
+Judul: Dua Drone dari Lebanon Lagi-lagi Berhasil Menembus Pertahanan Udara Israel
+   Link: https://dunia.tempo.co/read/1929081/dua-drone-dari-lebanon-lagi-lagi-berhasil-menembus-pertahanan-udara-israel
+Judul: Jadwal Lengkap SKD CPNS Kemenkumham 2024 dan Titik Lokasinya
+   Link: https://nasional.tempo.co/read/1929116/jadwal-lengkap-skd-cpns-kemenkumham-2024-dan-titik-lokasinya
+Judul: Komentar Presiden Jokowi soal Kekalahan Timnas Indonesia dari Cina: Menang Kalah Itu Biasa
+   Link: https://bola.tempo.co/read/1929177/komentar-presiden-jokowi-soal-kekalahan-timnas-indonesia-dari-cina-menang-kalah-itu-biasa
+Judul: Boyamin Saiman Sebut Sejumlah Calon Menteri Prabowo Diduga Terlibat Korupsi
+   Link: https://metro.tempo.co/read/1929181/boyamin-saiman-sebut-sejumlah-calon-menteri-prabowo-diduga-terlibat-korupsi
+Judul: Beberapa Kali Pertemuan Sri Mulyani dan Prabowo, Sebelum Dipinang Jadi Menteri Keuangan Lagi
+   Link: https://bisnis.tempo.co/read/1929101/beberapa-kali-pertemuan-sri-mulyani-dan-prabowo-sebelum-dipinang-jadi-menteri-keuangan-lagi
+Judul: Dana Pensiun PT Taspen Rp 1 Triliun Diduga Dikorupsi, OJK Sebut Pengawasannya Terbatas untuk Program Tabungan Hari Tua
+   Link: https://bisnis.tempo.co/read/1929035/dana-pensiun-pt-taspen-rp-1-triliun-diduga-dikorupsi-ojk-sebut-pengawasannya-terbatas-untuk-program-tabungan-hari-tua
+Judul: Soal Pencalonan Kepala BIN Lebih Awal, Hasan Nasbi Ungkap Keinginan Prabowo
+   Link: https://nasional.tempo.co/read/1929156/soal-pencalonan-kepala-bin-lebih-awal-hasan-nasbi-ungkap-keinginan-prabowo
+Judul: BPJS Kesehatan Tingkatkan Efektivitas Layanan JKN Bagi Anggota Polri
+   Link: https://nasional.tempo.co/read/1929100/bpjs-kesehatan-tingkatkan-efektivitas-layanan-jkn-bagi-anggota-polri
+Judul: Siapa Saja Calon Wamenkeu yang Bakal Mendampingi Sri Mulyani?
+   Link: https://nasional.tempo.co/read/1929204/siapa-saja-calon-wamenkeu-yang-bakal-mendampingi-sri-mulyani
+Judul: Budi Gunawan Ikut Pembekalan Calon Menteri Prabowo di Hambalang
+   Link: https://nasional.tempo.co/read/1929066/budi-gunawan-ikut-pembekalan-calon-menteri-prabowo-di-hambalang
+Judul: Menjelang Pensiun, Jokowi Mengaku Belum Beli Tiket Pesawat ke Solo
+   Link: https://nasional.tempo.co/read/1929241/menjelang-pensiun-jokowi-mengaku-belum-beli-tiket-pesawat-ke-solo
+Judul: Puan Sebut Pramono Anung Diutus Megawati untuk Datang Menemui Prabowo di Kertanegara
+   Link: https://nasional.tempo.co/read/1929219/puan-sebut-pramono-anung-diutus-megawati-untuk-datang-menemui-prabowo-di-kertanegara
+Judul: Pakai Kemeja Putih, Nusron hingga Yusril Tiba di Hambalang untuk Pembekalan Calon Menteri Prabowo
+   Link: https://nasional.tempo.co/read/1929042/pakai-kemeja-putih-nusron-hingga-yusril-tiba-di-hambalang-untuk-pembekalan-calon-menteri-prabowo
+Judul: Tanpa Kader PKS dan Nasdem, Ini 59 Calon Menteri-Wamen yang Dipanggil Prabowo Kemarin
+   Link: https://nasional.tempo.co/read/1929030/tanpa-kader-pks-dan-nasdem-ini-59-calon-menteri-wamen-yang-dipanggil-prabowo-kemarin
+Judul: Jubir Ungkap Alasan Prabowo akan Bergerak Menangkan Muzakir Manaf-Fadhlullah di Pilgub Aceh
+   Link: https://nasional.tempo.co/read/1929089/jubir-ungkap-alasan-prabowo-akan-bergerak-menangkan-muzakir-manaf-fadhlullah-di-pilgub-aceh
+Judul: Jokowi: Pemberhentian Budi Gunawan sebagai Kepala BIN Permintaan Prabowo
+   Link: https://nasional.tempo.co/read/1929227/jokowi-pemberhentian-budi-gunawan-sebagai-kepala-bin-permintaan-prabowo
 </pre></div>
 </div>
 </div>
@@ -602,36 +609,36 @@ Judul: Wafat karena Serangan Jantung, Faisal Basri akan Dimakamkan di TPU Menten
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Isi: MUI menyatakan penggantian tayangan azan magrib di TV dengan teks berjalan saat misa akbar Paus Fransiskus tak melanggar syariat Islam.
-   Isi: Dalam keadaan bencana gedung-gedung pemerintah bisa dimanfaatkan sebagai TES (Tempat Evakuasi Sementara).
-   Isi: Jusuf Kalla menyarankan stasiun televisi untuk tetap menyiarkan azan bersamaan dengan laporan perayaan misa
-   Isi: Keuskupan Agung Jakarta menanggapi imbauan azan magrib di televisi hari ini disiarkan lewat running text saat misa Paus Fransiskus.
-   Isi: Wafatnya Faisal Basri meninggalkan duka, bukan hanya bagi keluarga, tapi dari sejumlah tokoh di Indonesia.
-   Isi: Pengamat ekononomi dan politik, Faisal Basri meninggal pada Kamis dinihari ini.
-   Isi: Paus Fransiskus menyatakan berbagai ketegangan yang berujung kekerasan kerap timbul karena kekuasaan yang tidak bertanggung jawab.
-   Isi: Setelah membeli e-meterai, sebaiknya cek keaslian e-meterai. Berikut beberapa metode cek keaslian e-meterai untuk dokumen seleksi CPNS 2024.
-   Isi: Paus Fransiskus mengenakan jam tangan bermerek Casio dengan jenis MQ24-7B2, yang di Tokopedia harganya tak sampai Rp130 ribu.
-   Isi: Salah satu syarat pendaftaran CPNS 2024 adalah dengan membubuhkan e-meterai. Berikut ini cara beli e-meterai di kantor Pos dan aplikasi Pospay.
-   Isi: Ekonom senior Faisal Basri wafat di Jakarta, hari ini, Kamis, 5 September 2024.
-   Isi: Imbauan Kemenag kepada stasiun tv agar menampilkan azan magrib menjadi running text saat misa akbar Paus Fransiskus menuai polemik.
-   Isi: Vladimir Putin bisa melenggang bebas kunjungan kerja ke Mongolia, tanpa ditahan oleh Ulaanbaatar.
-   Isi: Cara mengubah ukuran foto menjadi 100KB untuk daftar CPNS gratis dan bisa dilakukan mandiri dalam waktu singkat. Berikut tutorialnya.
-   Isi: MUI dan DMI beda pendapat soal imbauan agar TV yang siaran langsung Paus Fransiskus memimpin misa di GBK mengganti azan Mahgrib dengan running text
-   Isi: Dalam wawancara dengan sebuah media Jepang, Jaksa ICC, Karim Khan, mendesak kerja sama Jepang dalam mempengaruhi AS.
-   Isi: Ekonom dan politikus senior dari Universitas Indonesia, Faisal Basri, wafat pada hari ini. Seperti apa profil dan rekam jejaknya?
-   Isi: Ekonom senior Faisal Basri yang meninggal dunia pada Kamis dini hari, 5 September 2024, sempat menyoroti tiga hal ini.
-   Isi: Catatan angkatan Ni Nengah Widiasih di Paralimpiade Paris 2024 lebih bagus dibandingkan saat meraih medali perak di Paralimpade Tokyo 2020.
-   Isi: Anies Baswedan dan Novel Baswedan punya kenangan terhadap Faisal Basri yang meninggal dunia pada hari ini.
-   Isi: Paus Fransiskus memuji  masyarakat Indonesia yang masih ingin memiliki anak. Ia membandingkan dengan negara lain.
-   Isi: Ketahui  tautan alternatif kanal penjualan e-meterai resmi untuk dokumen seleksi CPNS 2024. Anda bisa menggunakan link ini jika sulit mengakses Peruri
-   Isi: &quot;Tayangan azan Mahgrib diganti running text di televisi yang menyiarkan live Misa Akbar yang dihadiri Paus Fransiskus, sudah disetujui Ormas Islam&quot;
-   Isi: Nisya Ahmad adalah adik dari Raffi Ahmad sekaligus kakak dari Syahnaz Sadiqah.
-   Isi: Media sosial diramaikan dengan permintaan agar Paus Fransiskus ikut menghadiri Aksi Kamisan yang akan digelar besok di depan Istana Negara Jakarta.
-   Isi: Kisah ITA Airways, yang dinaiki Paus Fransiskus bermula Oktober 2020 ketika Italia mengizinkan restrukturisasi Alitalia, maskapai nasional lagi kolops
-   Isi: Tiket Misa Agung bersama Paus Fransiskus di Stadion Gelora Bung Karno dibagikan secara gratis. Tiket itu sudah terdistribusi lewat keuskupan.
-   Isi: Komisi XI DPR resmi mengumumkan lima anggota calon anggota Badan Pemeriksa Keuangan (BPK) terpilih periode 2024-2029
-   Isi: Bibit mangrove yang ditanam dan disiram oleh Paus Fransiskus akan dibawa ke upacara pembukaan Indonesia International Sustainability Forum 2024.
-   Isi: Ekonom senior Faisal Basri wafat di usia 65 tahun pada Kamis, 5 September 2024. Faisal mangkat pada pukul 03.50 WIB di Rumah Sakit Mayapada, Kuningan, Jakarta Selatan.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Isi: Timnas Indonesia tertahan di  posisi kelima klaseme Grup C putaran ketiga Kualifikasi Piala Dunia 2026 zona Asia setelah takluk 1-2 dari Cina.
+   Isi: Calon menteri Prabowo mendapatkan pembekalan di Hambalang selama dua hari ke depan. Berikut serba-serbi acara pembekalan calon menteri itu.
+   Isi: Bahlil akan memaparkan disertasi berjudul &#39;Kebijakan, Kelembagaan, Tata Kelola, Hilirisasi Nikel yang Berkeadilan dan Berkelanjutan di Indonesia.&#39;
+   Isi: Konsul Tenaga Kesehatan Indonesia melaporkan Kemenkes ke Ombudsman ihwal dugaan maladministrasi.
+   Isi: Menteri Energi Sumber Daya Mineral (ESDM) Bahlil Lahadalia selesai menjalani Sidang Terbuka Promosi Doktor yang digelar oleh Kajian Stratejik dan Global di Universitas Indonesia, Depok, 16 Oktober 2024.
+   Isi: Tarif PPN 12 persen direncanakan berlaku mulai 1 Januari 2025. Berikut daftar barang yang terdampak dan dikecualikan.
+   Isi: Prabowo Subianto mengumpulkan calon anggota kabinetnya di rumah pribadi presiden terpilih itu di Hambalang, Bogor, untuk mendapat pembekalan dua hari.
+   Isi: Anggota Exco PSSI Arya Sinulingga menjelaskan respons AFC soal surat protes federasi soal wasit Ahmed Al Kaf dalam laga Indonesia vs Bahrain.
+   Isi: Pramono Anung bertandang ke rumah Prabowo dalam rangka silaturahmi dan saling mendoakan.
+   Isi: Sebelumnya, Bahlil pernah menyebutkan hasil penelitiannya menunjukkan manfaat terbesar hilirisasi nikel diterima  oleh investor dan pemerintah pusat.
+   Isi: Menpora Dito Ariotedjo meminta PSSI menghitung ulang peluang Timnas Indonesia lolos dari putaran ketiga kualifikasi Piala Dunia 2026.
+   Isi: Survei terbaru yang dirilis Indikator Politik Indonesia tercatat bahwa masih ada 75 persen masyarakat Indonesia yang mengaku puas terhadap Jokowi.
+   Isi: Pelatih Timnas Indonesia Shin Tae-yong menyatakan tidak menduga taktik yang diterapkan Cina pada pertandingan kualifikasi Piala Dunia 2026.
+   Isi: Pramono Anung memastikan pertemuannya dengan Prabowo tidak terkait dengan jabatan menteri.
+   Isi: Drone yang ditembakkan dari Lebanon berhasil menembus langit Israel. Bunyi sirine meraung.
+   Isi: Berikut jadwal dan titik lokasi pelaksanaan SKD CAT CPNS Kemenkumham 2024 di seluruh Indonesia dan luar negeri.
+   Isi: Presiden Joko Widodo meminta Timnas Indonesia tetap semangat meski kalah dari China pada laga keempat putaran ketiga kualifikasi Piala Dunia 2026.
+   Isi: Boyamin Saiman mengatakan Prabowo Subianto masih punya waktu untuk memilih orang-orang dengan rekam jejak yang bersih.
+   Isi: Sri Mulyani akan menjabat kembali jadi menteri keuangan 2024-2029 setelah dipinang Prabowo.
+   Isi: OJK kembali menanggapi soal dana pensiun senilai Rp 1 triliun PT Taspen (Persero) yang diduga dikorupsi.
+   Isi: DPR menyatakan Muhammad Herindra akan dilantik sebagai Kepala BIN bersamaan dengan pelantikan menteri.
+   Isi: Kerja sama ini diharapkan dapat menjadi pedoman yang kokoh bagi kedua pihak dalam mengintegrasikan data secara lebih baik
+   Isi: Tiga Wamenkeu direncanakan Prabowo untuk membantu kerja Sri Mulyani. Mereka adalah Thomas Djiwandono, Suahasil Nazara, dan Anggito Abimanyu.
+   Isi: Budi Gunawan merupakan orang dekat Ketua Umum Partai Demokrasi Indonesia Perjuangan Megawati Soekarnoputri.
+   Isi: Jokowi mengaku belum membeli tiket pesawat komersial untuk kepulangannya ke Solo, Jawa Tengah menjelang pensiun sebagai presiden.
+   Isi: Puan Maharani mengatakan, Pramono Anung diutus langsung oleh Megawati untuk bertemu Prabowo di Kertanegara.
+   Isi: Calon menteri Prabowo mulai berdatangan ke Padepokan Garuda Yaksa, Hambalang, untuk pembekalan.
+   Isi: Prabowo memanggil calon menteri dan wamen ke Kertanegara kemarin. Tidak ada kader PKS dan Nasdem.
+   Isi: Jubir mengatakan Prabowo berharap rakyat Aceh berbondong-bondong memilih Muzakir Manaf-Fadhlullah di Pilgub Aceh.
+   Isi: Sebelum memberhentikan Budi Gunawan dari posisi Kepala BIN, Jokowi mengaku telah berkomunikasi dengan Prabowo.
 </pre></div>
 </div>
 </div>
@@ -661,36 +668,36 @@ Judul: Wafat karena Serangan Jantung, Faisal Basri akan Dimakamkan di TPU Menten
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Tanggal: 04-09-2024 07:49
-   Tanggal: 1 detik lalu
-   Tanggal: 04-09-2024 07:49
-   Tanggal: 05-09-2024 00:49
-   Tanggal: 05-09-2024 00:49
-   Tanggal: 04-09-2024 23:49
-   Tanggal: 04-09-2024 23:49
-   Tanggal: 04-09-2024 11:49
-   Tanggal: 04-09-2024 10:49
-   Tanggal: 05-09-2024 00:49
-   Tanggal: 05-09-2024 00:49
-   Tanggal: 04-09-2024 10:49
-   Tanggal: 04-09-2024 08:49
-   Tanggal: 04-09-2024 11:49
-   Tanggal: 04-09-2024 13:49
-   Tanggal: 04-09-2024 19:49
-   Tanggal: 04-09-2024 23:49
-   Tanggal: 05-09-2024 02:49
-   Tanggal: 05-09-2024 03:49
-   Tanggal: 05-09-2024 02:49
-   Tanggal: 04-09-2024 07:49
-   Tanggal: 04-09-2024 10:49
-   Tanggal: 04-09-2024 11:49
-   Tanggal: 04-09-2024 16:49
-   Tanggal: 04-09-2024 08:49
-   Tanggal: 04-09-2024 17:49
-   Tanggal: 04-09-2024 12:49
-   Tanggal: 04-09-2024 10:49
-   Tanggal: 04-09-2024 15:49
-   Tanggal: 05-09-2024 04:49
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Tanggal: 15-10-2024 23:06
+   Tanggal: 16-10-2024 05:06
+   Tanggal: 16-10-2024 04:06
+   Tanggal: 16-10-2024 08:06
+   Tanggal: 16-10-2024 11:06
+   Tanggal: 16-10-2024 04:06
+   Tanggal: 16-10-2024 10:06
+   Tanggal: 16-10-2024 07:06
+   Tanggal: 16-10-2024 07:06
+   Tanggal: 16-10-2024 06:06
+   Tanggal: 16-10-2024 07:06
+   Tanggal: 16-10-2024 06:06
+   Tanggal: 15-10-2024 22:06
+   Tanggal: 16-10-2024 15:06
+   Tanggal: 16-10-2024 03:06
+   Tanggal: 16-10-2024 04:06
+   Tanggal: 16-10-2024 06:06
+   Tanggal: 16-10-2024 06:06
+   Tanggal: 16-10-2024 04:06
+   Tanggal: 16-10-2024 03:06
+   Tanggal: 16-10-2024 06:06
+   Tanggal: 16-10-2024 04:06
+   Tanggal: 16-10-2024 07:06
+   Tanggal: 16-10-2024 02:06
+   Tanggal: 16-10-2024 09:06
+   Tanggal: 16-10-2024 08:06
+   Tanggal: 16-10-2024 01:06
+   Tanggal: 16-10-2024 01:06
+   Tanggal: 16-10-2024 03:06
+   Tanggal: 16-10-2024 08:06
 </pre></div>
 </div>
 </div>
@@ -753,160 +760,164 @@ Judul: Wafat karena Serangan Jantung, Faisal Basri akan Dimakamkan di TPU Menten
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1. Judul: Respons MUI, PBNU, dan Muhammadiyah Soal Azan di TV Diganti Running Text Saat Misa Paus Fransiskus
-   Link: https://nasional.tempo.co/read/1912307/respons-mui-pbnu-dan-muhammadiyah-soal-azan-di-tv-diganti-running-text-saat-misa-paus-fransiskus
-   Isi: MUI menyatakan penggantian tayangan azan magrib di TV dengan teks berjalan saat misa akbar Paus Fransiskus tak melanggar syariat Islam.
-   Tanggal: 04-09-2024 07:49
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1. Judul: Klasemen Grup C Kualifikasi Piala Dunia 2026 setelah Timnas Indonesia Kalah 1-2 dari Cina
+   Link: https://bola.tempo.co/read/1929005/klasemen-grup-c-kualifikasi-piala-dunia-2026-setelah-timnas-indonesia-kalah-1-2-dari-cina
+   Isi: Timnas Indonesia tertahan di  posisi kelima klaseme Grup C putaran ketiga Kualifikasi Piala Dunia 2026 zona Asia setelah takluk 1-2 dari Cina.
+   Tanggal: 15-10-2024 23:06
+   Kategori: Bola
+2. Judul: Serba-serbi Acara Pembekalan Calon Menteri Prabowo di Hambalang
+   Link: https://nasional.tempo.co/read/1929147/serba-serbi-acara-pembekalan-calon-menteri-prabowo-di-hambalang
+   Isi: Calon menteri Prabowo mendapatkan pembekalan di Hambalang selama dua hari ke depan. Berikut serba-serbi acara pembekalan calon menteri itu.
+   Tanggal: 16-10-2024 05:06
    Kategori: Nasional
-2. Judul: Pj Wako Padang Soal Isu Megathrust: Jangan Panik, Tetap Waspada
-   Link: https://nasional.tempo.co/read/1911458/pj-wako-padang-soal-isu-megathrust-jangan-panik-tetap-waspada
-   Isi: Dalam keadaan bencana gedung-gedung pemerintah bisa dimanfaatkan sebagai TES (Tempat Evakuasi Sementara).
-   Tanggal: 1 detik lalu
+3. Judul: Bahlil Sidang Promosi Doktor Siang Ini, Selesaikan S3 Kurang dari 2 Tahun
+   Link: https://nasional.tempo.co/read/1929112/bahlil-sidang-promosi-doktor-siang-ini-selesaikan-s3-kurang-dari-2-tahun
+   Isi: Bahlil akan memaparkan disertasi berjudul &#39;Kebijakan, Kelembagaan, Tata Kelola, Hilirisasi Nikel yang Berkeadilan dan Berkelanjutan di Indonesia.&#39;
+   Tanggal: 16-10-2024 04:06
    Kategori: Nasional
-3. Judul: Jusuf Kalla Sarankan Televisi Tak Ganti Azan dengan Running Teks saat Perayaan Misa
-   Link: https://nasional.tempo.co/read/1912313/jusuf-kalla-sarankan-televisi-tak-ganti-azan-dengan-running-teks-saat-perayaan-misa
-   Isi: Jusuf Kalla menyarankan stasiun televisi untuk tetap menyiarkan azan bersamaan dengan laporan perayaan misa
-   Tanggal: 04-09-2024 07:49
+4. Judul: Diberhentikan Sepihak, Konsil Tenaga Kesehatan Indonesia Laporkan Kemenkes ke Ombudsman
+   Link: https://nasional.tempo.co/read/1929214/diberhentikan-sepihak-konsil-tenaga-kesehatan-indonesia-laporkan-kemenkes-ke-ombudsman
+   Isi: Konsul Tenaga Kesehatan Indonesia melaporkan Kemenkes ke Ombudsman ihwal dugaan maladministrasi.
+   Tanggal: 16-10-2024 08:06
    Kategori: Nasional
-4. Judul: Kata Keuskupan Agung Jakarta Soal Azan di TV Diganti Running Text Saat Misa Paus Fransiskus
-   Link: https://nasional.tempo.co/read/1912578/kata-keuskupan-agung-jakarta-soal-azan-di-tv-diganti-running-text-saat-misa-paus-fransiskus
-   Isi: Keuskupan Agung Jakarta menanggapi imbauan azan magrib di televisi hari ini disiarkan lewat running text saat misa Paus Fransiskus.
-   Tanggal: 05-09-2024 00:49
-   Kategori: Nasional
-5. Judul: Faisal Basri Wafat, Anies Baswedan hingga Mahfud Md Ucapkan Belasungkawa
-   Link: https://bisnis.tempo.co/read/1912569/faisal-basri-wafat-anies-baswedan-hingga-mahfud-md-ucapkan-belasungkawa
-   Isi: Wafatnya Faisal Basri meninggalkan duka, bukan hanya bagi keluarga, tapi dari sejumlah tokoh di Indonesia.
-   Tanggal: 05-09-2024 00:49
+5. Judul: Bahlil Lahadalia Resmi Sandang Gelar Doktor dengan Predikat Cumlaude dari Universitas Indonesia
+   Link: https://bisnis.tempo.co/read/1929291/bahlil-lahadalia-resmi-sandang-gelar-doktor-dengan-predikat-cumlaude-dari-universitas-indonesia
+   Isi: Menteri Energi Sumber Daya Mineral (ESDM) Bahlil Lahadalia selesai menjalani Sidang Terbuka Promosi Doktor yang digelar oleh Kajian Stratejik dan Global di Universitas Indonesia, Depok, 16 Oktober 2024.
+   Tanggal: 16-10-2024 11:06
    Kategori: Bisnis
-6. Judul: Pengamat Ekonomi dan Politik, Faisal Basri Wafat
-   Link: https://nasional.tempo.co/read/1912542/pengamat-ekonomi-dan-politik-faisal-basri-wafat
-   Isi: Pengamat ekononomi dan politik, Faisal Basri meninggal pada Kamis dinihari ini.
-   Tanggal: 04-09-2024 23:49
-   Kategori: Nasional
-7. Judul: Paus Fransiskus Ingatkan Bahaya Kekuasaan dalam Pidato di Hadapan Jokowi
-   Link: https://nasional.tempo.co/read/1912540/paus-fransiskus-ingatkan-bahaya-kekuasaan-dalam-pidato-di-hadapan-jokowi
-   Isi: Paus Fransiskus menyatakan berbagai ketegangan yang berujung kekerasan kerap timbul karena kekuasaan yang tidak bertanggung jawab.
-   Tanggal: 04-09-2024 23:49
-   Kategori: Nasional
-8. Judul: 4 Cara Cek Keaslian e-Meterai untuk Daftar Seleksi CPNS 2024
-   Link: https://nasional.tempo.co/read/1912411/4-cara-cek-keaslian-e-meterai-untuk-daftar-seleksi-cpns-2024
-   Isi: Setelah membeli e-meterai, sebaiknya cek keaslian e-meterai. Berikut beberapa metode cek keaslian e-meterai untuk dokumen seleksi CPNS 2024.
-   Tanggal: 04-09-2024 11:49
-   Kategori: Nasional
-9. Judul: Paus Fransiskus Pakai Jam Casio, Ini Harganya di Tokped
-   Link: https://bisnis.tempo.co/read/1912381/paus-fransiskus-pakai-jam-casio-ini-harganya-di-tokped
-   Isi: Paus Fransiskus mengenakan jam tangan bermerek Casio dengan jenis MQ24-7B2, yang di Tokopedia harganya tak sampai Rp130 ribu.
-   Tanggal: 04-09-2024 10:49
+6. Judul: PPN 12 Persen Berlaku 1 Januari 2025, Ini Daftar Barang yang Terdampak
+   Link: https://bisnis.tempo.co/read/1929102/ppn-12-persen-berlaku-1-januari-2025-ini-daftar-barang-yang-terdampak
+   Isi: Tarif PPN 12 persen direncanakan berlaku mulai 1 Januari 2025. Berikut daftar barang yang terdampak dan dikecualikan.
+   Tanggal: 16-10-2024 04:06
    Kategori: Bisnis
-10. Judul: Cara Beli e-Meterai di Kantor Pos untuk Daftar CPNS
-   Link: https://nasional.tempo.co/read/1912560/cara-beli-e-meterai-di-kantor-pos-untuk-daftar-cpns
-   Isi: Salah satu syarat pendaftaran CPNS 2024 adalah dengan membubuhkan e-meterai. Berikut ini cara beli e-meterai di kantor Pos dan aplikasi Pospay.
-   Tanggal: 05-09-2024 00:49
-   Kategori: Nasional
-11. Judul: Faisal Basri Wafat, Mantan Menkeu Chatib Basri: Kehilangan Besar buat Negeri Ini
-   Link: https://bisnis.tempo.co/read/1912582/faisal-basri-wafat-mantan-menkeu-chatib-basri-kehilangan-besar-buat-negeri-ini
-   Isi: Ekonom senior Faisal Basri wafat di Jakarta, hari ini, Kamis, 5 September 2024.
-   Tanggal: 05-09-2024 00:49
+7. Judul: Prabowo Bekali Calon Menteri dengan Materi Geopolitik sampai Anti-Korupsi
+   Link: https://bisnis.tempo.co/read/1929260/prabowo-bekali-calon-menteri-dengan-materi-geopolitik-sampai-anti-korupsi
+   Isi: Prabowo Subianto mengumpulkan calon anggota kabinetnya di rumah pribadi presiden terpilih itu di Hambalang, Bogor, untuk mendapat pembekalan dua hari.
+   Tanggal: 16-10-2024 10:06
    Kategori: Bisnis
-12. Judul: Pemerintah dan DPR Minta Azan Magrib Lewat Running Text di TV Tak Jadi Polemik
-   Link: https://nasional.tempo.co/read/1912402/pemerintah-dan-dpr-minta-azan-magrib-lewat-running-text-di-tv-tak-jadi-polemik
-   Isi: Imbauan Kemenag kepada stasiun tv agar menampilkan azan magrib menjadi running text saat misa akbar Paus Fransiskus menuai polemik.
-   Tanggal: 04-09-2024 10:49
-   Kategori: Nasional
-13. Judul: Uni Eropa Kecewa Mongolia Tak Patuhi ICC dengan Menahan Vladimir Putin
-   Link: https://dunia.tempo.co/read/1912261/uni-eropa-kecewa-mongolia-tak-patuhi-icc-dengan-menahan-vladimir-putin
-   Isi: Vladimir Putin bisa melenggang bebas kunjungan kerja ke Mongolia, tanpa ditahan oleh Ulaanbaatar.
-   Tanggal: 04-09-2024 08:49
-   Kategori: Dunia
-14. Judul: 5 Cara Mengubah Ukuran Foto menjadi 100 KB untuk Daftar CPNS
-   Link: https://tekno.tempo.co/read/1912407/5-cara-mengubah-ukuran-foto-menjadi-100-kb-untuk-daftar-cpns
-   Isi: Cara mengubah ukuran foto menjadi 100KB untuk daftar CPNS gratis dan bisa dilakukan mandiri dalam waktu singkat. Berikut tutorialnya.
-   Tanggal: 04-09-2024 11:49
-   Kategori: Tekno
-15. Judul: Azan Berupa Running Text saat Live Paus Fransiskus Pimpin Misa: MUI Membolehkan, Dewan Masjid Tak Setuju
-   Link: https://bisnis.tempo.co/read/1912437/azan-berupa-running-text-saat-live-paus-fransiskus-pimpin-misa-mui-membolehkan-dewan-masjid-tak-setuju
-   Isi: MUI dan DMI beda pendapat soal imbauan agar TV yang siaran langsung Paus Fransiskus memimpin misa di GBK mengganti azan Mahgrib dengan running text
-   Tanggal: 04-09-2024 13:49
-   Kategori: Bisnis
-16. Judul: Jaksa ICC Khawatirkan &#39;Ancaman&#39; dan Tekanan AS terhadap Penyelidikan Israel
-   Link: https://dunia.tempo.co/read/1912516/jaksa-icc-khawatirkan-ancaman-dan-tekanan-as-terhadap-penyelidikan-israel
-   Isi: Dalam wawancara dengan sebuah media Jepang, Jaksa ICC, Karim Khan, mendesak kerja sama Jepang dalam mempengaruhi AS.
-   Tanggal: 04-09-2024 19:49
-   Kategori: Dunia
-17. Judul: Profil Ekonom Senior Faisal Basri yang Wafat pada Hari Ini
-   Link: https://bisnis.tempo.co/read/1912554/profil-ekonom-senior-faisal-basri-yang-wafat-pada-hari-ini
-   Isi: Ekonom dan politikus senior dari Universitas Indonesia, Faisal Basri, wafat pada hari ini. Seperti apa profil dan rekam jejaknya?
-   Tanggal: 04-09-2024 23:49
-   Kategori: Bisnis
-18. Judul: Sebelum Meninggal, Faisal Basri Soroti 3 Hal Ini: Utang Pemerintah, Bagi-bagi Izin Tambang, dan PPN
-   Link: https://bisnis.tempo.co/read/1912611/sebelum-meninggal-faisal-basri-soroti-3-hal-ini-utang-pemerintah-bagi-bagi-izin-tambang-dan-ppn
-   Isi: Ekonom senior Faisal Basri yang meninggal dunia pada Kamis dini hari, 5 September 2024, sempat menyoroti tiga hal ini.
-   Tanggal: 05-09-2024 02:49
-   Kategori: Bisnis
-19. Judul: Paralimpiade Paris 2024: Atlet Para Angkat Berat Indonesia Ni Nengah Widiasih Pecahkan Rekor Pribadi tapi Gagal Raih Medali
-   Link: https://sport.tempo.co/read/1912634/paralimpiade-paris-2024-atlet-para-angkat-berat-indonesia-ni-nengah-widiasih-pecahkan-rekor-pribadi-tapi-gagal-raih-medali
-   Isi: Catatan angkatan Ni Nengah Widiasih di Paralimpiade Paris 2024 lebih bagus dibandingkan saat meraih medali perak di Paralimpade Tokyo 2020.
-   Tanggal: 05-09-2024 03:49
+8. Judul: Exco PSSI Arya Sinulingga Klarifikasi Kabar Penolakan AFC atas Surat Protes Wasit Laga Bahrain vs Indonesia
+   Link: https://sport.tempo.co/read/1929194/exco-pssi-arya-sinulingga-klarifikasi-kabar-penolakan-afc-atas-surat-protes-wasit-laga-bahrain-vs-indonesia
+   Isi: Anggota Exco PSSI Arya Sinulingga menjelaskan respons AFC soal surat protes federasi soal wasit Ahmed Al Kaf dalam laga Indonesia vs Bahrain.
+   Tanggal: 16-10-2024 07:06
    Kategori: Sport
-20. Judul: Faisal Basri dalam Kenangan Anies Baswedan dan Novel Baswedan
-   Link: https://bisnis.tempo.co/read/1912615/faisal-basri-dalam-kenangan-anies-baswedan-dan-novel-baswedan
-   Isi: Anies Baswedan dan Novel Baswedan punya kenangan terhadap Faisal Basri yang meninggal dunia pada hari ini.
-   Tanggal: 05-09-2024 02:49
+9. Judul: Penjelasan Pramono Anung seusai Temui Prabowo di Kertanegara
+   Link: https://nasional.tempo.co/read/1929187/penjelasan-pramono-anung-seusai-temui-prabowo-di-kertanegara
+   Isi: Pramono Anung bertandang ke rumah Prabowo dalam rangka silaturahmi dan saling mendoakan.
+   Tanggal: 16-10-2024 07:06
+   Kategori: Nasional
+10. Judul: Bahlil Sidang Promosi Doktor di UI, Disertasinya Temukan Hilirisasi Nikel Belum Untungkan Warga Lokal
+   Link: https://bisnis.tempo.co/read/1929155/bahlil-sidang-promosi-doktor-di-ui-disertasinya-temukan-hilirisasi-nikel-belum-untungkan-warga-lokal
+   Isi: Sebelumnya, Bahlil pernah menyebutkan hasil penelitiannya menunjukkan manfaat terbesar hilirisasi nikel diterima  oleh investor dan pemerintah pusat.
+   Tanggal: 16-10-2024 06:06
    Kategori: Bisnis
-21. Judul: Paus Fransiskus Puji Keluarga di Indonesia Masih Ingin Punya Anak: Di Banyak Negara Lebih Memilih Memiliki Binatang
-   Link: https://nasional.tempo.co/read/1912333/paus-fransiskus-puji-keluarga-di-indonesia-masih-ingin-punya-anak-di-banyak-negara-lebih-memilih-memiliki-binatang
-   Isi: Paus Fransiskus memuji  masyarakat Indonesia yang masih ingin memiliki anak. Ia membandingkan dengan negara lain.
-   Tanggal: 04-09-2024 07:49
+11. Judul: Kualifikasi Piala Dunia 2026: Menpora Dito Ariotedjo Nilai Timnas Indonesia Mulai Berkembang dari Segi Permainan
+   Link: https://sport.tempo.co/read/1929202/kualifikasi-piala-dunia-2026-menpora-dito-ariotedjo-nilai-timnas-indonesia-mulai-berkembang-dari-segi-permainan
+   Isi: Menpora Dito Ariotedjo meminta PSSI menghitung ulang peluang Timnas Indonesia lolos dari putaran ketiga kualifikasi Piala Dunia 2026.
+   Tanggal: 16-10-2024 07:06
+   Kategori: Sport
+12. Judul: Indikator Politik Indonesia: Survei Kepuasan Publik Terhadap Jokowi Masih Tinggi
+   Link: https://nasional.tempo.co/read/1929056/indikator-politik-indonesia-survei-kepuasan-publik-terhadap-jokowi-masih-tinggi
+   Isi: Survei terbaru yang dirilis Indikator Politik Indonesia tercatat bahwa masih ada 75 persen masyarakat Indonesia yang mengaku puas terhadap Jokowi.
+   Tanggal: 16-10-2024 06:06
    Kategori: Nasional
-22. Judul: 21 Link Alternatif Resmi Beli e-Meterai untuk Daftar Seleksi CPNS 2024
-   Link: https://nasional.tempo.co/read/1912395/21-link-alternatif-resmi-beli-e-meterai-untuk-daftar-seleksi-cpns-2024
-   Isi: Ketahui  tautan alternatif kanal penjualan e-meterai resmi untuk dokumen seleksi CPNS 2024. Anda bisa menggunakan link ini jika sulit mengakses Peruri
-   Tanggal: 04-09-2024 10:49
+13. Judul: Timnas Indonesia Kalah 1-2 dari Cina di Kualifikasi Piala Dunia 2026,  Shin Tae-yong Tak Menduga Lawan Pakai Taktik Klasik
+   Link: https://bola.tempo.co/read/1928999/timnas-indonesia-kalah-1-2-dari-cina-di-kualifikasi-piala-dunia-2026shin-tae-yong-tak-menduga-lawan-pakai-taktik-klasik
+   Isi: Pelatih Timnas Indonesia Shin Tae-yong menyatakan tidak menduga taktik yang diterapkan Cina pada pertandingan kualifikasi Piala Dunia 2026.
+   Tanggal: 15-10-2024 22:06
+   Kategori: Bola
+14. Judul: Pramono Anung Ungkap Alasan Tak Gabung Kabinet Prabowo: Berjuang Menangi Pilgub Jakarta
+   Link: https://pemilu.tempo.co/read/1929377/pramono-anung-ungkap-alasan-tak-gabung-kabinet-prabowo-berjuang-menangi-pilgub-jakarta
+   Isi: Pramono Anung memastikan pertemuannya dengan Prabowo tidak terkait dengan jabatan menteri.
+   Tanggal: 16-10-2024 15:06
+   Kategori: Pemilu
+15. Judul: Dua Drone dari Lebanon Lagi-lagi Berhasil Menembus Pertahanan Udara Israel
+   Link: https://dunia.tempo.co/read/1929081/dua-drone-dari-lebanon-lagi-lagi-berhasil-menembus-pertahanan-udara-israel
+   Isi: Drone yang ditembakkan dari Lebanon berhasil menembus langit Israel. Bunyi sirine meraung.
+   Tanggal: 16-10-2024 03:06
+   Kategori: Dunia
+16. Judul: Jadwal Lengkap SKD CPNS Kemenkumham 2024 dan Titik Lokasinya
+   Link: https://nasional.tempo.co/read/1929116/jadwal-lengkap-skd-cpns-kemenkumham-2024-dan-titik-lokasinya
+   Isi: Berikut jadwal dan titik lokasi pelaksanaan SKD CAT CPNS Kemenkumham 2024 di seluruh Indonesia dan luar negeri.
+   Tanggal: 16-10-2024 04:06
    Kategori: Nasional
-23. Judul: Azan Mahgrib di TV Diganti Running Text saat Paus Fransiskus Pimpin Misa, Wamenkominfo: Ormas Islam Setuju
-   Link: https://bisnis.tempo.co/read/1912421/azan-mahgrib-di-tv-diganti-running-text-saat-paus-fransiskus-pimpin-misa-wamenkominfo-ormas-islam-setuju
-   Isi: &quot;Tayangan azan Mahgrib diganti running text di televisi yang menyiarkan live Misa Akbar yang dihadiri Paus Fransiskus, sudah disetujui Ormas Islam&quot;
-   Tanggal: 04-09-2024 11:49
+17. Judul: Komentar Presiden Jokowi soal Kekalahan Timnas Indonesia dari Cina: Menang Kalah Itu Biasa
+   Link: https://bola.tempo.co/read/1929177/komentar-presiden-jokowi-soal-kekalahan-timnas-indonesia-dari-cina-menang-kalah-itu-biasa
+   Isi: Presiden Joko Widodo meminta Timnas Indonesia tetap semangat meski kalah dari China pada laga keempat putaran ketiga kualifikasi Piala Dunia 2026.
+   Tanggal: 16-10-2024 06:06
+   Kategori: Bola
+18. Judul: Boyamin Saiman Sebut Sejumlah Calon Menteri Prabowo Diduga Terlibat Korupsi
+   Link: https://metro.tempo.co/read/1929181/boyamin-saiman-sebut-sejumlah-calon-menteri-prabowo-diduga-terlibat-korupsi
+   Isi: Boyamin Saiman mengatakan Prabowo Subianto masih punya waktu untuk memilih orang-orang dengan rekam jejak yang bersih.
+   Tanggal: 16-10-2024 06:06
+   Kategori: Metro
+19. Judul: Beberapa Kali Pertemuan Sri Mulyani dan Prabowo, Sebelum Dipinang Jadi Menteri Keuangan Lagi
+   Link: https://bisnis.tempo.co/read/1929101/beberapa-kali-pertemuan-sri-mulyani-dan-prabowo-sebelum-dipinang-jadi-menteri-keuangan-lagi
+   Isi: Sri Mulyani akan menjabat kembali jadi menteri keuangan 2024-2029 setelah dipinang Prabowo.
+   Tanggal: 16-10-2024 04:06
    Kategori: Bisnis
-24. Judul: Fakta-fakta Nisya Ahmad, Adik Raffi Ahmad Tak Lolos Pileg Tapi Dilantik DPRD Jabar
-   Link: https://nasional.tempo.co/read/1912506/fakta-fakta-nisya-ahmad-adik-raffi-ahmad-tak-lolos-pileg-tapi-dilantik-dprd-jabar
-   Isi: Nisya Ahmad adalah adik dari Raffi Ahmad sekaligus kakak dari Syahnaz Sadiqah.
-   Tanggal: 04-09-2024 16:49
-   Kategori: Nasional
-25. Judul: Uskup Agung Pastikan Paus Fransiskus Tidak Datangi Aksi Kamisan
-   Link: https://nasional.tempo.co/read/1912352/uskup-agung-pastikan-paus-fransiskus-tidak-datangi-aksi-kamisan
-   Isi: Media sosial diramaikan dengan permintaan agar Paus Fransiskus ikut menghadiri Aksi Kamisan yang akan digelar besok di depan Istana Negara Jakarta.
-   Tanggal: 04-09-2024 08:49
-   Kategori: Nasional
-26. Judul: Paus Fransiskus Pilih Pesawat ITA Airways daripada Jet Pribadi, Simak Profil Maskapai Itu
-   Link: https://travel.tempo.co/read/1912513/paus-fransiskus-pilih-pesawat-ita-airways-daripada-jet-pribadi-simak-profil-maskapai-itu
-   Isi: Kisah ITA Airways, yang dinaiki Paus Fransiskus bermula Oktober 2020 ketika Italia mengizinkan restrukturisasi Alitalia, maskapai nasional lagi kolops
-   Tanggal: 04-09-2024 17:49
-   Kategori: Travel
-27. Judul: Panitia Tegaskan Tiket Misa Agung Paus Fransiskus Tanpa Biaya
-   Link: https://nasional.tempo.co/read/1912427/panitia-tegaskan-tiket-misa-agung-paus-fransiskus-tanpa-biaya
-   Isi: Tiket Misa Agung bersama Paus Fransiskus di Stadion Gelora Bung Karno dibagikan secara gratis. Tiket itu sudah terdistribusi lewat keuskupan.
-   Tanggal: 04-09-2024 12:49
-   Kategori: Nasional
-28. Judul: DPR Umumkan 5 Calon Anggota BPK Terpilih, Terdiri dari Politikus dan Pejabat Kemenhan
-   Link: https://bisnis.tempo.co/read/1912384/dpr-umumkan-5-calon-anggota-bpk-terpilih-terdiri-dari-politikus-dan-pejabat-kemenhan
-   Isi: Komisi XI DPR resmi mengumumkan lima anggota calon anggota Badan Pemeriksa Keuangan (BPK) terpilih periode 2024-2029
-   Tanggal: 04-09-2024 10:49
+20. Judul: Dana Pensiun PT Taspen Rp 1 Triliun Diduga Dikorupsi, OJK Sebut Pengawasannya Terbatas untuk Program Tabungan Hari Tua
+   Link: https://bisnis.tempo.co/read/1929035/dana-pensiun-pt-taspen-rp-1-triliun-diduga-dikorupsi-ojk-sebut-pengawasannya-terbatas-untuk-program-tabungan-hari-tua
+   Isi: OJK kembali menanggapi soal dana pensiun senilai Rp 1 triliun PT Taspen (Persero) yang diduga dikorupsi.
+   Tanggal: 16-10-2024 03:06
    Kategori: Bisnis
-29. Judul: Luhut Cium Tangan Paus Fransiskus saat Beri Bibit Mangrove di Gereja Katedral
-   Link: https://nasional.tempo.co/read/1912497/luhut-cium-tangan-paus-fransiskus-saat-beri-bibit-mangrove-di-gereja-katedral
-   Isi: Bibit mangrove yang ditanam dan disiram oleh Paus Fransiskus akan dibawa ke upacara pembukaan Indonesia International Sustainability Forum 2024.
-   Tanggal: 04-09-2024 15:49
+21. Judul: Soal Pencalonan Kepala BIN Lebih Awal, Hasan Nasbi Ungkap Keinginan Prabowo
+   Link: https://nasional.tempo.co/read/1929156/soal-pencalonan-kepala-bin-lebih-awal-hasan-nasbi-ungkap-keinginan-prabowo
+   Isi: DPR menyatakan Muhammad Herindra akan dilantik sebagai Kepala BIN bersamaan dengan pelantikan menteri.
+   Tanggal: 16-10-2024 06:06
    Kategori: Nasional
-30. Judul: Wafat karena Serangan Jantung, Faisal Basri akan Dimakamkan di TPU Menteng Pulo Sore Ini
-   Link: https://bisnis.tempo.co/read/1912663/wafat-karena-serangan-jantung-faisal-basri-akan-dimakamkan-di-tpu-menteng-pulo-sore-ini
-   Isi: Ekonom senior Faisal Basri wafat di usia 65 tahun pada Kamis, 5 September 2024. Faisal mangkat pada pukul 03.50 WIB di Rumah Sakit Mayapada, Kuningan, Jakarta Selatan.
-   Tanggal: 05-09-2024 04:49
-   Kategori: Bisnis
+22. Judul: BPJS Kesehatan Tingkatkan Efektivitas Layanan JKN Bagi Anggota Polri
+   Link: https://nasional.tempo.co/read/1929100/bpjs-kesehatan-tingkatkan-efektivitas-layanan-jkn-bagi-anggota-polri
+   Isi: Kerja sama ini diharapkan dapat menjadi pedoman yang kokoh bagi kedua pihak dalam mengintegrasikan data secara lebih baik
+   Tanggal: 16-10-2024 04:06
+   Kategori: Nasional
+23. Judul: Siapa Saja Calon Wamenkeu yang Bakal Mendampingi Sri Mulyani?
+   Link: https://nasional.tempo.co/read/1929204/siapa-saja-calon-wamenkeu-yang-bakal-mendampingi-sri-mulyani
+   Isi: Tiga Wamenkeu direncanakan Prabowo untuk membantu kerja Sri Mulyani. Mereka adalah Thomas Djiwandono, Suahasil Nazara, dan Anggito Abimanyu.
+   Tanggal: 16-10-2024 07:06
+   Kategori: Nasional
+24. Judul: Budi Gunawan Ikut Pembekalan Calon Menteri Prabowo di Hambalang
+   Link: https://nasional.tempo.co/read/1929066/budi-gunawan-ikut-pembekalan-calon-menteri-prabowo-di-hambalang
+   Isi: Budi Gunawan merupakan orang dekat Ketua Umum Partai Demokrasi Indonesia Perjuangan Megawati Soekarnoputri.
+   Tanggal: 16-10-2024 02:06
+   Kategori: Nasional
+25. Judul: Menjelang Pensiun, Jokowi Mengaku Belum Beli Tiket Pesawat ke Solo
+   Link: https://nasional.tempo.co/read/1929241/menjelang-pensiun-jokowi-mengaku-belum-beli-tiket-pesawat-ke-solo
+   Isi: Jokowi mengaku belum membeli tiket pesawat komersial untuk kepulangannya ke Solo, Jawa Tengah menjelang pensiun sebagai presiden.
+   Tanggal: 16-10-2024 09:06
+   Kategori: Nasional
+26. Judul: Puan Sebut Pramono Anung Diutus Megawati untuk Datang Menemui Prabowo di Kertanegara
+   Link: https://nasional.tempo.co/read/1929219/puan-sebut-pramono-anung-diutus-megawati-untuk-datang-menemui-prabowo-di-kertanegara
+   Isi: Puan Maharani mengatakan, Pramono Anung diutus langsung oleh Megawati untuk bertemu Prabowo di Kertanegara.
+   Tanggal: 16-10-2024 08:06
+   Kategori: Nasional
+27. Judul: Pakai Kemeja Putih, Nusron hingga Yusril Tiba di Hambalang untuk Pembekalan Calon Menteri Prabowo
+   Link: https://nasional.tempo.co/read/1929042/pakai-kemeja-putih-nusron-hingga-yusril-tiba-di-hambalang-untuk-pembekalan-calon-menteri-prabowo
+   Isi: Calon menteri Prabowo mulai berdatangan ke Padepokan Garuda Yaksa, Hambalang, untuk pembekalan.
+   Tanggal: 16-10-2024 01:06
+   Kategori: Nasional
+28. Judul: Tanpa Kader PKS dan Nasdem, Ini 59 Calon Menteri-Wamen yang Dipanggil Prabowo Kemarin
+   Link: https://nasional.tempo.co/read/1929030/tanpa-kader-pks-dan-nasdem-ini-59-calon-menteri-wamen-yang-dipanggil-prabowo-kemarin
+   Isi: Prabowo memanggil calon menteri dan wamen ke Kertanegara kemarin. Tidak ada kader PKS dan Nasdem.
+   Tanggal: 16-10-2024 01:06
+   Kategori: Nasional
+29. Judul: Jubir Ungkap Alasan Prabowo akan Bergerak Menangkan Muzakir Manaf-Fadhlullah di Pilgub Aceh
+   Link: https://nasional.tempo.co/read/1929089/jubir-ungkap-alasan-prabowo-akan-bergerak-menangkan-muzakir-manaf-fadhlullah-di-pilgub-aceh
+   Isi: Jubir mengatakan Prabowo berharap rakyat Aceh berbondong-bondong memilih Muzakir Manaf-Fadhlullah di Pilgub Aceh.
+   Tanggal: 16-10-2024 03:06
+   Kategori: Nasional
+30. Judul: Jokowi: Pemberhentian Budi Gunawan sebagai Kepala BIN Permintaan Prabowo
+   Link: https://nasional.tempo.co/read/1929227/jokowi-pemberhentian-budi-gunawan-sebagai-kepala-bin-permintaan-prabowo
+   Isi: Sebelum memberhentikan Budi Gunawan dari posisi Kepala BIN, Jokowi mengaku telah berkomunikasi dengan Prabowo.
+   Tanggal: 16-10-2024 08:06
+   Kategori: Nasional
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="main-crawling">
+<h2>Main Crawling<a class="headerlink" href="#main-crawling" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
@@ -981,247 +992,270 @@ Judul: Wafat karena Serangan Jantung, Faisal Basri akan Dimakamkan di TPU Menten
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
-#T_94d1b table {
+#T_d1d62 table {
   border-collapse: collapse;
   width: 100%;
 }
-#T_94d1b th {
+#T_d1d62 th {
   border: 1px solid black;
   padding: 8px;
   text-align: left;
 }
-#T_94d1b  td {
+#T_d1d62  td {
   border: 1px solid black;
   padding: 8px;
   text-align: left;
 }
 </style>
-<table id="T_94d1b" class="dataframe">
+<table id="T_d1d62" class="dataframe">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_94d1b_level0_col0" class="col_heading level0 col0" >Judul Berita</th>
-      <th id="T_94d1b_level0_col1" class="col_heading level0 col1" >Isi Berita</th>
-      <th id="T_94d1b_level0_col2" class="col_heading level0 col2" >Tanggal Berita</th>
-      <th id="T_94d1b_level0_col3" class="col_heading level0 col3" >Kategori Berita</th>
+      <th id="T_d1d62_level0_col0" class="col_heading level0 col0" >Judul Berita</th>
+      <th id="T_d1d62_level0_col1" class="col_heading level0 col1" >Isi Berita</th>
+      <th id="T_d1d62_level0_col2" class="col_heading level0 col2" >Tanggal Berita</th>
+      <th id="T_d1d62_level0_col3" class="col_heading level0 col3" >Kategori Berita</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_94d1b_level0_row0" class="row_heading level0 row0" >1</th>
-      <td id="T_94d1b_row0_col0" class="data row0 col0" >Respons MUI, PBNU, dan Muhammadiyah Soal Azan di TV Diganti Running Text Saat Misa Paus Fransiskus</td>
-      <td id="T_94d1b_row0_col1" class="data row0 col1" >MUI menyatakan penggantian tayangan azan magrib di TV dengan teks berjalan saat misa akbar Paus Fransiskus tak melanggar syariat Islam.</td>
-      <td id="T_94d1b_row0_col2" class="data row0 col2" >04-09-2024 07:49</td>
-      <td id="T_94d1b_row0_col3" class="data row0 col3" >Nasional</td>
+      <th id="T_d1d62_level0_row0" class="row_heading level0 row0" >1</th>
+      <td id="T_d1d62_row0_col0" class="data row0 col0" >Klasemen Grup C Kualifikasi Piala Dunia 2026 setelah Timnas Indonesia Kalah 1-2 dari Cina</td>
+      <td id="T_d1d62_row0_col1" class="data row0 col1" >Timnas Indonesia tertahan di  posisi kelima klaseme Grup C putaran ketiga Kualifikasi Piala Dunia 2026 zona Asia setelah takluk 1-2 dari Cina.</td>
+      <td id="T_d1d62_row0_col2" class="data row0 col2" >15-10-2024 23:06</td>
+      <td id="T_d1d62_row0_col3" class="data row0 col3" >Bola</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row1" class="row_heading level0 row1" >2</th>
-      <td id="T_94d1b_row1_col0" class="data row1 col0" >Pj Wako Padang Soal Isu Megathrust: Jangan Panik, Tetap Waspada</td>
-      <td id="T_94d1b_row1_col1" class="data row1 col1" >Dalam keadaan bencana gedung-gedung pemerintah bisa dimanfaatkan sebagai TES (Tempat Evakuasi Sementara).</td>
-      <td id="T_94d1b_row1_col2" class="data row1 col2" >1 detik lalu</td>
-      <td id="T_94d1b_row1_col3" class="data row1 col3" >Nasional</td>
+      <th id="T_d1d62_level0_row1" class="row_heading level0 row1" >2</th>
+      <td id="T_d1d62_row1_col0" class="data row1 col0" >Serba-serbi Acara Pembekalan Calon Menteri Prabowo di Hambalang</td>
+      <td id="T_d1d62_row1_col1" class="data row1 col1" >Calon menteri Prabowo mendapatkan pembekalan di Hambalang selama dua hari ke depan. Berikut serba-serbi acara pembekalan calon menteri itu.</td>
+      <td id="T_d1d62_row1_col2" class="data row1 col2" >16-10-2024 05:06</td>
+      <td id="T_d1d62_row1_col3" class="data row1 col3" >Nasional</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row2" class="row_heading level0 row2" >3</th>
-      <td id="T_94d1b_row2_col0" class="data row2 col0" >Jusuf Kalla Sarankan Televisi Tak Ganti Azan dengan Running Teks saat Perayaan Misa</td>
-      <td id="T_94d1b_row2_col1" class="data row2 col1" >Jusuf Kalla menyarankan stasiun televisi untuk tetap menyiarkan azan bersamaan dengan laporan perayaan misa</td>
-      <td id="T_94d1b_row2_col2" class="data row2 col2" >04-09-2024 07:49</td>
-      <td id="T_94d1b_row2_col3" class="data row2 col3" >Nasional</td>
+      <th id="T_d1d62_level0_row2" class="row_heading level0 row2" >3</th>
+      <td id="T_d1d62_row2_col0" class="data row2 col0" >Bahlil Sidang Promosi Doktor Siang Ini, Selesaikan S3 Kurang dari 2 Tahun</td>
+      <td id="T_d1d62_row2_col1" class="data row2 col1" >Bahlil akan memaparkan disertasi berjudul 'Kebijakan, Kelembagaan, Tata Kelola, Hilirisasi Nikel yang Berkeadilan dan Berkelanjutan di Indonesia.'</td>
+      <td id="T_d1d62_row2_col2" class="data row2 col2" >16-10-2024 04:06</td>
+      <td id="T_d1d62_row2_col3" class="data row2 col3" >Nasional</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row3" class="row_heading level0 row3" >4</th>
-      <td id="T_94d1b_row3_col0" class="data row3 col0" >Kata Keuskupan Agung Jakarta Soal Azan di TV Diganti Running Text Saat Misa Paus Fransiskus</td>
-      <td id="T_94d1b_row3_col1" class="data row3 col1" >Keuskupan Agung Jakarta menanggapi imbauan azan magrib di televisi hari ini disiarkan lewat running text saat misa Paus Fransiskus.</td>
-      <td id="T_94d1b_row3_col2" class="data row3 col2" >05-09-2024 00:49</td>
-      <td id="T_94d1b_row3_col3" class="data row3 col3" >Nasional</td>
+      <th id="T_d1d62_level0_row3" class="row_heading level0 row3" >4</th>
+      <td id="T_d1d62_row3_col0" class="data row3 col0" >Diberhentikan Sepihak, Konsil Tenaga Kesehatan Indonesia Laporkan Kemenkes ke Ombudsman</td>
+      <td id="T_d1d62_row3_col1" class="data row3 col1" >Konsul Tenaga Kesehatan Indonesia melaporkan Kemenkes ke Ombudsman ihwal dugaan maladministrasi.</td>
+      <td id="T_d1d62_row3_col2" class="data row3 col2" >16-10-2024 08:06</td>
+      <td id="T_d1d62_row3_col3" class="data row3 col3" >Nasional</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row4" class="row_heading level0 row4" >5</th>
-      <td id="T_94d1b_row4_col0" class="data row4 col0" >Faisal Basri Wafat, Anies Baswedan hingga Mahfud Md Ucapkan Belasungkawa</td>
-      <td id="T_94d1b_row4_col1" class="data row4 col1" >Wafatnya Faisal Basri meninggalkan duka, bukan hanya bagi keluarga, tapi dari sejumlah tokoh di Indonesia.</td>
-      <td id="T_94d1b_row4_col2" class="data row4 col2" >05-09-2024 00:49</td>
-      <td id="T_94d1b_row4_col3" class="data row4 col3" >Bisnis</td>
+      <th id="T_d1d62_level0_row4" class="row_heading level0 row4" >5</th>
+      <td id="T_d1d62_row4_col0" class="data row4 col0" >Bahlil Lahadalia Resmi Sandang Gelar Doktor dengan Predikat Cumlaude dari Universitas Indonesia</td>
+      <td id="T_d1d62_row4_col1" class="data row4 col1" >Menteri Energi Sumber Daya Mineral (ESDM) Bahlil Lahadalia selesai menjalani Sidang Terbuka Promosi Doktor yang digelar oleh Kajian Stratejik dan Global di Universitas Indonesia, Depok, 16 Oktober 2024.</td>
+      <td id="T_d1d62_row4_col2" class="data row4 col2" >16-10-2024 11:06</td>
+      <td id="T_d1d62_row4_col3" class="data row4 col3" >Bisnis</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row5" class="row_heading level0 row5" >6</th>
-      <td id="T_94d1b_row5_col0" class="data row5 col0" >Pengamat Ekonomi dan Politik, Faisal Basri Wafat</td>
-      <td id="T_94d1b_row5_col1" class="data row5 col1" >Pengamat ekononomi dan politik, Faisal Basri meninggal pada Kamis dinihari ini.</td>
-      <td id="T_94d1b_row5_col2" class="data row5 col2" >04-09-2024 23:49</td>
-      <td id="T_94d1b_row5_col3" class="data row5 col3" >Nasional</td>
+      <th id="T_d1d62_level0_row5" class="row_heading level0 row5" >6</th>
+      <td id="T_d1d62_row5_col0" class="data row5 col0" >PPN 12 Persen Berlaku 1 Januari 2025, Ini Daftar Barang yang Terdampak</td>
+      <td id="T_d1d62_row5_col1" class="data row5 col1" >Tarif PPN 12 persen direncanakan berlaku mulai 1 Januari 2025. Berikut daftar barang yang terdampak dan dikecualikan.</td>
+      <td id="T_d1d62_row5_col2" class="data row5 col2" >16-10-2024 04:06</td>
+      <td id="T_d1d62_row5_col3" class="data row5 col3" >Bisnis</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row6" class="row_heading level0 row6" >7</th>
-      <td id="T_94d1b_row6_col0" class="data row6 col0" >Paus Fransiskus Ingatkan Bahaya Kekuasaan dalam Pidato di Hadapan Jokowi</td>
-      <td id="T_94d1b_row6_col1" class="data row6 col1" >Paus Fransiskus menyatakan berbagai ketegangan yang berujung kekerasan kerap timbul karena kekuasaan yang tidak bertanggung jawab.</td>
-      <td id="T_94d1b_row6_col2" class="data row6 col2" >04-09-2024 23:49</td>
-      <td id="T_94d1b_row6_col3" class="data row6 col3" >Nasional</td>
+      <th id="T_d1d62_level0_row6" class="row_heading level0 row6" >7</th>
+      <td id="T_d1d62_row6_col0" class="data row6 col0" >Prabowo Bekali Calon Menteri dengan Materi Geopolitik sampai Anti-Korupsi</td>
+      <td id="T_d1d62_row6_col1" class="data row6 col1" >Prabowo Subianto mengumpulkan calon anggota kabinetnya di rumah pribadi presiden terpilih itu di Hambalang, Bogor, untuk mendapat pembekalan dua hari.</td>
+      <td id="T_d1d62_row6_col2" class="data row6 col2" >16-10-2024 10:06</td>
+      <td id="T_d1d62_row6_col3" class="data row6 col3" >Bisnis</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row7" class="row_heading level0 row7" >8</th>
-      <td id="T_94d1b_row7_col0" class="data row7 col0" >4 Cara Cek Keaslian e-Meterai untuk Daftar Seleksi CPNS 2024</td>
-      <td id="T_94d1b_row7_col1" class="data row7 col1" >Setelah membeli e-meterai, sebaiknya cek keaslian e-meterai. Berikut beberapa metode cek keaslian e-meterai untuk dokumen seleksi CPNS 2024.</td>
-      <td id="T_94d1b_row7_col2" class="data row7 col2" >04-09-2024 11:49</td>
-      <td id="T_94d1b_row7_col3" class="data row7 col3" >Nasional</td>
+      <th id="T_d1d62_level0_row7" class="row_heading level0 row7" >8</th>
+      <td id="T_d1d62_row7_col0" class="data row7 col0" >Exco PSSI Arya Sinulingga Klarifikasi Kabar Penolakan AFC atas Surat Protes Wasit Laga Bahrain vs Indonesia</td>
+      <td id="T_d1d62_row7_col1" class="data row7 col1" >Anggota Exco PSSI Arya Sinulingga menjelaskan respons AFC soal surat protes federasi soal wasit Ahmed Al Kaf dalam laga Indonesia vs Bahrain.</td>
+      <td id="T_d1d62_row7_col2" class="data row7 col2" >16-10-2024 07:06</td>
+      <td id="T_d1d62_row7_col3" class="data row7 col3" >Sport</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row8" class="row_heading level0 row8" >9</th>
-      <td id="T_94d1b_row8_col0" class="data row8 col0" >Paus Fransiskus Pakai Jam Casio, Ini Harganya di Tokped</td>
-      <td id="T_94d1b_row8_col1" class="data row8 col1" >Paus Fransiskus mengenakan jam tangan bermerek Casio dengan jenis MQ24-7B2, yang di Tokopedia harganya tak sampai Rp130 ribu.</td>
-      <td id="T_94d1b_row8_col2" class="data row8 col2" >04-09-2024 10:49</td>
-      <td id="T_94d1b_row8_col3" class="data row8 col3" >Bisnis</td>
+      <th id="T_d1d62_level0_row8" class="row_heading level0 row8" >9</th>
+      <td id="T_d1d62_row8_col0" class="data row8 col0" >Penjelasan Pramono Anung seusai Temui Prabowo di Kertanegara</td>
+      <td id="T_d1d62_row8_col1" class="data row8 col1" >Pramono Anung bertandang ke rumah Prabowo dalam rangka silaturahmi dan saling mendoakan.</td>
+      <td id="T_d1d62_row8_col2" class="data row8 col2" >16-10-2024 07:06</td>
+      <td id="T_d1d62_row8_col3" class="data row8 col3" >Nasional</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row9" class="row_heading level0 row9" >10</th>
-      <td id="T_94d1b_row9_col0" class="data row9 col0" >Cara Beli e-Meterai di Kantor Pos untuk Daftar CPNS</td>
-      <td id="T_94d1b_row9_col1" class="data row9 col1" >Salah satu syarat pendaftaran CPNS 2024 adalah dengan membubuhkan e-meterai. Berikut ini cara beli e-meterai di kantor Pos dan aplikasi Pospay.</td>
-      <td id="T_94d1b_row9_col2" class="data row9 col2" >05-09-2024 00:49</td>
-      <td id="T_94d1b_row9_col3" class="data row9 col3" >Nasional</td>
+      <th id="T_d1d62_level0_row9" class="row_heading level0 row9" >10</th>
+      <td id="T_d1d62_row9_col0" class="data row9 col0" >Bahlil Sidang Promosi Doktor di UI, Disertasinya Temukan Hilirisasi Nikel Belum Untungkan Warga Lokal</td>
+      <td id="T_d1d62_row9_col1" class="data row9 col1" >Sebelumnya, Bahlil pernah menyebutkan hasil penelitiannya menunjukkan manfaat terbesar hilirisasi nikel diterima  oleh investor dan pemerintah pusat.</td>
+      <td id="T_d1d62_row9_col2" class="data row9 col2" >16-10-2024 06:06</td>
+      <td id="T_d1d62_row9_col3" class="data row9 col3" >Bisnis</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row10" class="row_heading level0 row10" >11</th>
-      <td id="T_94d1b_row10_col0" class="data row10 col0" >Faisal Basri Wafat, Mantan Menkeu Chatib Basri: Kehilangan Besar buat Negeri Ini</td>
-      <td id="T_94d1b_row10_col1" class="data row10 col1" >Ekonom senior Faisal Basri wafat di Jakarta, hari ini, Kamis, 5 September 2024.</td>
-      <td id="T_94d1b_row10_col2" class="data row10 col2" >05-09-2024 00:49</td>
-      <td id="T_94d1b_row10_col3" class="data row10 col3" >Bisnis</td>
+      <th id="T_d1d62_level0_row10" class="row_heading level0 row10" >11</th>
+      <td id="T_d1d62_row10_col0" class="data row10 col0" >Kualifikasi Piala Dunia 2026: Menpora Dito Ariotedjo Nilai Timnas Indonesia Mulai Berkembang dari Segi Permainan</td>
+      <td id="T_d1d62_row10_col1" class="data row10 col1" >Menpora Dito Ariotedjo meminta PSSI menghitung ulang peluang Timnas Indonesia lolos dari putaran ketiga kualifikasi Piala Dunia 2026.</td>
+      <td id="T_d1d62_row10_col2" class="data row10 col2" >16-10-2024 07:06</td>
+      <td id="T_d1d62_row10_col3" class="data row10 col3" >Sport</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row11" class="row_heading level0 row11" >12</th>
-      <td id="T_94d1b_row11_col0" class="data row11 col0" >Pemerintah dan DPR Minta Azan Magrib Lewat Running Text di TV Tak Jadi Polemik</td>
-      <td id="T_94d1b_row11_col1" class="data row11 col1" >Imbauan Kemenag kepada stasiun tv agar menampilkan azan magrib menjadi running text saat misa akbar Paus Fransiskus menuai polemik.</td>
-      <td id="T_94d1b_row11_col2" class="data row11 col2" >04-09-2024 10:49</td>
-      <td id="T_94d1b_row11_col3" class="data row11 col3" >Nasional</td>
+      <th id="T_d1d62_level0_row11" class="row_heading level0 row11" >12</th>
+      <td id="T_d1d62_row11_col0" class="data row11 col0" >Indikator Politik Indonesia: Survei Kepuasan Publik Terhadap Jokowi Masih Tinggi</td>
+      <td id="T_d1d62_row11_col1" class="data row11 col1" >Survei terbaru yang dirilis Indikator Politik Indonesia tercatat bahwa masih ada 75 persen masyarakat Indonesia yang mengaku puas terhadap Jokowi.</td>
+      <td id="T_d1d62_row11_col2" class="data row11 col2" >16-10-2024 06:06</td>
+      <td id="T_d1d62_row11_col3" class="data row11 col3" >Nasional</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row12" class="row_heading level0 row12" >13</th>
-      <td id="T_94d1b_row12_col0" class="data row12 col0" >Uni Eropa Kecewa Mongolia Tak Patuhi ICC dengan Menahan Vladimir Putin</td>
-      <td id="T_94d1b_row12_col1" class="data row12 col1" >Vladimir Putin bisa melenggang bebas kunjungan kerja ke Mongolia, tanpa ditahan oleh Ulaanbaatar.</td>
-      <td id="T_94d1b_row12_col2" class="data row12 col2" >04-09-2024 08:49</td>
-      <td id="T_94d1b_row12_col3" class="data row12 col3" >Dunia</td>
+      <th id="T_d1d62_level0_row12" class="row_heading level0 row12" >13</th>
+      <td id="T_d1d62_row12_col0" class="data row12 col0" >Timnas Indonesia Kalah 1-2 dari Cina di Kualifikasi Piala Dunia 2026,  Shin Tae-yong Tak Menduga Lawan Pakai Taktik Klasik</td>
+      <td id="T_d1d62_row12_col1" class="data row12 col1" >Pelatih Timnas Indonesia Shin Tae-yong menyatakan tidak menduga taktik yang diterapkan Cina pada pertandingan kualifikasi Piala Dunia 2026.</td>
+      <td id="T_d1d62_row12_col2" class="data row12 col2" >15-10-2024 22:06</td>
+      <td id="T_d1d62_row12_col3" class="data row12 col3" >Bola</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row13" class="row_heading level0 row13" >14</th>
-      <td id="T_94d1b_row13_col0" class="data row13 col0" >5 Cara Mengubah Ukuran Foto menjadi 100 KB untuk Daftar CPNS</td>
-      <td id="T_94d1b_row13_col1" class="data row13 col1" >Cara mengubah ukuran foto menjadi 100KB untuk daftar CPNS gratis dan bisa dilakukan mandiri dalam waktu singkat. Berikut tutorialnya.</td>
-      <td id="T_94d1b_row13_col2" class="data row13 col2" >04-09-2024 11:49</td>
-      <td id="T_94d1b_row13_col3" class="data row13 col3" >Tekno</td>
+      <th id="T_d1d62_level0_row13" class="row_heading level0 row13" >14</th>
+      <td id="T_d1d62_row13_col0" class="data row13 col0" >Pramono Anung Ungkap Alasan Tak Gabung Kabinet Prabowo: Berjuang Menangi Pilgub Jakarta</td>
+      <td id="T_d1d62_row13_col1" class="data row13 col1" >Pramono Anung memastikan pertemuannya dengan Prabowo tidak terkait dengan jabatan menteri.</td>
+      <td id="T_d1d62_row13_col2" class="data row13 col2" >16-10-2024 15:06</td>
+      <td id="T_d1d62_row13_col3" class="data row13 col3" >Pemilu</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row14" class="row_heading level0 row14" >15</th>
-      <td id="T_94d1b_row14_col0" class="data row14 col0" >Azan Berupa Running Text saat Live Paus Fransiskus Pimpin Misa: MUI Membolehkan, Dewan Masjid Tak Setuju</td>
-      <td id="T_94d1b_row14_col1" class="data row14 col1" >MUI dan DMI beda pendapat soal imbauan agar TV yang siaran langsung Paus Fransiskus memimpin misa di GBK mengganti azan Mahgrib dengan running text</td>
-      <td id="T_94d1b_row14_col2" class="data row14 col2" >04-09-2024 13:49</td>
-      <td id="T_94d1b_row14_col3" class="data row14 col3" >Bisnis</td>
+      <th id="T_d1d62_level0_row14" class="row_heading level0 row14" >15</th>
+      <td id="T_d1d62_row14_col0" class="data row14 col0" >Dua Drone dari Lebanon Lagi-lagi Berhasil Menembus Pertahanan Udara Israel</td>
+      <td id="T_d1d62_row14_col1" class="data row14 col1" >Drone yang ditembakkan dari Lebanon berhasil menembus langit Israel. Bunyi sirine meraung.</td>
+      <td id="T_d1d62_row14_col2" class="data row14 col2" >16-10-2024 03:06</td>
+      <td id="T_d1d62_row14_col3" class="data row14 col3" >Dunia</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row15" class="row_heading level0 row15" >16</th>
-      <td id="T_94d1b_row15_col0" class="data row15 col0" >Jaksa ICC Khawatirkan 'Ancaman' dan Tekanan AS terhadap Penyelidikan Israel</td>
-      <td id="T_94d1b_row15_col1" class="data row15 col1" >Dalam wawancara dengan sebuah media Jepang, Jaksa ICC, Karim Khan, mendesak kerja sama Jepang dalam mempengaruhi AS.</td>
-      <td id="T_94d1b_row15_col2" class="data row15 col2" >04-09-2024 19:49</td>
-      <td id="T_94d1b_row15_col3" class="data row15 col3" >Dunia</td>
+      <th id="T_d1d62_level0_row15" class="row_heading level0 row15" >16</th>
+      <td id="T_d1d62_row15_col0" class="data row15 col0" >Jadwal Lengkap SKD CPNS Kemenkumham 2024 dan Titik Lokasinya</td>
+      <td id="T_d1d62_row15_col1" class="data row15 col1" >Berikut jadwal dan titik lokasi pelaksanaan SKD CAT CPNS Kemenkumham 2024 di seluruh Indonesia dan luar negeri.</td>
+      <td id="T_d1d62_row15_col2" class="data row15 col2" >16-10-2024 04:06</td>
+      <td id="T_d1d62_row15_col3" class="data row15 col3" >Nasional</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row16" class="row_heading level0 row16" >17</th>
-      <td id="T_94d1b_row16_col0" class="data row16 col0" >Profil Ekonom Senior Faisal Basri yang Wafat pada Hari Ini</td>
-      <td id="T_94d1b_row16_col1" class="data row16 col1" >Ekonom dan politikus senior dari Universitas Indonesia, Faisal Basri, wafat pada hari ini. Seperti apa profil dan rekam jejaknya?</td>
-      <td id="T_94d1b_row16_col2" class="data row16 col2" >04-09-2024 23:49</td>
-      <td id="T_94d1b_row16_col3" class="data row16 col3" >Bisnis</td>
+      <th id="T_d1d62_level0_row16" class="row_heading level0 row16" >17</th>
+      <td id="T_d1d62_row16_col0" class="data row16 col0" >Komentar Presiden Jokowi soal Kekalahan Timnas Indonesia dari Cina: Menang Kalah Itu Biasa</td>
+      <td id="T_d1d62_row16_col1" class="data row16 col1" >Presiden Joko Widodo meminta Timnas Indonesia tetap semangat meski kalah dari China pada laga keempat putaran ketiga kualifikasi Piala Dunia 2026.</td>
+      <td id="T_d1d62_row16_col2" class="data row16 col2" >16-10-2024 06:06</td>
+      <td id="T_d1d62_row16_col3" class="data row16 col3" >Bola</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row17" class="row_heading level0 row17" >18</th>
-      <td id="T_94d1b_row17_col0" class="data row17 col0" >Sebelum Meninggal, Faisal Basri Soroti 3 Hal Ini: Utang Pemerintah, Bagi-bagi Izin Tambang, dan PPN</td>
-      <td id="T_94d1b_row17_col1" class="data row17 col1" >Ekonom senior Faisal Basri yang meninggal dunia pada Kamis dini hari, 5 September 2024, sempat menyoroti tiga hal ini.</td>
-      <td id="T_94d1b_row17_col2" class="data row17 col2" >05-09-2024 02:49</td>
-      <td id="T_94d1b_row17_col3" class="data row17 col3" >Bisnis</td>
+      <th id="T_d1d62_level0_row17" class="row_heading level0 row17" >18</th>
+      <td id="T_d1d62_row17_col0" class="data row17 col0" >Boyamin Saiman Sebut Sejumlah Calon Menteri Prabowo Diduga Terlibat Korupsi</td>
+      <td id="T_d1d62_row17_col1" class="data row17 col1" >Boyamin Saiman mengatakan Prabowo Subianto masih punya waktu untuk memilih orang-orang dengan rekam jejak yang bersih.</td>
+      <td id="T_d1d62_row17_col2" class="data row17 col2" >16-10-2024 06:06</td>
+      <td id="T_d1d62_row17_col3" class="data row17 col3" >Metro</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row18" class="row_heading level0 row18" >19</th>
-      <td id="T_94d1b_row18_col0" class="data row18 col0" >Paralimpiade Paris 2024: Atlet Para Angkat Berat Indonesia Ni Nengah Widiasih Pecahkan Rekor Pribadi tapi Gagal Raih Medali</td>
-      <td id="T_94d1b_row18_col1" class="data row18 col1" >Catatan angkatan Ni Nengah Widiasih di Paralimpiade Paris 2024 lebih bagus dibandingkan saat meraih medali perak di Paralimpade Tokyo 2020.</td>
-      <td id="T_94d1b_row18_col2" class="data row18 col2" >05-09-2024 03:49</td>
-      <td id="T_94d1b_row18_col3" class="data row18 col3" >Sport</td>
+      <th id="T_d1d62_level0_row18" class="row_heading level0 row18" >19</th>
+      <td id="T_d1d62_row18_col0" class="data row18 col0" >Beberapa Kali Pertemuan Sri Mulyani dan Prabowo, Sebelum Dipinang Jadi Menteri Keuangan Lagi</td>
+      <td id="T_d1d62_row18_col1" class="data row18 col1" >Sri Mulyani akan menjabat kembali jadi menteri keuangan 2024-2029 setelah dipinang Prabowo.</td>
+      <td id="T_d1d62_row18_col2" class="data row18 col2" >16-10-2024 04:06</td>
+      <td id="T_d1d62_row18_col3" class="data row18 col3" >Bisnis</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row19" class="row_heading level0 row19" >20</th>
-      <td id="T_94d1b_row19_col0" class="data row19 col0" >Faisal Basri dalam Kenangan Anies Baswedan dan Novel Baswedan</td>
-      <td id="T_94d1b_row19_col1" class="data row19 col1" >Anies Baswedan dan Novel Baswedan punya kenangan terhadap Faisal Basri yang meninggal dunia pada hari ini.</td>
-      <td id="T_94d1b_row19_col2" class="data row19 col2" >05-09-2024 02:49</td>
-      <td id="T_94d1b_row19_col3" class="data row19 col3" >Bisnis</td>
+      <th id="T_d1d62_level0_row19" class="row_heading level0 row19" >20</th>
+      <td id="T_d1d62_row19_col0" class="data row19 col0" >Dana Pensiun PT Taspen Rp 1 Triliun Diduga Dikorupsi, OJK Sebut Pengawasannya Terbatas untuk Program Tabungan Hari Tua</td>
+      <td id="T_d1d62_row19_col1" class="data row19 col1" >OJK kembali menanggapi soal dana pensiun senilai Rp 1 triliun PT Taspen (Persero) yang diduga dikorupsi.</td>
+      <td id="T_d1d62_row19_col2" class="data row19 col2" >16-10-2024 03:06</td>
+      <td id="T_d1d62_row19_col3" class="data row19 col3" >Bisnis</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row20" class="row_heading level0 row20" >21</th>
-      <td id="T_94d1b_row20_col0" class="data row20 col0" >Paus Fransiskus Puji Keluarga di Indonesia Masih Ingin Punya Anak: Di Banyak Negara Lebih Memilih Memiliki Binatang</td>
-      <td id="T_94d1b_row20_col1" class="data row20 col1" >Paus Fransiskus memuji  masyarakat Indonesia yang masih ingin memiliki anak. Ia membandingkan dengan negara lain.</td>
-      <td id="T_94d1b_row20_col2" class="data row20 col2" >04-09-2024 07:49</td>
-      <td id="T_94d1b_row20_col3" class="data row20 col3" >Nasional</td>
+      <th id="T_d1d62_level0_row20" class="row_heading level0 row20" >21</th>
+      <td id="T_d1d62_row20_col0" class="data row20 col0" >Soal Pencalonan Kepala BIN Lebih Awal, Hasan Nasbi Ungkap Keinginan Prabowo</td>
+      <td id="T_d1d62_row20_col1" class="data row20 col1" >DPR menyatakan Muhammad Herindra akan dilantik sebagai Kepala BIN bersamaan dengan pelantikan menteri.</td>
+      <td id="T_d1d62_row20_col2" class="data row20 col2" >16-10-2024 06:06</td>
+      <td id="T_d1d62_row20_col3" class="data row20 col3" >Nasional</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row21" class="row_heading level0 row21" >22</th>
-      <td id="T_94d1b_row21_col0" class="data row21 col0" >21 Link Alternatif Resmi Beli e-Meterai untuk Daftar Seleksi CPNS 2024</td>
-      <td id="T_94d1b_row21_col1" class="data row21 col1" >Ketahui  tautan alternatif kanal penjualan e-meterai resmi untuk dokumen seleksi CPNS 2024. Anda bisa menggunakan link ini jika sulit mengakses Peruri</td>
-      <td id="T_94d1b_row21_col2" class="data row21 col2" >04-09-2024 10:49</td>
-      <td id="T_94d1b_row21_col3" class="data row21 col3" >Nasional</td>
+      <th id="T_d1d62_level0_row21" class="row_heading level0 row21" >22</th>
+      <td id="T_d1d62_row21_col0" class="data row21 col0" >BPJS Kesehatan Tingkatkan Efektivitas Layanan JKN Bagi Anggota Polri</td>
+      <td id="T_d1d62_row21_col1" class="data row21 col1" >Kerja sama ini diharapkan dapat menjadi pedoman yang kokoh bagi kedua pihak dalam mengintegrasikan data secara lebih baik</td>
+      <td id="T_d1d62_row21_col2" class="data row21 col2" >16-10-2024 04:06</td>
+      <td id="T_d1d62_row21_col3" class="data row21 col3" >Nasional</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row22" class="row_heading level0 row22" >23</th>
-      <td id="T_94d1b_row22_col0" class="data row22 col0" >Azan Mahgrib di TV Diganti Running Text saat Paus Fransiskus Pimpin Misa, Wamenkominfo: Ormas Islam Setuju</td>
-      <td id="T_94d1b_row22_col1" class="data row22 col1" >"Tayangan azan Mahgrib diganti running text di televisi yang menyiarkan live Misa Akbar yang dihadiri Paus Fransiskus, sudah disetujui Ormas Islam"</td>
-      <td id="T_94d1b_row22_col2" class="data row22 col2" >04-09-2024 11:49</td>
-      <td id="T_94d1b_row22_col3" class="data row22 col3" >Bisnis</td>
+      <th id="T_d1d62_level0_row22" class="row_heading level0 row22" >23</th>
+      <td id="T_d1d62_row22_col0" class="data row22 col0" >Siapa Saja Calon Wamenkeu yang Bakal Mendampingi Sri Mulyani?</td>
+      <td id="T_d1d62_row22_col1" class="data row22 col1" >Tiga Wamenkeu direncanakan Prabowo untuk membantu kerja Sri Mulyani. Mereka adalah Thomas Djiwandono, Suahasil Nazara, dan Anggito Abimanyu.</td>
+      <td id="T_d1d62_row22_col2" class="data row22 col2" >16-10-2024 07:06</td>
+      <td id="T_d1d62_row22_col3" class="data row22 col3" >Nasional</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row23" class="row_heading level0 row23" >24</th>
-      <td id="T_94d1b_row23_col0" class="data row23 col0" >Fakta-fakta Nisya Ahmad, Adik Raffi Ahmad Tak Lolos Pileg Tapi Dilantik DPRD Jabar</td>
-      <td id="T_94d1b_row23_col1" class="data row23 col1" >Nisya Ahmad adalah adik dari Raffi Ahmad sekaligus kakak dari Syahnaz Sadiqah.</td>
-      <td id="T_94d1b_row23_col2" class="data row23 col2" >04-09-2024 16:49</td>
-      <td id="T_94d1b_row23_col3" class="data row23 col3" >Nasional</td>
+      <th id="T_d1d62_level0_row23" class="row_heading level0 row23" >24</th>
+      <td id="T_d1d62_row23_col0" class="data row23 col0" >Budi Gunawan Ikut Pembekalan Calon Menteri Prabowo di Hambalang</td>
+      <td id="T_d1d62_row23_col1" class="data row23 col1" >Budi Gunawan merupakan orang dekat Ketua Umum Partai Demokrasi Indonesia Perjuangan Megawati Soekarnoputri.</td>
+      <td id="T_d1d62_row23_col2" class="data row23 col2" >16-10-2024 02:06</td>
+      <td id="T_d1d62_row23_col3" class="data row23 col3" >Nasional</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row24" class="row_heading level0 row24" >25</th>
-      <td id="T_94d1b_row24_col0" class="data row24 col0" >Uskup Agung Pastikan Paus Fransiskus Tidak Datangi Aksi Kamisan</td>
-      <td id="T_94d1b_row24_col1" class="data row24 col1" >Media sosial diramaikan dengan permintaan agar Paus Fransiskus ikut menghadiri Aksi Kamisan yang akan digelar besok di depan Istana Negara Jakarta.</td>
-      <td id="T_94d1b_row24_col2" class="data row24 col2" >04-09-2024 08:49</td>
-      <td id="T_94d1b_row24_col3" class="data row24 col3" >Nasional</td>
+      <th id="T_d1d62_level0_row24" class="row_heading level0 row24" >25</th>
+      <td id="T_d1d62_row24_col0" class="data row24 col0" >Menjelang Pensiun, Jokowi Mengaku Belum Beli Tiket Pesawat ke Solo</td>
+      <td id="T_d1d62_row24_col1" class="data row24 col1" >Jokowi mengaku belum membeli tiket pesawat komersial untuk kepulangannya ke Solo, Jawa Tengah menjelang pensiun sebagai presiden.</td>
+      <td id="T_d1d62_row24_col2" class="data row24 col2" >16-10-2024 09:06</td>
+      <td id="T_d1d62_row24_col3" class="data row24 col3" >Nasional</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row25" class="row_heading level0 row25" >26</th>
-      <td id="T_94d1b_row25_col0" class="data row25 col0" >Paus Fransiskus Pilih Pesawat ITA Airways daripada Jet Pribadi, Simak Profil Maskapai Itu</td>
-      <td id="T_94d1b_row25_col1" class="data row25 col1" >Kisah ITA Airways, yang dinaiki Paus Fransiskus bermula Oktober 2020 ketika Italia mengizinkan restrukturisasi Alitalia, maskapai nasional lagi kolops</td>
-      <td id="T_94d1b_row25_col2" class="data row25 col2" >04-09-2024 17:49</td>
-      <td id="T_94d1b_row25_col3" class="data row25 col3" >Travel</td>
+      <th id="T_d1d62_level0_row25" class="row_heading level0 row25" >26</th>
+      <td id="T_d1d62_row25_col0" class="data row25 col0" >Puan Sebut Pramono Anung Diutus Megawati untuk Datang Menemui Prabowo di Kertanegara</td>
+      <td id="T_d1d62_row25_col1" class="data row25 col1" >Puan Maharani mengatakan, Pramono Anung diutus langsung oleh Megawati untuk bertemu Prabowo di Kertanegara.</td>
+      <td id="T_d1d62_row25_col2" class="data row25 col2" >16-10-2024 08:06</td>
+      <td id="T_d1d62_row25_col3" class="data row25 col3" >Nasional</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row26" class="row_heading level0 row26" >27</th>
-      <td id="T_94d1b_row26_col0" class="data row26 col0" >Panitia Tegaskan Tiket Misa Agung Paus Fransiskus Tanpa Biaya</td>
-      <td id="T_94d1b_row26_col1" class="data row26 col1" >Tiket Misa Agung bersama Paus Fransiskus di Stadion Gelora Bung Karno dibagikan secara gratis. Tiket itu sudah terdistribusi lewat keuskupan.</td>
-      <td id="T_94d1b_row26_col2" class="data row26 col2" >04-09-2024 12:49</td>
-      <td id="T_94d1b_row26_col3" class="data row26 col3" >Nasional</td>
+      <th id="T_d1d62_level0_row26" class="row_heading level0 row26" >27</th>
+      <td id="T_d1d62_row26_col0" class="data row26 col0" >Pakai Kemeja Putih, Nusron hingga Yusril Tiba di Hambalang untuk Pembekalan Calon Menteri Prabowo</td>
+      <td id="T_d1d62_row26_col1" class="data row26 col1" >Calon menteri Prabowo mulai berdatangan ke Padepokan Garuda Yaksa, Hambalang, untuk pembekalan.</td>
+      <td id="T_d1d62_row26_col2" class="data row26 col2" >16-10-2024 01:06</td>
+      <td id="T_d1d62_row26_col3" class="data row26 col3" >Nasional</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row27" class="row_heading level0 row27" >28</th>
-      <td id="T_94d1b_row27_col0" class="data row27 col0" >DPR Umumkan 5 Calon Anggota BPK Terpilih, Terdiri dari Politikus dan Pejabat Kemenhan</td>
-      <td id="T_94d1b_row27_col1" class="data row27 col1" >Komisi XI DPR resmi mengumumkan lima anggota calon anggota Badan Pemeriksa Keuangan (BPK) terpilih periode 2024-2029</td>
-      <td id="T_94d1b_row27_col2" class="data row27 col2" >04-09-2024 10:49</td>
-      <td id="T_94d1b_row27_col3" class="data row27 col3" >Bisnis</td>
+      <th id="T_d1d62_level0_row27" class="row_heading level0 row27" >28</th>
+      <td id="T_d1d62_row27_col0" class="data row27 col0" >Tanpa Kader PKS dan Nasdem, Ini 59 Calon Menteri-Wamen yang Dipanggil Prabowo Kemarin</td>
+      <td id="T_d1d62_row27_col1" class="data row27 col1" >Prabowo memanggil calon menteri dan wamen ke Kertanegara kemarin. Tidak ada kader PKS dan Nasdem.</td>
+      <td id="T_d1d62_row27_col2" class="data row27 col2" >16-10-2024 01:06</td>
+      <td id="T_d1d62_row27_col3" class="data row27 col3" >Nasional</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row28" class="row_heading level0 row28" >29</th>
-      <td id="T_94d1b_row28_col0" class="data row28 col0" >Luhut Cium Tangan Paus Fransiskus saat Beri Bibit Mangrove di Gereja Katedral</td>
-      <td id="T_94d1b_row28_col1" class="data row28 col1" >Bibit mangrove yang ditanam dan disiram oleh Paus Fransiskus akan dibawa ke upacara pembukaan Indonesia International Sustainability Forum 2024.</td>
-      <td id="T_94d1b_row28_col2" class="data row28 col2" >04-09-2024 15:49</td>
-      <td id="T_94d1b_row28_col3" class="data row28 col3" >Nasional</td>
+      <th id="T_d1d62_level0_row28" class="row_heading level0 row28" >29</th>
+      <td id="T_d1d62_row28_col0" class="data row28 col0" >Jubir Ungkap Alasan Prabowo akan Bergerak Menangkan Muzakir Manaf-Fadhlullah di Pilgub Aceh</td>
+      <td id="T_d1d62_row28_col1" class="data row28 col1" >Jubir mengatakan Prabowo berharap rakyat Aceh berbondong-bondong memilih Muzakir Manaf-Fadhlullah di Pilgub Aceh.</td>
+      <td id="T_d1d62_row28_col2" class="data row28 col2" >16-10-2024 03:06</td>
+      <td id="T_d1d62_row28_col3" class="data row28 col3" >Nasional</td>
     </tr>
     <tr>
-      <th id="T_94d1b_level0_row29" class="row_heading level0 row29" >30</th>
-      <td id="T_94d1b_row29_col0" class="data row29 col0" >Wafat karena Serangan Jantung, Faisal Basri akan Dimakamkan di TPU Menteng Pulo Sore Ini</td>
-      <td id="T_94d1b_row29_col1" class="data row29 col1" >Ekonom senior Faisal Basri wafat di usia 65 tahun pada Kamis, 5 September 2024. Faisal mangkat pada pukul 03.50 WIB di Rumah Sakit Mayapada, Kuningan, Jakarta Selatan.</td>
-      <td id="T_94d1b_row29_col2" class="data row29 col2" >05-09-2024 04:49</td>
-      <td id="T_94d1b_row29_col3" class="data row29 col3" >Bisnis</td>
+      <th id="T_d1d62_level0_row29" class="row_heading level0 row29" >30</th>
+      <td id="T_d1d62_row29_col0" class="data row29 col0" >Jokowi: Pemberhentian Budi Gunawan sebagai Kepala BIN Permintaan Prabowo</td>
+      <td id="T_d1d62_row29_col1" class="data row29 col1" >Sebelum memberhentikan Budi Gunawan dari posisi Kepala BIN, Jokowi mengaku telah berkomunikasi dengan Prabowo.</td>
+      <td id="T_d1d62_row29_col2" class="data row29 col2" >16-10-2024 08:06</td>
+      <td id="T_d1d62_row29_col3" class="data row29 col3" >Nasional</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 </div>
 </section>
+<section id="convert-dataframe">
+<h2>Convert Dataframe<a class="headerlink" href="#convert-dataframe" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;Judul Berita&#39;: &#39;Klasemen Grup C Kualifikasi Piala Dunia 2026 setelah Timnas Indonesia Kalah 1-2 dari Cina&#39;, &#39;Isi Berita&#39;: &#39;Timnas Indonesia tertahan di  posisi kelima klaseme Grup C putaran ketiga Kualifikasi Piala Dunia 2026 zona Asia setelah takluk 1-2 dari Cina.&#39;, &#39;Tanggal Berita&#39;: &#39;15-10-2024 23:06&#39;, &#39;Kategori Berita&#39;: &#39;Bola&#39;}, {&#39;Judul Berita&#39;: &#39;Serba-serbi Acara Pembekalan Calon Menteri Prabowo di Hambalang&#39;, &#39;Isi Berita&#39;: &#39;Calon menteri Prabowo mendapatkan pembekalan di Hambalang selama dua hari ke depan. Berikut serba-serbi acara pembekalan calon menteri itu.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 05:06&#39;, &#39;Kategori Berita&#39;: &#39;Nasional&#39;}, {&#39;Judul Berita&#39;: &#39;Bahlil Sidang Promosi Doktor Siang Ini, Selesaikan S3 Kurang dari 2 Tahun&#39;, &#39;Isi Berita&#39;: &quot;Bahlil akan memaparkan disertasi berjudul &#39;Kebijakan, Kelembagaan, Tata Kelola, Hilirisasi Nikel yang Berkeadilan dan Berkelanjutan di Indonesia.&#39;&quot;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 04:06&#39;, &#39;Kategori Berita&#39;: &#39;Nasional&#39;}, {&#39;Judul Berita&#39;: &#39;Diberhentikan Sepihak, Konsil Tenaga Kesehatan Indonesia Laporkan Kemenkes ke Ombudsman&#39;, &#39;Isi Berita&#39;: &#39;Konsul Tenaga Kesehatan Indonesia melaporkan Kemenkes ke Ombudsman ihwal dugaan maladministrasi.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 08:06&#39;, &#39;Kategori Berita&#39;: &#39;Nasional&#39;}, {&#39;Judul Berita&#39;: &#39;Bahlil Lahadalia Resmi Sandang Gelar Doktor dengan Predikat Cumlaude dari Universitas Indonesia&#39;, &#39;Isi Berita&#39;: &#39;Menteri Energi Sumber Daya Mineral (ESDM) Bahlil Lahadalia selesai menjalani Sidang Terbuka Promosi Doktor yang digelar oleh Kajian Stratejik dan Global di Universitas Indonesia, Depok, 16 Oktober 2024.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 11:06&#39;, &#39;Kategori Berita&#39;: &#39;Bisnis&#39;}, {&#39;Judul Berita&#39;: &#39;PPN 12 Persen Berlaku 1 Januari 2025, Ini Daftar Barang yang Terdampak&#39;, &#39;Isi Berita&#39;: &#39;Tarif PPN 12 persen direncanakan berlaku mulai 1 Januari 2025. Berikut daftar barang yang terdampak dan dikecualikan.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 04:06&#39;, &#39;Kategori Berita&#39;: &#39;Bisnis&#39;}, {&#39;Judul Berita&#39;: &#39;Prabowo Bekali Calon Menteri dengan Materi Geopolitik sampai Anti-Korupsi&#39;, &#39;Isi Berita&#39;: &#39;Prabowo Subianto mengumpulkan calon anggota kabinetnya di rumah pribadi presiden terpilih itu di Hambalang, Bogor, untuk mendapat pembekalan dua hari.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 10:06&#39;, &#39;Kategori Berita&#39;: &#39;Bisnis&#39;}, {&#39;Judul Berita&#39;: &#39;Exco PSSI Arya Sinulingga Klarifikasi Kabar Penolakan AFC atas Surat Protes Wasit Laga Bahrain vs Indonesia&#39;, &#39;Isi Berita&#39;: &#39;Anggota Exco PSSI Arya Sinulingga menjelaskan respons AFC soal surat protes federasi soal wasit Ahmed Al Kaf dalam laga Indonesia vs Bahrain.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 07:06&#39;, &#39;Kategori Berita&#39;: &#39;Sport&#39;}, {&#39;Judul Berita&#39;: &#39;Penjelasan Pramono Anung seusai Temui Prabowo di Kertanegara&#39;, &#39;Isi Berita&#39;: &#39;Pramono Anung bertandang ke rumah Prabowo dalam rangka silaturahmi dan saling mendoakan.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 07:06&#39;, &#39;Kategori Berita&#39;: &#39;Nasional&#39;}, {&#39;Judul Berita&#39;: &#39;Bahlil Sidang Promosi Doktor di UI, Disertasinya Temukan Hilirisasi Nikel Belum Untungkan Warga Lokal&#39;, &#39;Isi Berita&#39;: &#39;Sebelumnya, Bahlil pernah menyebutkan hasil penelitiannya menunjukkan manfaat terbesar hilirisasi nikel diterima  oleh investor dan pemerintah pusat.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 06:06&#39;, &#39;Kategori Berita&#39;: &#39;Bisnis&#39;}, {&#39;Judul Berita&#39;: &#39;Kualifikasi Piala Dunia 2026: Menpora Dito Ariotedjo Nilai Timnas Indonesia Mulai Berkembang dari Segi Permainan&#39;, &#39;Isi Berita&#39;: &#39;Menpora Dito Ariotedjo meminta PSSI menghitung ulang peluang Timnas Indonesia lolos dari putaran ketiga kualifikasi Piala Dunia 2026.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 07:06&#39;, &#39;Kategori Berita&#39;: &#39;Sport&#39;}, {&#39;Judul Berita&#39;: &#39;Indikator Politik Indonesia: Survei Kepuasan Publik Terhadap Jokowi Masih Tinggi&#39;, &#39;Isi Berita&#39;: &#39;Survei terbaru yang dirilis Indikator Politik Indonesia tercatat bahwa masih ada 75 persen masyarakat Indonesia yang mengaku puas terhadap Jokowi.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 06:06&#39;, &#39;Kategori Berita&#39;: &#39;Nasional&#39;}, {&#39;Judul Berita&#39;: &#39;Timnas Indonesia Kalah 1-2 dari Cina di Kualifikasi Piala Dunia 2026,  Shin Tae-yong Tak Menduga Lawan Pakai Taktik Klasik&#39;, &#39;Isi Berita&#39;: &#39;Pelatih Timnas Indonesia Shin Tae-yong menyatakan tidak menduga taktik yang diterapkan Cina pada pertandingan kualifikasi Piala Dunia 2026.&#39;, &#39;Tanggal Berita&#39;: &#39;15-10-2024 22:06&#39;, &#39;Kategori Berita&#39;: &#39;Bola&#39;}, {&#39;Judul Berita&#39;: &#39;Pramono Anung Ungkap Alasan Tak Gabung Kabinet Prabowo: Berjuang Menangi Pilgub Jakarta&#39;, &#39;Isi Berita&#39;: &#39;Pramono Anung memastikan pertemuannya dengan Prabowo tidak terkait dengan jabatan menteri.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 15:06&#39;, &#39;Kategori Berita&#39;: &#39;Pemilu&#39;}, {&#39;Judul Berita&#39;: &#39;Dua Drone dari Lebanon Lagi-lagi Berhasil Menembus Pertahanan Udara Israel&#39;, &#39;Isi Berita&#39;: &#39;Drone yang ditembakkan dari Lebanon berhasil menembus langit Israel. Bunyi sirine meraung.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 03:06&#39;, &#39;Kategori Berita&#39;: &#39;Dunia&#39;}, {&#39;Judul Berita&#39;: &#39;Jadwal Lengkap SKD CPNS Kemenkumham 2024 dan Titik Lokasinya&#39;, &#39;Isi Berita&#39;: &#39;Berikut jadwal dan titik lokasi pelaksanaan SKD CAT CPNS Kemenkumham 2024 di seluruh Indonesia dan luar negeri.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 04:06&#39;, &#39;Kategori Berita&#39;: &#39;Nasional&#39;}, {&#39;Judul Berita&#39;: &#39;Komentar Presiden Jokowi soal Kekalahan Timnas Indonesia dari Cina: Menang Kalah Itu Biasa&#39;, &#39;Isi Berita&#39;: &#39;Presiden Joko Widodo meminta Timnas Indonesia tetap semangat meski kalah dari China pada laga keempat putaran ketiga kualifikasi Piala Dunia 2026.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 06:06&#39;, &#39;Kategori Berita&#39;: &#39;Bola&#39;}, {&#39;Judul Berita&#39;: &#39;Boyamin Saiman Sebut Sejumlah Calon Menteri Prabowo Diduga Terlibat Korupsi&#39;, &#39;Isi Berita&#39;: &#39;Boyamin Saiman mengatakan Prabowo Subianto masih punya waktu untuk memilih orang-orang dengan rekam jejak yang bersih.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 06:06&#39;, &#39;Kategori Berita&#39;: &#39;Metro&#39;}, {&#39;Judul Berita&#39;: &#39;Beberapa Kali Pertemuan Sri Mulyani dan Prabowo, Sebelum Dipinang Jadi Menteri Keuangan Lagi&#39;, &#39;Isi Berita&#39;: &#39;Sri Mulyani akan menjabat kembali jadi menteri keuangan 2024-2029 setelah dipinang Prabowo.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 04:06&#39;, &#39;Kategori Berita&#39;: &#39;Bisnis&#39;}, {&#39;Judul Berita&#39;: &#39;Dana Pensiun PT Taspen Rp 1 Triliun Diduga Dikorupsi, OJK Sebut Pengawasannya Terbatas untuk Program Tabungan Hari Tua&#39;, &#39;Isi Berita&#39;: &#39;OJK kembali menanggapi soal dana pensiun senilai Rp 1 triliun PT Taspen (Persero) yang diduga dikorupsi.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 03:06&#39;, &#39;Kategori Berita&#39;: &#39;Bisnis&#39;}, {&#39;Judul Berita&#39;: &#39;Soal Pencalonan Kepala BIN Lebih Awal, Hasan Nasbi Ungkap Keinginan Prabowo&#39;, &#39;Isi Berita&#39;: &#39;DPR menyatakan Muhammad Herindra akan dilantik sebagai Kepala BIN bersamaan dengan pelantikan menteri.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 06:06&#39;, &#39;Kategori Berita&#39;: &#39;Nasional&#39;}, {&#39;Judul Berita&#39;: &#39;BPJS Kesehatan Tingkatkan Efektivitas Layanan JKN Bagi Anggota Polri&#39;, &#39;Isi Berita&#39;: &#39;Kerja sama ini diharapkan dapat menjadi pedoman yang kokoh bagi kedua pihak dalam mengintegrasikan data secara lebih baik&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 04:06&#39;, &#39;Kategori Berita&#39;: &#39;Nasional&#39;}, {&#39;Judul Berita&#39;: &#39;Siapa Saja Calon Wamenkeu yang Bakal Mendampingi Sri Mulyani?&#39;, &#39;Isi Berita&#39;: &#39;Tiga Wamenkeu direncanakan Prabowo untuk membantu kerja Sri Mulyani. Mereka adalah Thomas Djiwandono, Suahasil Nazara, dan Anggito Abimanyu.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 07:06&#39;, &#39;Kategori Berita&#39;: &#39;Nasional&#39;}, {&#39;Judul Berita&#39;: &#39;Budi Gunawan Ikut Pembekalan Calon Menteri Prabowo di Hambalang&#39;, &#39;Isi Berita&#39;: &#39;Budi Gunawan merupakan orang dekat Ketua Umum Partai Demokrasi Indonesia Perjuangan Megawati Soekarnoputri.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 02:06&#39;, &#39;Kategori Berita&#39;: &#39;Nasional&#39;}, {&#39;Judul Berita&#39;: &#39;Menjelang Pensiun, Jokowi Mengaku Belum Beli Tiket Pesawat ke Solo&#39;, &#39;Isi Berita&#39;: &#39;Jokowi mengaku belum membeli tiket pesawat komersial untuk kepulangannya ke Solo, Jawa Tengah menjelang pensiun sebagai presiden.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 09:06&#39;, &#39;Kategori Berita&#39;: &#39;Nasional&#39;}, {&#39;Judul Berita&#39;: &#39;Puan Sebut Pramono Anung Diutus Megawati untuk Datang Menemui Prabowo di Kertanegara&#39;, &#39;Isi Berita&#39;: &#39;Puan Maharani mengatakan, Pramono Anung diutus langsung oleh Megawati untuk bertemu Prabowo di Kertanegara.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 08:06&#39;, &#39;Kategori Berita&#39;: &#39;Nasional&#39;}, {&#39;Judul Berita&#39;: &#39;Pakai Kemeja Putih, Nusron hingga Yusril Tiba di Hambalang untuk Pembekalan Calon Menteri Prabowo&#39;, &#39;Isi Berita&#39;: &#39;Calon menteri Prabowo mulai berdatangan ke Padepokan Garuda Yaksa, Hambalang, untuk pembekalan.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 01:06&#39;, &#39;Kategori Berita&#39;: &#39;Nasional&#39;}, {&#39;Judul Berita&#39;: &#39;Tanpa Kader PKS dan Nasdem, Ini 59 Calon Menteri-Wamen yang Dipanggil Prabowo Kemarin&#39;, &#39;Isi Berita&#39;: &#39;Prabowo memanggil calon menteri dan wamen ke Kertanegara kemarin. Tidak ada kader PKS dan Nasdem.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 01:06&#39;, &#39;Kategori Berita&#39;: &#39;Nasional&#39;}, {&#39;Judul Berita&#39;: &#39;Jubir Ungkap Alasan Prabowo akan Bergerak Menangkan Muzakir Manaf-Fadhlullah di Pilgub Aceh&#39;, &#39;Isi Berita&#39;: &#39;Jubir mengatakan Prabowo berharap rakyat Aceh berbondong-bondong memilih Muzakir Manaf-Fadhlullah di Pilgub Aceh.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 03:06&#39;, &#39;Kategori Berita&#39;: &#39;Nasional&#39;}, {&#39;Judul Berita&#39;: &#39;Jokowi: Pemberhentian Budi Gunawan sebagai Kepala BIN Permintaan Prabowo&#39;, &#39;Isi Berita&#39;: &#39;Sebelum memberhentikan Budi Gunawan dari posisi Kepala BIN, Jokowi mengaku telah berkomunikasi dengan Prabowo.&#39;, &#39;Tanggal Berita&#39;: &#39;16-10-2024 08:06&#39;, &#39;Kategori Berita&#39;: &#39;Nasional&#39;}]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">df</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data_tugas1.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -1264,6 +1298,15 @@ Judul: Wafat karena Serangan Jantung, Faisal Basri akan Dimakamkan di TPU Menten
         <p class="prev-next-title">Welcome to your Jupyter Book</p>
       </div>
     </a>
+    <a class="right-next"
+       href="VectorSpaceModel.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tugas 2 : TF-IDF &amp; Vector Space Model</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1293,6 +1336,8 @@ Judul: Wafat karena Serangan Jantung, Faisal Basri akan Dimakamkan di TPU Menten
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menyatukan-semua-code-dan-menampilkan-dalam-bentuk-tabular">menyatukan semua code dan menampilkan dalam bentuk tabular</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-crawling">Main Crawling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-dataframe">Convert Dataframe</a></li>
 </ul>
   </nav></div>
 
