@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Tuagas 6 : Keyword extraction &#8212; My sample book</title>
+    <title>Tuagas uts : Keyword extraction &#8212; My sample book</title>
   
   
   
@@ -16,17 +16,19 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
@@ -36,10 +38,11 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -60,9 +63,11 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'keyword';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tugas 6 : Query dengan kalimat" href="tugas6.html" />
     <link rel="prev" title="Tugas 5 : meringkas satu berita" href="tugas_5.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -78,19 +83,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -98,7 +92,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -106,8 +99,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -123,7 +116,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -153,21 +147,17 @@
     
     
     <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="My sample book - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -179,12 +169,13 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="CrawlingWebBerita.html">Tugas 1 : Crawling Web Berita tempo.co</a></li>
-<li class="toctree-l1"><a class="reference internal" href="VectorSpaceModel.html">Tugas 2 : TF-IDF &amp; Vector Space Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implementasi_hasil_vsm.html">Tugas 3 : Implementasi Algoritma Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tugas1shot.html">Tugas 1 : Crawling Web Berita tempo.co</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas2prepocessing.html">Tugas 02 : Membuat VSM dengan Bobot TFID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas3shoot.html">Tugas 3 : Implementasi Algoritma Logistic Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Ringkasan_Berita.html">Tugas 4 : meringkas tugas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tugas_5.html">Tugas 5 : meringkas satu berita</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tuagas 6 : Keyword extraction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tuagas uts : Keyword extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tugas6.html">Tugas 6 : Query dengan kalimat</a></li>
 </ul>
 
     </div>
@@ -339,24 +330,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -370,7 +353,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Tuagas 6 : Keyword extraction</h1>
+    <h1>Tuagas uts : Keyword extraction</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -401,8 +384,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="tuagas-6-keyword-extraction">
-<h1>Tuagas 6 : Keyword extraction<a class="headerlink" href="#tuagas-6-keyword-extraction" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="tuagas-uts-keyword-extraction">
+<h1>Tuagas uts : Keyword extraction<a class="headerlink" href="#tuagas-uts-keyword-extraction" title="Link to this heading">#</a></h1>
 <p>Keyword extraction adalah proses otomatis untuk mengidentifikasi dan mengekstrak kata-kata atau frasa yang paling penting atau relevan dari suatu dokumen teks.</p>
 <ul class="simple">
 <li><p><strong>Tujuan utama dari keyword extraction</strong> adalah untuk menemukan istilah kunci yang mewakili inti dari suatu teks tanpa harus membaca seluruh dokumen. Ini sangat berguna untuk berbagai tugas seperti pengindeksan, pencarian informasi, dan analisis teks.</p></li>
@@ -445,334 +428,57 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 <h2>import data<a class="headerlink" href="#import-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data_tugas1.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data_terbaru_1.csv&#39;</span><span class="p">)</span>
 <span class="n">data</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">
-  <div id="df-7107a782-7576-4790-9318-499cd9323ea8" class="colab-df-container">
-    <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-2-bac334c35edc&gt;</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data_terbaru_1.csv&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">data</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+<span class="nn">/usr/local/lib/python3.10/dist-packages/pandas/io/parsers/readers.py</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1024</span>     <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1025</span> 
+<span class="ne">-&gt; </span><span class="mi">1026</span>     <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1027</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1028</span> 
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Judul Berita</th>
-      <th>Isi Berita</th>
-      <th>Tanggal Berita</th>
-      <th>Kategori Berita</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Klasemen Grup C Kualifikasi Piala Dunia 2026 s...</td>
-      <td>Timnas Indonesia tertahan di  posisi kelima kl...</td>
-      <td>15-10-2024 23:06</td>
-      <td>Bola</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Serba-serbi Acara Pembekalan Calon Menteri Pra...</td>
-      <td>Calon menteri Prabowo mendapatkan pembekalan d...</td>
-      <td>16-10-2024 05:06</td>
-      <td>Nasional</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Bahlil Sidang Promosi Doktor Siang Ini, Selesa...</td>
-      <td>Bahlil akan memaparkan disertasi berjudul 'Keb...</td>
-      <td>16-10-2024 04:06</td>
-      <td>Nasional</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Diberhentikan Sepihak, Konsil Tenaga Kesehatan...</td>
-      <td>Konsul Tenaga Kesehatan Indonesia melaporkan K...</td>
-      <td>16-10-2024 08:06</td>
-      <td>Nasional</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Bahlil Lahadalia Resmi Sandang Gelar Doktor de...</td>
-      <td>Menteri Energi Sumber Daya Mineral (ESDM) Bahl...</td>
-      <td>16-10-2024 11:06</td>
-      <td>Bisnis</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>PPN 12 Persen Berlaku 1 Januari 2025, Ini Daft...</td>
-      <td>Tarif PPN 12 persen direncanakan berlaku mulai...</td>
-      <td>16-10-2024 04:06</td>
-      <td>Bisnis</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>Prabowo Bekali Calon Menteri dengan Materi Geo...</td>
-      <td>Prabowo Subianto mengumpulkan calon anggota ka...</td>
-      <td>16-10-2024 10:06</td>
-      <td>Bisnis</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>Exco PSSI Arya Sinulingga Klarifikasi Kabar Pe...</td>
-      <td>Anggota Exco PSSI Arya Sinulingga menjelaskan ...</td>
-      <td>16-10-2024 07:06</td>
-      <td>Sport</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>Penjelasan Pramono Anung seusai Temui Prabowo ...</td>
-      <td>Pramono Anung bertandang ke rumah Prabowo dala...</td>
-      <td>16-10-2024 07:06</td>
-      <td>Nasional</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>Bahlil Sidang Promosi Doktor di UI, Disertasin...</td>
-      <td>Sebelumnya, Bahlil pernah menyebutkan hasil pe...</td>
-      <td>16-10-2024 06:06</td>
-      <td>Bisnis</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>Kualifikasi Piala Dunia 2026: Menpora Dito Ari...</td>
-      <td>Menpora Dito Ariotedjo meminta PSSI menghitung...</td>
-      <td>16-10-2024 07:06</td>
-      <td>Sport</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>Indikator Politik Indonesia: Survei Kepuasan P...</td>
-      <td>Survei terbaru yang dirilis Indikator Politik ...</td>
-      <td>16-10-2024 06:06</td>
-      <td>Nasional</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>Timnas Indonesia Kalah 1-2 dari Cina di Kualif...</td>
-      <td>Pelatih Timnas Indonesia Shin Tae-yong menyata...</td>
-      <td>15-10-2024 22:06</td>
-      <td>Bola</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>Pramono Anung Ungkap Alasan Tak Gabung Kabinet...</td>
-      <td>Pramono Anung memastikan pertemuannya dengan P...</td>
-      <td>16-10-2024 15:06</td>
-      <td>Pemilu</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>Dua Drone dari Lebanon Lagi-lagi Berhasil Mene...</td>
-      <td>Drone yang ditembakkan dari Lebanon berhasil m...</td>
-      <td>16-10-2024 03:06</td>
-      <td>Dunia</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>Jadwal Lengkap SKD CPNS Kemenkumham 2024 dan T...</td>
-      <td>Berikut jadwal dan titik lokasi pelaksanaan SK...</td>
-      <td>16-10-2024 04:06</td>
-      <td>Nasional</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>Komentar Presiden Jokowi soal Kekalahan Timnas...</td>
-      <td>Presiden Joko Widodo meminta Timnas Indonesia ...</td>
-      <td>16-10-2024 06:06</td>
-      <td>Bola</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>Boyamin Saiman Sebut Sejumlah Calon Menteri Pr...</td>
-      <td>Boyamin Saiman mengatakan Prabowo Subianto mas...</td>
-      <td>16-10-2024 06:06</td>
-      <td>Metro</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>Beberapa Kali Pertemuan Sri Mulyani dan Prabow...</td>
-      <td>Sri Mulyani akan menjabat kembali jadi menteri...</td>
-      <td>16-10-2024 04:06</td>
-      <td>Bisnis</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>Dana Pensiun PT Taspen Rp 1 Triliun Diduga Dik...</td>
-      <td>OJK kembali menanggapi soal dana pensiun senil...</td>
-      <td>16-10-2024 03:06</td>
-      <td>Bisnis</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>Soal Pencalonan Kepala BIN Lebih Awal, Hasan N...</td>
-      <td>DPR menyatakan Muhammad Herindra akan dilantik...</td>
-      <td>16-10-2024 06:06</td>
-      <td>Nasional</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>BPJS Kesehatan Tingkatkan Efektivitas Layanan ...</td>
-      <td>Kerja sama ini diharapkan dapat menjadi pedoma...</td>
-      <td>16-10-2024 04:06</td>
-      <td>Nasional</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>Siapa Saja Calon Wamenkeu yang Bakal Mendampin...</td>
-      <td>Tiga Wamenkeu direncanakan Prabowo untuk memba...</td>
-      <td>16-10-2024 07:06</td>
-      <td>Nasional</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>Budi Gunawan Ikut Pembekalan Calon Menteri Pra...</td>
-      <td>Budi Gunawan merupakan orang dekat Ketua Umum ...</td>
-      <td>16-10-2024 02:06</td>
-      <td>Nasional</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>Menjelang Pensiun, Jokowi Mengaku Belum Beli T...</td>
-      <td>Jokowi mengaku belum membeli tiket pesawat kom...</td>
-      <td>16-10-2024 09:06</td>
-      <td>Nasional</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>Puan Sebut Pramono Anung Diutus Megawati untuk...</td>
-      <td>Puan Maharani mengatakan, Pramono Anung diutus...</td>
-      <td>16-10-2024 08:06</td>
-      <td>Nasional</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>Pakai Kemeja Putih, Nusron hingga Yusril Tiba ...</td>
-      <td>Calon menteri Prabowo mulai berdatangan ke Pad...</td>
-      <td>16-10-2024 01:06</td>
-      <td>Nasional</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>Tanpa Kader PKS dan Nasdem, Ini 59 Calon Mente...</td>
-      <td>Prabowo memanggil calon menteri dan wamen ke K...</td>
-      <td>16-10-2024 01:06</td>
-      <td>Nasional</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>Jubir Ungkap Alasan Prabowo akan Bergerak Mena...</td>
-      <td>Jubir mengatakan Prabowo berharap rakyat Aceh ...</td>
-      <td>16-10-2024 03:06</td>
-      <td>Nasional</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>Jokowi: Pemberhentian Budi Gunawan sebagai Kep...</td>
-      <td>Sebelum memberhentikan Budi Gunawan dari posis...</td>
-      <td>16-10-2024 08:06</td>
-      <td>Nasional</td>
-    </tr>
-  </tbody>
-</table>
+<span class="nn">/usr/local/lib/python3.10/dist-packages/pandas/io/parsers/readers.py</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">618</span> 
+<span class="g g-Whitespace">    </span><span class="mi">619</span>     <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">620</span>     <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">621</span> 
+<span class="g g-Whitespace">    </span><span class="mi">622</span>     <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/pandas/io/parsers/readers.py</span> in <span class="ni">__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1618</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1619</span>         <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1620</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1621</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1622</span>     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/pandas/io/parsers/readers.py</span> in <span class="ni">_make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1878</span>                 <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1879</span>                     <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1880</span>             <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1881</span>                 <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1882</span>                 <span class="n">mode</span><span class="p">,</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/pandas/io/common.py</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">871</span>         <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">872</span>             <span class="c1"># Encoding</span>
+<span class="ne">--&gt; </span><span class="mi">873</span>             <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">874</span>                 <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">875</span>                 <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data_terbaru_1.csv&#39;
+</pre></div>
 </div>
-    <div class="colab-df-buttons">
-      
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-7107a782-7576-4790-9318-499cd9323ea8')"
-            title="Convert this dataframe to an interactive table."
-            style="display:none;">
-      
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
-  </svg>
-    </button>
-    
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-7107a782-7576-4790-9318-499cd9323ea8 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-7107a782-7576-4790-9318-499cd9323ea8');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-  
-    </div>
-  </div>
-  </div></div>
+</div>
 </div>
 </section>
 <section id="melakukan-pre-processing-data">
@@ -804,31 +510,33 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_text</span><span class="p">(</span><span class="n">content</span><span class="p">):</span>
-	<span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
-	<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">text</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tqdm</span><span class="p">(</span><span class="n">content</span><span class="p">)):</span>
-		<span class="n">cleaned_text</span> <span class="o">=</span> <span class="n">clean_text</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-		<span class="n">tokens</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">cleaned_text</span><span class="p">)</span>
-		<span class="n">cleaned_stopword</span> <span class="o">=</span> <span class="n">clean_stopword</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
-		<span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cleaned_stopword</span><span class="p">)</span>
-	<span class="k">return</span> <span class="n">result</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">text</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tqdm</span><span class="p">(</span><span class="n">content</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1"># Ubah nilai None atau bukan string menjadi string kosong</span>
 
+        <span class="n">cleaned_text</span> <span class="o">=</span> <span class="n">clean_text</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>  <span class="c1"># Pastikan fungsi clean_text bekerja dengan string</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">cleaned_text</span><span class="p">)</span>
+        <span class="n">cleaned_stopword</span> <span class="o">=</span> <span class="n">clean_stopword</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cleaned_stopword</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="c1"># Pastikan semua elemen di &#39;Isi Berita&#39; berupa string</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Isi Berita&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Isi Berita&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>  <span class="c1"># Mengisi nilai NaN dengan string kosong dan pastikan tipe string</span>
+
+<span class="c1"># Proses pembersihan</span>
 <span class="n">data</span><span class="p">[</span><span class="s1">&#39;cleaned_news&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">preprocess_text</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Isi Berita&#39;</span><span class="p">])</span>
 <span class="n">data</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/30 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 30/30 [00:00&lt;00:00, 1016.92it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 150/150 [00:02&lt;00:00, 66.60it/s]
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-eb960798-946d-4550-a09e-b892b36d351d" class="colab-df-container">
+  <div id="df-80addafa-b961-463b-ae5a-1c096c8fa785" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -857,259 +565,108 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
   <tbody>
     <tr>
       <th>0</th>
-      <td>Klasemen Grup C Kualifikasi Piala Dunia 2026 s...</td>
-      <td>Timnas Indonesia tertahan di  posisi kelima kl...</td>
-      <td>15-10-2024 23:06</td>
-      <td>Bola</td>
-      <td>timnas indonesia tertahan posisi klaseme grup ...</td>
+      <td>Serba-serbi Acara Pembekalan Calon Menteri Pra...</td>
+      <td>Reporter\nDaniel A. Fajri\nEditor\nAndry Triya...</td>
+      <td>16-10-2024 05:30</td>
+      <td>Nasional</td>
+      <td>reporter daniel a. fajri editor andry triyanto...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Serba-serbi Acara Pembekalan Calon Menteri Pra...</td>
-      <td>Calon menteri Prabowo mendapatkan pembekalan d...</td>
-      <td>16-10-2024 05:06</td>
+      <td>Diberhentikan Sepihak, Konsil Tenaga Kesehatan...</td>
+      <td>Reporter\nAnastasya Lavenia Y\nEditor\nNinis C...</td>
+      <td>16-10-2024 07:30</td>
       <td>Nasional</td>
-      <td>calon menteri prabowo pembekalan hambalang . s...</td>
+      <td>reporter anastasya lavenia y editor ninis chai...</td>
     </tr>
     <tr>
       <th>2</th>
       <td>Bahlil Sidang Promosi Doktor Siang Ini, Selesa...</td>
-      <td>Bahlil akan memaparkan disertasi berjudul 'Keb...</td>
-      <td>16-10-2024 04:06</td>
+      <td>Reporter\nHendrik Yaputra\nEditor\nJuli Hantor...</td>
+      <td>16-10-2024 04:30</td>
       <td>Nasional</td>
-      <td>bahlil memaparkan disertasi berjudul kebijakan...</td>
+      <td>reporter hendrik yaputra editor juli hantoro r...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Diberhentikan Sepihak, Konsil Tenaga Kesehatan...</td>
-      <td>Konsul Tenaga Kesehatan Indonesia melaporkan K...</td>
-      <td>16-10-2024 08:06</td>
-      <td>Nasional</td>
-      <td>konsul tenaga kesehatan indonesia melaporkan k...</td>
+      <td>Bahlil Lahadalia Resmi Sandang Gelar Doktor de...</td>
+      <td>Reporter\nM. Rizki Yusrial\nEditor\nGrace gand...</td>
+      <td>16-10-2024 11:30</td>
+      <td>Bisnis</td>
+      <td>reporter m. rizki yusrial editor grace gandhi ...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Bahlil Lahadalia Resmi Sandang Gelar Doktor de...</td>
-      <td>Menteri Energi Sumber Daya Mineral (ESDM) Bahl...</td>
-      <td>16-10-2024 11:06</td>
-      <td>Bisnis</td>
-      <td>menteri energi sumber daya mineral esdm bahlil...</td>
-    </tr>
-    <tr>
-      <th>5</th>
       <td>PPN 12 Persen Berlaku 1 Januari 2025, Ini Daft...</td>
-      <td>Tarif PPN 12 persen direncanakan berlaku mulai...</td>
-      <td>16-10-2024 04:06</td>
+      <td>Reporter\nMelynda Dwi Puspita\nEditor\nRr. Ari...</td>
+      <td>16-10-2024 03:30</td>
       <td>Bisnis</td>
-      <td>tarif ppn persen direncanakan berlaku januari ...</td>
+      <td>reporter melynda dwi puspita editor rr . ariya...</td>
     </tr>
     <tr>
-      <th>6</th>
-      <td>Prabowo Bekali Calon Menteri dengan Materi Geo...</td>
-      <td>Prabowo Subianto mengumpulkan calon anggota ka...</td>
-      <td>16-10-2024 10:06</td>
-      <td>Bisnis</td>
-      <td>prabowo subianto mengumpulkan calon anggota ka...</td>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
-      <th>7</th>
-      <td>Exco PSSI Arya Sinulingga Klarifikasi Kabar Pe...</td>
-      <td>Anggota Exco PSSI Arya Sinulingga menjelaskan ...</td>
-      <td>16-10-2024 07:06</td>
-      <td>Sport</td>
-      <td>anggota exco pssi arya sinulingga respons afc ...</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>Penjelasan Pramono Anung seusai Temui Prabowo ...</td>
-      <td>Pramono Anung bertandang ke rumah Prabowo dala...</td>
-      <td>16-10-2024 07:06</td>
-      <td>Nasional</td>
-      <td>pramono anung bertandang rumah prabowo rangka ...</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>Bahlil Sidang Promosi Doktor di UI, Disertasin...</td>
-      <td>Sebelumnya, Bahlil pernah menyebutkan hasil pe...</td>
-      <td>16-10-2024 06:06</td>
-      <td>Bisnis</td>
-      <td>bahlil hasil penelitiannya manfaat terbesar hi...</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>Kualifikasi Piala Dunia 2026: Menpora Dito Ari...</td>
-      <td>Menpora Dito Ariotedjo meminta PSSI menghitung...</td>
-      <td>16-10-2024 07:06</td>
-      <td>Sport</td>
-      <td>menpora dito ariotedjo pssi menghitung ulang p...</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>Indikator Politik Indonesia: Survei Kepuasan P...</td>
-      <td>Survei terbaru yang dirilis Indikator Politik ...</td>
-      <td>16-10-2024 06:06</td>
-      <td>Nasional</td>
-      <td>survei terbaru dirilis indikator politik indon...</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>Timnas Indonesia Kalah 1-2 dari Cina di Kualif...</td>
-      <td>Pelatih Timnas Indonesia Shin Tae-yong menyata...</td>
-      <td>15-10-2024 22:06</td>
-      <td>Bola</td>
-      <td>pelatih timnas indonesia shin taeyong menduga ...</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>Pramono Anung Ungkap Alasan Tak Gabung Kabinet...</td>
-      <td>Pramono Anung memastikan pertemuannya dengan P...</td>
-      <td>16-10-2024 15:06</td>
-      <td>Pemilu</td>
-      <td>pramono anung pertemuannya prabowo terkait jab...</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>Dua Drone dari Lebanon Lagi-lagi Berhasil Mene...</td>
-      <td>Drone yang ditembakkan dari Lebanon berhasil m...</td>
-      <td>16-10-2024 03:06</td>
-      <td>Dunia</td>
-      <td>drone ditembakkan lebanon berhasil menembus la...</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>Jadwal Lengkap SKD CPNS Kemenkumham 2024 dan T...</td>
-      <td>Berikut jadwal dan titik lokasi pelaksanaan SK...</td>
-      <td>16-10-2024 04:06</td>
-      <td>Nasional</td>
-      <td>jadwal titik lokasi pelaksanaan skd cat cpns k...</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>Komentar Presiden Jokowi soal Kekalahan Timnas...</td>
-      <td>Presiden Joko Widodo meminta Timnas Indonesia ...</td>
-      <td>16-10-2024 06:06</td>
-      <td>Bola</td>
-      <td>presiden joko widodo timnas indonesia semangat...</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>Boyamin Saiman Sebut Sejumlah Calon Menteri Pr...</td>
-      <td>Boyamin Saiman mengatakan Prabowo Subianto mas...</td>
-      <td>16-10-2024 06:06</td>
-      <td>Metro</td>
-      <td>boyamin saiman prabowo subianto memilih orango...</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>Beberapa Kali Pertemuan Sri Mulyani dan Prabow...</td>
-      <td>Sri Mulyani akan menjabat kembali jadi menteri...</td>
-      <td>16-10-2024 04:06</td>
-      <td>Bisnis</td>
-      <td>sri mulyani menjabat menteri keuangan dipinang...</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>Dana Pensiun PT Taspen Rp 1 Triliun Diduga Dik...</td>
-      <td>OJK kembali menanggapi soal dana pensiun senil...</td>
-      <td>16-10-2024 03:06</td>
-      <td>Bisnis</td>
-      <td>ojk menanggapi dana pensiun senilai rp triliun...</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>Soal Pencalonan Kepala BIN Lebih Awal, Hasan N...</td>
-      <td>DPR menyatakan Muhammad Herindra akan dilantik...</td>
-      <td>16-10-2024 06:06</td>
-      <td>Nasional</td>
-      <td>dpr muhammad herindra dilantik kepala bin bers...</td>
-    </tr>
-    <tr>
-      <th>21</th>
+      <th>145</th>
       <td>BPJS Kesehatan Tingkatkan Efektivitas Layanan ...</td>
-      <td>Kerja sama ini diharapkan dapat menjadi pedoma...</td>
-      <td>16-10-2024 04:06</td>
+      <td>Rabu, 16 Oktober 2024 10:15 WIB\nBagikan\nINFO...</td>
+      <td>16-10-2024 03:34</td>
       <td>Nasional</td>
-      <td>kerja diharapkan pedoman kokoh mengintegrasika...</td>
+      <td>rabu oktober : wib bagikan info nasional bpjs ...</td>
     </tr>
     <tr>
-      <th>22</th>
+      <th>146</th>
       <td>Siapa Saja Calon Wamenkeu yang Bakal Mendampin...</td>
-      <td>Tiga Wamenkeu direncanakan Prabowo untuk memba...</td>
-      <td>16-10-2024 07:06</td>
+      <td>Reporter\nHaura Hamidah\nEditor\nNurhadi\nRabu...</td>
+      <td>16-10-2024 07:34</td>
       <td>Nasional</td>
-      <td>wamenkeu direncanakan prabowo membantu kerja s...</td>
+      <td>reporter haura hamidah editor nurhadi rabu okt...</td>
     </tr>
     <tr>
-      <th>23</th>
-      <td>Budi Gunawan Ikut Pembekalan Calon Menteri Pra...</td>
-      <td>Budi Gunawan merupakan orang dekat Ketua Umum ...</td>
-      <td>16-10-2024 02:06</td>
-      <td>Nasional</td>
-      <td>budi gunawan orang ketua partai demokrasi indo...</td>
-    </tr>
-    <tr>
-      <th>24</th>
+      <th>147</th>
       <td>Menjelang Pensiun, Jokowi Mengaku Belum Beli T...</td>
-      <td>Jokowi mengaku belum membeli tiket pesawat kom...</td>
-      <td>16-10-2024 09:06</td>
+      <td>Reporter\nHendrik Yaputra\nEditor\nJuli Hantor...</td>
+      <td>16-10-2024 08:34</td>
       <td>Nasional</td>
-      <td>jokowi mengaku membeli tiket pesawat komersial...</td>
+      <td>reporter hendrik yaputra editor juli hantoro r...</td>
     </tr>
     <tr>
-      <th>25</th>
-      <td>Puan Sebut Pramono Anung Diutus Megawati untuk...</td>
-      <td>Puan Maharani mengatakan, Pramono Anung diutus...</td>
-      <td>16-10-2024 08:06</td>
-      <td>Nasional</td>
-      <td>puan maharani pramono anung diutus langsung me...</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>Pakai Kemeja Putih, Nusron hingga Yusril Tiba ...</td>
-      <td>Calon menteri Prabowo mulai berdatangan ke Pad...</td>
-      <td>16-10-2024 01:06</td>
-      <td>Nasional</td>
-      <td>calon menteri prabowo padepokan garuda yaksa h...</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>Tanpa Kader PKS dan Nasdem, Ini 59 Calon Mente...</td>
-      <td>Prabowo memanggil calon menteri dan wamen ke K...</td>
-      <td>16-10-2024 01:06</td>
-      <td>Nasional</td>
-      <td>prabowo memanggil calon menteri wamen kertaneg...</td>
-    </tr>
-    <tr>
-      <th>28</th>
+      <th>148</th>
       <td>Jubir Ungkap Alasan Prabowo akan Bergerak Mena...</td>
-      <td>Jubir mengatakan Prabowo berharap rakyat Aceh ...</td>
-      <td>16-10-2024 03:06</td>
+      <td>Reporter\nAntara\nEditor\nSapto Yunus\nRabu, 1...</td>
+      <td>16-10-2024 03:34</td>
       <td>Nasional</td>
-      <td>jubir prabowo berharap rakyat aceh berbondongb...</td>
+      <td>reporter editor sapto yunus rabu oktober : wib...</td>
     </tr>
     <tr>
-      <th>29</th>
-      <td>Jokowi: Pemberhentian Budi Gunawan sebagai Kep...</td>
-      <td>Sebelum memberhentikan Budi Gunawan dari posis...</td>
-      <td>16-10-2024 08:06</td>
-      <td>Nasional</td>
-      <td>memberhentikan budi gunawan posisi kepala bin ...</td>
+      <th>149</th>
+      <td>Jatuh dari Balkon Hotel, Liam Payne eks One Di...</td>
+      <td>Reporter\nTempo.co\nEditor\nIstiqomatul Hayati...</td>
+      <td>16-10-2024 22:34</td>
+      <td>Seleb</td>
+      <td>reporter tempo.co editor istiqomatul hayati ka...</td>
     </tr>
   </tbody>
 </table>
+<p>150 rows × 5 columns</p>
 </div>
     <div class="colab-df-buttons">
-      
+
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-eb960798-946d-4550-a09e-b892b36d351d')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-80addafa-b961-463b-ae5a-1c096c8fa785')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
-      
+
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
     <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
   </svg>
     </button>
-    
+
   <style>
     .colab-df-container {
       display:flex;
@@ -1153,12 +710,12 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 
     <script>
       const buttonEl =
-        document.querySelector('#df-eb960798-946d-4550-a09e-b892b36d351d button.colab-df-convert');
+        document.querySelector('#df-80addafa-b961-463b-ae5a-1c096c8fa785 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-eb960798-946d-4550-a09e-b892b36d351d');
+        const element = document.querySelector('#df-80addafa-b961-463b-ae5a-1c096c8fa785');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1176,10 +733,193 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       }
     </script>
   </div>
-  
+
+
+<div id="df-e1f49ce2-61b5-441a-a8c8-5b25cb7b84ca">
+  <button class="colab-df-quickchart" onclick="quickchart('df-e1f49ce2-61b5-441a-a8c8-5b25cb7b84ca')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-e1f49ce2-61b5-441a-a8c8-5b25cb7b84ca button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+  <div id="id_ef94f1d1-bb64-4f52-a732-c302206d4fad">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('data')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_ef94f1d1-bb64-4f52-a732-c302206d4fad button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('data');
+      }
+      })();
+    </script>
+  </div>
+
     </div>
   </div>
-  </div></div>
+</div></div>
 </div>
 <ul class="simple">
 <li><p>Membersihkan teks menggunakan clean_text.</p></li>
@@ -1221,7 +961,37 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;menteri energi sumber daya mineral esdm bahlil lahadalia selesai menjalani sidang terbuka promosi doktor digelar kajian stratejik global universitas indonesia depok oktober &#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;reporter melynda dwi puspita editor rr &#39;,
+ &#39;ariyani yakti widyastuti rabu oktober : wib bagikan tempoco jakarta pajak pertambahan nilai ppn direncanakan meningkat persen rabu januari &#39;,
+ &#39;kenaikan tarif tertuang undangundang nomor harmonisasi peraturan perpajakan uu hpp &#39;,
+ &#39;tarif ppn berlaku april persen &#39;,
+ &#39;lantas barang terdampak kenaikan ppn dikecualikan baca : penerimaan pajak kantor wilayah djp jawa ii september rp triliun berdasarkan pasal a uu hpp jenis barang dikenai ppn barang kelompok barang : makanan minuman disajikan hotel restoran rumah makan warung sejenisnya meliputi makanan minuman dikonsumsi makanan minuman diserahkan usaha jasa boga katering objek pajak daerah retribusi daerah sesuai ketentuan peraturan perundangundangan bidang pajak daerah retribusi daerah &#39;,
+ &#39;baca : prabowo dikabarkan memecah kemenkop ukm ekonom : didominasi alasan politik uang emas batangan kepentingan cadangan devisa negara surat berharga &#39;,
+ &#39;jenis jasa dikenai ppn jasa kelompok jasa meliputi : jasa keagamaan &#39;,
+ &#39;jasa kesenian hiburan meliputi jenis jasa pekerja seni hiburan objek pajak daerah retribusi daerah sesuai ketentuan peraturan perundangundangan bidang pajak daerah retribusi daerah &#39;,
+ &#39;jasa perhotelan meliputi jasa penyewaan kamar danatau jasa penyewaan ruangan hotel objek pajak daerah retribusi daerah sesuai ketentuan peraturan perundangundangan bidang pajak daerah retribusi daerah &#39;,
+ &#39;jasa disediakan pemerintah rangka menyelenggarakan pemerintahan meliputi jenis jasa sehubungan aktivitas pelayanan pemerintah sesuai kewenangannya berdasarkan peraturan perundangundangan jasa disediakan bentuk usaha &#39;,
+ &#39;jasa penyediaan parkir meliputi jasa penyediaan penyelenggaraan parkir pemilik pengusaha pengelola parkir objek pajak daerah retribusi daerah sesuai ketentuan peraturan perundangundangan bidang pajak daerah retribusi daerah &#39;,
+ &#39;jasa boga katering meliputi aktivitas pelayanan penyediaan makanan minuman objek pajak daerah retribusi daerah sesuai ketentuan peraturan perundangundangan bidang pajak daerah retribusi daerah &#39;,
+ &#39;jenis barang jasa dibebaskan pengenaan ppn rangka pembangunan nasional : barang kebutuhan pokok dibutuhkan rakyat &#39;,
+ &#39;jasa pelayanan kesehatan medis sistem program jaminan kesehatan nasional jkn &#39;,
+ &#39;jasa pelayanan sosial &#39;,
+ &#39;jasa keuangan &#39;,
+ &#39;jasa asuransi &#39;,
+ &#39;jasa pendidikan &#39;,
+ &#39;jasa angkutan darat air jasa angkutan udara negeri terpisahkan jasa angkutan negeri &#39;,
+ &#39;jasa tenaga kerja &#39;,
+ &#39;mengacu undangundang nomor perubahan ketiga undangundang nomor pajak pertambahan nilai barang jasa pajak penjualan barang mewah ppn dikenakan : penyerahan barang kena pajak bkp daerah pabean pengusaha &#39;,
+ &#39;impor bkp &#39;,
+ &#39;penyerahan jasa kena pajak jkp daerah pabean pengusaha &#39;,
+ &#39;pemanfaatan bkp berwujud daerah pabean daerah pabean &#39;,
+ &#39;pemanfaatan jkp daerah pabean daerah pabean &#39;,
+ &#39;ekspor bkp berwujud pengusaha kena pajak &#39;,
+ &#39;ekspor bkp berwujud pengusaha kena pajak &#39;,
+ &#39;ekspor jkp pengusaha kena pajak &#39;,
+ &#39;contoh barang terkena ppn tas pakaian sepatu produk otomotif alat elektronik pulsa telekomunikasi perkakas produk kecantikan kosmetik &#39;,
+ &#39;jasa layanan streaming musik film target pengenaan ppn spotify netflix &#39;,
+ &#39;pilihan editor : tkn prabowo rencana ppn persen dibatalkan&#39;]
 </pre></div>
 </div>
 </div>
@@ -1233,28 +1003,195 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;doktor&#39;,
- &#39;mineral&#39;,
- &#39;sumber&#39;,
- &#39;universitas&#39;,
- &#39;menteri&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;rp&#39;,
+ &#39;pemerintahan&#39;,
+ &#39;ketiga&#39;,
+ &#39;sepatu&#39;,
+ &#39;tertuang&#39;,
+ &#39;kesenian&#39;,
+ &#39;jkp&#39;,
+ &#39;restoran&#39;,
+ &#39;tkn&#39;,
+ &#39;wilayah&#39;,
+ &#39;dibebaskan&#39;,
+ &#39;september&#39;,
+ &#39;ppn&#39;,
+ &#39;pemerintah&#39;,
+ &#39;danatau&#39;,
+ &#39;pasal&#39;,
+ &#39;mengacu&#39;,
+ &#39;darat&#39;,
+ &#39;daerah&#39;,
+ &#39;didominasi&#39;,
+ &#39;kena&#39;,
+ &#39;jasa&#39;,
+ &#39;keuangan&#39;,
+ &#39;kosmetik&#39;,
+ &#39;ekonom&#39;,
+ &#39;perhotelan&#39;,
+ &#39;kenaikan&#39;,
+ &#39;ketentuan&#39;,
+ &#39;angkutan&#39;,
+ &#39;tas&#39;,
+ &#39;ekspor&#39;,
+ &#39;air&#39;,
+ &#39;perkakas&#39;,
+ &#39;film&#39;,
+ &#39;spotify&#39;,
+ &#39;pendidikan&#39;,
+ &#39;jawa&#39;,
+ &#39;mewah&#39;,
+ &#39;kantor&#39;,
+ &#39;harmonisasi&#39;,
+ &#39;seni&#39;,
+ &#39;tarif&#39;,
+ &#39;pajak&#39;,
+ &#39;nomor&#39;,
+ &#39;uu&#39;,
+ &#39;jenis&#39;,
+ &#39;januari&#39;,
+ &#39;makan&#39;,
+ &#39;prabowo&#39;,
+ &#39;sehubungan&#39;,
+ &#39;netflix&#39;,
+ &#39;negeri&#39;,
+ &#39;rr&#39;,
+ &#39;disediakan&#39;,
+ &#39;penerimaan&#39;,
+ &#39;bkp&#39;,
+ &#39;streaming&#39;,
+ &#39;tempo.co&#39;,
+ &#39;program&#39;,
+ &#39;bentuk&#39;,
+ &#39;musik&#39;,
+ &#39;rumah&#39;,
+ &#39;penjualan&#39;,
+ &#39;telekomunikasi&#39;,
+ &#39;pengenaan&#39;,
+ &#39;penyediaan&#39;,
+ &#39;sesuai&#39;,
+ &#39;editor&#39;,
+ &#39;dibutuhkan&#39;,
+ &#39;terkena&#39;,
+ &#39;otomotif&#39;,
+ &#39;sistem&#39;,
+ &#39;surat&#39;,
+ &#39;berharga&#39;,
+ &#39;boga&#39;,
+ &#39;hpp&#39;,
+ &#39;dikabarkan&#39;,
+ &#39;pemanfaatan&#39;,
+ &#39;djp&#39;,
+ &#39;pembangunan&#39;,
+ &#39;perundangundangan&#39;,
+ &#39;impor&#39;,
+ &#39;rabu&#39;,
+ &#39;makanan&#39;,
+ &#39;medis&#39;,
+ &#39;dibatalkan&#39;,
+ &#39;devisa&#39;,
+ &#39;barang&#39;,
+ &#39;ii&#39;,
+ &#39;bidang&#39;,
+ &#39;uang&#39;,
+ &#39;jkn&#39;,
+ &#39;terpisahkan&#39;,
+ &#39;bagikan&#39;,
+ &#39;perpajakan&#39;,
+ &#39;pertambahan&#39;,
+ &#39;warung&#39;,
+ &#39;reporter&#39;,
+ &#39;emas&#39;,
+ &#39;diserahkan&#39;,
+ &#39;pekerja&#39;,
+ &#39;wib&#39;,
+ &#39;elektronik&#39;,
+ &#39;dikenakan&#39;,
+ &#39;sosial&#39;,
+ &#39;dikenai&#39;,
+ &#39;kesehatan&#39;,
+ &#39;undangundang&#39;,
+ &#39;negara&#39;,
+ &#39;baca&#39;,
+ &#39;minuman&#39;,
+ &#39;katering&#39;,
+ &#39;ruangan&#39;,
+ &#39;melynda&#39;,
+ &#39;pengusaha&#39;,
+ &#39;rangka&#39;,
+ &#39;pelayanan&#39;,
+ &#39;lantas&#39;,
+ &#39;pabean&#39;,
+ &#39;pilihan&#39;,
+ &#39;batangan&#39;,
+ &#39;kebutuhan&#39;,
+ &#39;udara&#39;,
+ &#39;disajikan&#39;,
+ &#39;pengelola&#39;,
+ &#39;rencana&#39;,
+ &#39;target&#39;,
+ &#39;:&#39;,
+ &#39;dikecualikan&#39;,
+ &#39;menyelenggarakan&#39;,
+ &#39;kemenkop&#39;,
+ &#39;yakti&#39;,
+ &#39;layanan&#39;,
+ &#39;direncanakan&#39;,
+ &#39;berdasarkan&#39;,
+ &#39;jakarta&#39;,
+ &#39;meningkat&#39;,
+ &#39;politik&#39;,
+ &#39;hotel&#39;,
+ &#39;memecah&#39;,
+ &#39;produk&#39;,
+ &#39;alat&#39;,
+ &#39;triliun&#39;,
+ &#39;a&#39;,
+ &#39;cadangan&#39;,
+ &#39;asuransi&#39;,
+ &#39;peraturan&#39;,
+ &#39;kepentingan&#39;,
+ &#39;penyewaan&#39;,
+ &#39;penyelenggaraan&#39;,
+ &#39;dikonsumsi&#39;,
+ &#39;ariyani&#39;,
+ &#39;persen&#39;,
+ &#39;nasional&#39;,
+ &#39;april&#39;,
+ &#39;kecantikan&#39;,
+ &#39;nilai&#39;,
+ &#39;berlaku&#39;,
+ &#39;keagamaan&#39;,
+ &#39;sejenisnya&#39;,
+ &#39;rakyat&#39;,
+ &#39;objek&#39;,
+ &#39;kewenangannya&#39;,
  &#39;oktober&#39;,
- &#39;depok&#39;,
- &#39;esdm&#39;,
- &#39;bahlil&#39;,
- &#39;sidang&#39;,
- &#39;lahadalia&#39;,
- &#39;menjalani&#39;,
- &#39;stratejik&#39;,
- &#39;selesai&#39;,
- &#39;digelar&#39;,
- &#39;global&#39;,
- &#39;terbuka&#39;,
- &#39;promosi&#39;,
- &#39;kajian&#39;,
- &#39;daya&#39;,
- &#39;indonesia&#39;,
- &#39;energi&#39;]
+ &#39;pokok&#39;,
+ &#39;puspita&#39;,
+ &#39;retribusi&#39;,
+ &#39;perubahan&#39;,
+ &#39;tenaga&#39;,
+ &#39;pulsa&#39;,
+ &#39;parkir&#39;,
+ &#39;pemilik&#39;,
+ &#39;jaminan&#39;,
+ &#39;penyerahan&#39;,
+ &#39;usaha&#39;,
+ &#39;hiburan&#39;,
+ &#39;aktivitas&#39;,
+ &#39;terdampak&#39;,
+ &#39;kelompok&#39;,
+ &#39;dwi&#39;,
+ &#39;meliputi&#39;,
+ &#39;ukm&#39;,
+ &#39;kamar&#39;,
+ &#39;berwujud&#39;,
+ &#39;contoh&#39;,
+ &#39;pakaian&#39;,
+ &#39;widyastuti&#39;,
+ &#39;kerja&#39;,
+ &#39;alasan&#39;]
 </pre></div>
 </div>
 </div>
@@ -1299,7 +1236,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-72ae2035-73c6-482f-9269-0ad7c1be7002" class="colab-df-container">
+  <div id="df-d2909f0f-821e-4ff1-a1cb-097dbbeb44c1" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1318,70 +1255,790 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>doktor</th>
-      <th>mineral</th>
-      <th>sumber</th>
-      <th>universitas</th>
-      <th>menteri</th>
-      <th>oktober</th>
-      <th>depok</th>
-      <th>esdm</th>
-      <th>bahlil</th>
-      <th>sidang</th>
+      <th>rp</th>
+      <th>pemerintahan</th>
+      <th>ketiga</th>
+      <th>sepatu</th>
+      <th>tertuang</th>
+      <th>kesenian</th>
+      <th>jkp</th>
+      <th>restoran</th>
+      <th>tkn</th>
+      <th>wilayah</th>
       <th>...</th>
-      <th>stratejik</th>
-      <th>selesai</th>
-      <th>digelar</th>
-      <th>global</th>
-      <th>terbuka</th>
-      <th>promosi</th>
-      <th>kajian</th>
-      <th>daya</th>
-      <th>indonesia</th>
-      <th>energi</th>
+      <th>dwi</th>
+      <th>meliputi</th>
+      <th>ukm</th>
+      <th>kamar</th>
+      <th>berwujud</th>
+      <th>contoh</th>
+      <th>pakaian</th>
+      <th>widyastuti</th>
+      <th>kerja</th>
+      <th>alasan</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>...</td>
       <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>1</td>
       <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
-<p>1 rows × 22 columns</p>
+<p>31 rows × 189 columns</p>
 </div>
     <div class="colab-df-buttons">
-      
+
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-72ae2035-73c6-482f-9269-0ad7c1be7002')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-d2909f0f-821e-4ff1-a1cb-097dbbeb44c1')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
-      
+
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
     <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
   </svg>
     </button>
-    
+
   <style>
     .colab-df-container {
       display:flex;
@@ -1425,12 +2082,12 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 
     <script>
       const buttonEl =
-        document.querySelector('#df-72ae2035-73c6-482f-9269-0ad7c1be7002 button.colab-df-convert');
+        document.querySelector('#df-d2909f0f-821e-4ff1-a1cb-097dbbeb44c1 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-72ae2035-73c6-482f-9269-0ad7c1be7002');
+        const element = document.querySelector('#df-d2909f0f-821e-4ff1-a1cb-097dbbeb44c1');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1448,10 +2105,193 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       }
     </script>
   </div>
-  
+
+
+<div id="df-08406279-855a-4d02-b0a3-5d90c108a729">
+  <button class="colab-df-quickchart" onclick="quickchart('df-08406279-855a-4d02-b0a3-5d90c108a729')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-08406279-855a-4d02-b0a3-5d90c108a729 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+  <div id="id_d488ed83-5436-4f89-89a5-32cef640f186">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('df_vektor_kata')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_d488ed83-5436-4f89-89a5-32cef640f186 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('df_vektor_kata');
+      }
+      })();
+    </script>
+  </div>
+
     </div>
   </div>
-  </div></div>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1461,7 +2301,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>doktor, mineral, indonesia
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jasa, daerah, pajak
 </pre></div>
 </div>
 </div>
@@ -1475,17 +2315,34 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 <h2>7. membuat matriks ko-occurrence<a class="headerlink" href="#membuat-matriks-ko-occurrence" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_cooccurrence_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-	<span class="n">vektor_kata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">kata</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">kata</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
 
-	<span class="k">for</span> <span class="n">sent</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-		<span class="n">kata_kalimat</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">sent</span><span class="p">)</span>
-		<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">kata_kalimat</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-			<span class="n">vektor_kata</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">kata_kalimat</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">kata_kalimat</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
-			<span class="n">vektor_kata</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">kata_kalimat</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">kata_kalimat</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="c1"># Fungsi untuk membuat co-occurrence matrix</span>
+<span class="k">def</span> <span class="nf">create_cooccurrence_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">kata</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>  <span class="c1"># Menggunakan set untuk menyimpan kata unik</span>
 
-	<span class="k">return</span> <span class="n">vektor_kata</span>
+    <span class="c1"># Mengumpulkan semua kata dari data</span>
+    <span class="k">for</span> <span class="n">sent</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">kata_kalimat</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">sent</span><span class="p">)</span>
+        <span class="n">kata</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kata_kalimat</span><span class="p">)</span>
 
+    <span class="c1"># Membuat DataFrame kosong untuk co-occurrence matrix</span>
+    <span class="n">kata</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">kata</span><span class="p">)</span>  <span class="c1"># Konversi set menjadi list</span>
+    <span class="n">vektor_kata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">kata</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">kata</span><span class="p">)</span>
+
+    <span class="c1"># Mengisi co-occurrence matrix</span>
+    <span class="k">for</span> <span class="n">sent</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">kata_kalimat</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">sent</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">kata_kalimat</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="c1"># Tambahkan pengecekan apakah kata ada di matrix</span>
+            <span class="k">if</span> <span class="n">kata_kalimat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="n">vektor_kata</span><span class="o">.</span><span class="n">index</span> <span class="ow">and</span> <span class="n">kata_kalimat</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">vektor_kata</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+                <span class="n">vektor_kata</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">kata_kalimat</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">kata_kalimat</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">vektor_kata</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">kata_kalimat</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">kata_kalimat</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">vektor_kata</span>
+
+<span class="c1"># Membuat co-occurrence matrix</span>
 <span class="n">cooccurrence_matrix</span> <span class="o">=</span> <span class="n">create_cooccurrence_matrix</span><span class="p">(</span><span class="n">kalimat</span><span class="p">)</span>
 <span class="n">cooccurrence_matrix</span>
 </pre></div>
@@ -1493,7 +2350,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-1a684e20-bb4e-44df-bec3-bdff6d25a95e" class="colab-df-container">
+  <div id="df-acec6631-78a1-463a-be0a-15ed216ce75b" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1512,344 +2369,32 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>doktor</th>
-      <th>mineral</th>
-      <th>sumber</th>
-      <th>universitas</th>
-      <th>menteri</th>
-      <th>oktober</th>
-      <th>depok</th>
-      <th>esdm</th>
-      <th>bahlil</th>
-      <th>sidang</th>
+      <th>rp</th>
+      <th>pemerintahan</th>
+      <th>ketiga</th>
+      <th>sepatu</th>
+      <th>tertuang</th>
+      <th>kesenian</th>
+      <th>jkp</th>
+      <th>restoran</th>
+      <th>tkn</th>
+      <th>wilayah</th>
       <th>...</th>
-      <th>stratejik</th>
-      <th>selesai</th>
-      <th>digelar</th>
-      <th>global</th>
-      <th>terbuka</th>
-      <th>promosi</th>
-      <th>kajian</th>
-      <th>daya</th>
-      <th>indonesia</th>
-      <th>energi</th>
+      <th>dwi</th>
+      <th>meliputi</th>
+      <th>ukm</th>
+      <th>kamar</th>
+      <th>berwujud</th>
+      <th>contoh</th>
+      <th>pakaian</th>
+      <th>widyastuti</th>
+      <th>kerja</th>
+      <th>alasan</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>doktor</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>mineral</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>sumber</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>universitas</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>menteri</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>oktober</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>depok</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>esdm</th>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>bahlil</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>sidang</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>lahadalia</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>menjalani</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>...</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>stratejik</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>selesai</th>
+      <th>rp</th>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1873,8 +2418,56 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
     </tr>
     <tr>
-      <th>digelar</th>
+      <th>pemerintahan</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
       <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>ketiga</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>sepatu</th>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1897,106 +2490,10 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
     </tr>
     <tr>
-      <th>global</th>
+      <th>tertuang</th>
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>terbuka</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>promosi</th>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>kajian</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>daya</th>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -2017,14 +2514,38 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
     </tr>
     <tr>
-      <th>indonesia</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>contoh</th>
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -2041,12 +2562,84 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
     </tr>
     <tr>
-      <th>energi</th>
+      <th>pakaian</th>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>widyastuti</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>kerja</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>alasan</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -2066,20 +2659,20 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
     </tr>
   </tbody>
 </table>
-<p>22 rows × 22 columns</p>
+<p>189 rows × 189 columns</p>
 </div>
     <div class="colab-df-buttons">
-      
+
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-1a684e20-bb4e-44df-bec3-bdff6d25a95e')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-acec6631-78a1-463a-be0a-15ed216ce75b')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
-      
+
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
     <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
   </svg>
     </button>
-    
+
   <style>
     .colab-df-container {
       display:flex;
@@ -2123,12 +2716,12 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 
     <script>
       const buttonEl =
-        document.querySelector('#df-1a684e20-bb4e-44df-bec3-bdff6d25a95e button.colab-df-convert');
+        document.querySelector('#df-acec6631-78a1-463a-be0a-15ed216ce75b button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-1a684e20-bb4e-44df-bec3-bdff6d25a95e');
+        const element = document.querySelector('#df-acec6631-78a1-463a-be0a-15ed216ce75b');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -2146,10 +2739,285 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       }
     </script>
   </div>
-  
+
+
+<div id="df-56155413-4140-4f88-9e49-34a5b9d60034">
+  <button class="colab-df-quickchart" onclick="quickchart('df-56155413-4140-4f88-9e49-34a5b9d60034')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-56155413-4140-4f88-9e49-34a5b9d60034 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+  <div id="id_7a8ce84c-0627-4a4a-9887-3a9031429831">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('cooccurrence_matrix')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_7a8ce84c-0627-4a4a-9887-3a9031429831 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('cooccurrence_matrix');
+      }
+      })();
+    </script>
+  </div>
+
     </div>
   </div>
-  </div></div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># def create_cooccurrence_matrix(data):</span>
+<span class="c1"># 	vektor_kata = pd.DataFrame(0, index=kata, columns=kata)</span>
+
+<span class="c1"># 	for sent in data:</span>
+<span class="c1"># 		kata_kalimat = word_tokenize(sent)</span>
+<span class="c1"># 		for i in range(len(kata_kalimat)-1):</span>
+<span class="c1"># 			vektor_kata.at[kata_kalimat[i], kata_kalimat[i+1]] += 1</span>
+<span class="c1"># 			vektor_kata.at[kata_kalimat[i+1], kata_kalimat[i]] += 1</span>
+
+<span class="c1"># 	return vektor_kata</span>
+
+<span class="c1"># cooccurrence_matrix = create_cooccurrence_matrix(kalimat)</span>
+<span class="c1"># cooccurrence_matrix</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">/usr/local/lib/python3.10/dist-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3804</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">3805</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3806</span>         <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+
+<span class="nn">index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="ne">KeyError</span>: &#39;tempoco&#39;
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-12-81a4e09bff74&gt;</span> in <span class="ni">&lt;cell line: 12&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>         <span class="k">return</span> <span class="n">vektor_kata</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> 
+<span class="ne">---&gt; </span><span class="mi">12</span> <span class="n">cooccurrence_matrix</span> <span class="o">=</span> <span class="n">create_cooccurrence_matrix</span><span class="p">(</span><span class="n">kalimat</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">cooccurrence_matrix</span>
+
+<span class="nn">&lt;ipython-input-12-81a4e09bff74&gt;</span> in <span class="ni">create_cooccurrence_matrix</span><span class="nt">(data)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>                 <span class="n">kata_kalimat</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">sent</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>                 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">kata_kalimat</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">7</span>                         <span class="n">vektor_kata</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">kata_kalimat</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">kata_kalimat</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>                         <span class="n">vektor_kata</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">kata_kalimat</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">kata_kalimat</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> 
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/pandas/core/indexing.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2573</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">2574</span> 
+<span class="ne">-&gt; </span><span class="mi">2575</span>         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2576</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2577</span>     <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/pandas/core/indexing.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2525</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2526</span>         <span class="n">key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_convert_key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2527</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">_get_value</span><span class="p">(</span><span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="n">takeable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_takeable</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2528</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2529</span>     <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/pandas/core/frame.py</span> in <span class="ni">_get_value</span><span class="nt">(self, index, col, takeable)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4212</span>             <span class="k">return</span> <span class="n">series</span><span class="o">.</span><span class="n">_values</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">4213</span> 
+<span class="ne">-&gt; </span><span class="mi">4214</span>         <span class="n">series</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_item_cache</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4215</span>         <span class="n">engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">_engine</span>
+<span class="g g-Whitespace">   </span><span class="mi">4216</span> 
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/pandas/core/frame.py</span> in <span class="ni">_get_item_cache</span><span class="nt">(self, item)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4636</span>             <span class="c1">#  pending resolution of GH#33047</span>
+<span class="g g-Whitespace">   </span><span class="mi">4637</span> 
+<span class="ne">-&gt; </span><span class="mi">4638</span>             <span class="n">loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4639</span>             <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ixs</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4640</span> 
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3810</span>             <span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">3811</span>                 <span class="k">raise</span> <span class="n">InvalidIndexError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3812</span>             <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+<span class="g g-Whitespace">   </span><span class="mi">3813</span>         <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3814</span>             <span class="c1"># If we have a listlike key, _check_indexing_error will raise</span>
+
+<span class="ne">KeyError</span>: &#39;tempoco&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">vektor_kata</span> <span class="pre">=</span> <span class="pre">pd.DataFrame(0,</span> <span class="pre">index=kata,</span> <span class="pre">columns=kata)</span></code> membuat DataFrame berukuran matriks dengan baris dan kolom yang berisi kata-kata unik dari daftar <code class="docutils literal notranslate"><span class="pre">kata</span></code>, diisi dengan nilai 0.</p></li>
@@ -2193,7 +3061,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3be3ea84c8c0ffbdc34a8b8ac3772af224676fae60387e5259721b254fe696d7.png" src="_images/3be3ea84c8c0ffbdc34a8b8ac3772af224676fae60387e5259721b254fe696d7.png" />
+<img alt="_images/daed4d4ed78578df4d187119f53fcfb0b3f3f49fd9ff62e7df768130ec5904b4.png" src="_images/daed4d4ed78578df4d187119f53fcfb0b3f3f49fd9ff62e7df768130ec5904b4.png" />
 </div>
 </div>
 </section>
@@ -2212,28 +3080,195 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Page Rank :
-Node 2: 0.0527
-Node 3: 0.0527
-Node 19: 0.0527
-Node 20: 0.0527
-Node 1: 0.0496
-Node 7: 0.0496
-Node 12: 0.0496
-Node 15: 0.0496
-Node 8: 0.0479
-Node 10: 0.0479
-Node 14: 0.0479
-Node 18: 0.0479
-Node 0: 0.0471
-Node 11: 0.0471
-Node 13: 0.0471
-Node 17: 0.0471
-Node 9: 0.0468
-Node 16: 0.0468
-Node 4: 0.0292
-Node 5: 0.0292
-Node 6: 0.0292
-Node 21: 0.0292
+Node 127: 0.0213
+Node 12: 0.0181
+Node 87: 0.0177
+Node 180: 0.0164
+Node 22: 0.0163
+Node 173: 0.0146
+Node 21: 0.0145
+Node 105: 0.0142
+Node 46: 0.0139
+Node 65: 0.0119
+Node 26: 0.0107
+Node 178: 0.0106
+Node 116: 0.0102
+Node 161: 0.0102
+Node 103: 0.0099
+Node 55: 0.0094
+Node 29: 0.0094
+Node 83: 0.0089
+Node 148: 0.0089
+Node 5: 0.0089
+Node 38: 0.0088
+Node 69: 0.0088
+Node 132: 0.0087
+Node 54: 0.0087
+Node 10: 0.0086
+Node 62: 0.0086
+Node 92: 0.0085
+Node 23: 0.0084
+Node 36: 0.0084
+Node 145: 0.0084
+Node 158: 0.0084
+Node 74: 0.0084
+Node 100: 0.0084
+Node 156: 0.0083
+Node 174: 0.0082
+Node 14: 0.0080
+Node 32: 0.0080
+Node 50: 0.0080
+Node 168: 0.0080
+Node 6: 0.0075
+Node 140: 0.0072
+Node 153: 0.0069
+Node 64: 0.0069
+Node 19: 0.0068
+Node 163: 0.0068
+Node 43: 0.0067
+Node 152: 0.0067
+Node 42: 0.0067
+Node 49: 0.0066
+Node 125: 0.0065
+Node 20: 0.0064
+Node 56: 0.0064
+Node 67: 0.0064
+Node 30: 0.0064
+Node 8: 0.0063
+Node 13: 0.0063
+Node 115: 0.0063
+Node 27: 0.0062
+Node 101: 0.0061
+Node 44: 0.0061
+Node 183: 0.0059
+Node 25: 0.0059
+Node 121: 0.0059
+Node 70: 0.0059
+Node 33: 0.0059
+Node 108: 0.0058
+Node 170: 0.0058
+Node 128: 0.0057
+Node 89: 0.0056
+Node 39: 0.0056
+Node 106: 0.0056
+Node 86: 0.0056
+Node 109: 0.0055
+Node 80: 0.0055
+Node 175: 0.0054
+Node 133: 0.0054
+Node 157: 0.0054
+Node 35: 0.0054
+Node 144: 0.0053
+Node 177: 0.0053
+Node 135: 0.0052
+Node 95: 0.0052
+Node 37: 0.0051
+Node 134: 0.0050
+Node 176: 0.0050
+Node 184: 0.0050
+Node 117: 0.0050
+Node 147: 0.0049
+Node 40: 0.0048
+Node 3: 0.0048
+Node 28: 0.0048
+Node 120: 0.0047
+Node 159: 0.0047
+Node 82: 0.0046
+Node 162: 0.0045
+Node 94: 0.0044
+Node 142: 0.0044
+Node 155: 0.0043
+Node 118: 0.0043
+Node 1: 0.0043
+Node 11: 0.0042
+Node 111: 0.0042
+Node 98: 0.0041
+Node 165: 0.0041
+Node 90: 0.0040
+Node 66: 0.0039
+Node 63: 0.0039
+Node 141: 0.0039
+Node 124: 0.0039
+Node 171: 0.0039
+Node 15: 0.0037
+Node 102: 0.0037
+Node 169: 0.0037
+Node 138: 0.0037
+Node 150: 0.0037
+Node 149: 0.0036
+Node 77: 0.0035
+Node 123: 0.0035
+Node 79: 0.0034
+Node 186: 0.0033
+Node 112: 0.0033
+Node 73: 0.0033
+Node 166: 0.0032
+Node 4: 0.0032
+Node 72: 0.0032
+Node 114: 0.0031
+Node 75: 0.0030
+Node 85: 0.0030
+Node 136: 0.0030
+Node 154: 0.0030
+Node 110: 0.0030
+Node 88: 0.0030
+Node 7: 0.0030
+Node 9: 0.0030
+Node 99: 0.0029
+Node 137: 0.0029
+Node 179: 0.0029
+Node 188: 0.0028
+Node 34: 0.0028
+Node 0: 0.0028
+Node 53: 0.0028
+Node 119: 0.0028
+Node 84: 0.0027
+Node 172: 0.0027
+Node 107: 0.0027
+Node 122: 0.0027
+Node 164: 0.0027
+Node 104: 0.0027
+Node 143: 0.0026
+Node 185: 0.0026
+Node 31: 0.0026
+Node 81: 0.0026
+Node 78: 0.0025
+Node 52: 0.0024
+Node 2: 0.0024
+Node 16: 0.0024
+Node 76: 0.0024
+Node 24: 0.0023
+Node 129: 0.0023
+Node 167: 0.0023
+Node 47: 0.0022
+Node 17: 0.0021
+Node 45: 0.0021
+Node 61: 0.0021
+Node 60: 0.0021
+Node 91: 0.0021
+Node 126: 0.0020
+Node 97: 0.0020
+Node 57: 0.0020
+Node 160: 0.0019
+Node 139: 0.0019
+Node 96: 0.0019
+Node 181: 0.0019
+Node 58: 0.0019
+Node 71: 0.0019
+Node 48: 0.0018
+Node 182: 0.0017
+Node 113: 0.0017
+Node 41: 0.0017
+Node 130: 0.0016
+Node 146: 0.0016
+Node 59: 0.0016
+Node 151: 0.0015
+Node 93: 0.0015
+Node 131: 0.0014
+Node 18: 0.0011
+Node 187: 0.0011
+Node 68: 0.0011
+Node 51: 0.0011
 </pre></div>
 </div>
 </div>
@@ -2255,12 +3290,12 @@ Node 21: 0.0292
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tiga Node Tertinggi Page Rank :
-Node 2: Page Rank = 0.0527
-Kalimat: sumber
-Node 3: Page Rank = 0.0527
-Kalimat: universitas
-Node 19: Page Rank = 0.0527
-Kalimat: daya
+Node 127: Page Rank = 0.0213
+Kalimat: :
+Node 12: Page Rank = 0.0181
+Kalimat: ppn
+Node 87: Page Rank = 0.0177
+Kalimat: barang
 </pre></div>
 </div>
 </div>
@@ -2307,6 +3342,15 @@ Kalimat: daya
         <p class="prev-next-title">Tugas 5 : meringkas satu berita</p>
       </div>
     </a>
+    <a class="right-next"
+       href="tugas6.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tugas 6 : Query dengan kalimat</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -2314,7 +3358,8 @@ Kalimat: daya
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -2381,8 +3426,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>

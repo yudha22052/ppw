@@ -1,0 +1,272 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/usr/local/lib/python3.10/dist-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# -*- coding: utf-8 -*-
+import pandas as pd
+import re
+import requests
+from tqdm import tqdm
+import time
+
+import nltk
+nltk.download('stopwords')
+nltk.download('wordnet')
+nltk.download('punkt')
+from nltk.corpus import stopwords
+from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
+
+# Fungsi untuk mengambil konten halaman dengan BeautifulSoup
+from bs4 import BeautifulSoup
+
+def get_page_content(url):
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
+    try:
+        response = requests.get(url, headers=headers, timeout=10)
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.content, 'html.parser')
+            return soup
+        else:
+            print(f"Failed to retrieve page content from {url}")
+            return None
+    except requests.exceptions.Timeout:
+        print(f"Request to {url} timed out.")
+        return None
+    except Exception as e:
+        print(f"Error during requests to {url} : {e}")
+        return None
+
+def extract_article_content(soup):
+    try:
+        title = soup.find('h1').get_text().strip() if soup.find('h1') else ""
+        date = soup.find('p', class_="pt-20 date").get_text().strip() if soup.find('p', class_="pt-20 date") else ""
+        content_elements = soup.find_all('p')
+        content = " ".join(p.get_text().strip() for p in content_elements)
+        kategori = soup.find('p', class_="breadcrumb-content").get_text().strip() if soup.find('p', class_="breadcrumb-content") else ""
+        return {
+            "Title": title,
+            "Date": date,
+            "Content": content,
+            "Category": kategori
+        }
+    except Exception as e:
+        print(f"Error extracting article content: {e}")
+        return None
+
+def extract_category_data(soup):
+    articles = soup.find_all('div', class_='text')
+    article_urls = [article.find('a')['href'] for article in articles if article.find('a')]
+    return article_urls
+
+def scrape_category_page(main_url, max_articles=4):
+    all_article_data = []
+    page_num = 1  # Mulai dari halaman pertama
+
+    while len(all_article_data) < max_articles:
+        current_url = f"{main_url}/?page={page_num}"
+        soup = get_page_content(current_url)
+
+        if not soup:
+            print(f"No content found on page {page_num}. Stopping.")
+            break
+
+        article_urls = extract_category_data(soup)
+
+        if not article_urls:
+            print(f"No more articles found on page {page_num}. Stopping.")
+            break
+
+        for url in article_urls:
+            if len(all_article_data) >= max_articles:
+                break
+
+            article_soup = get_page_content(url)
+            if article_soup:
+                article_data = extract_article_content(article_soup)
+                if article_data:
+                    all_article_data.append(article_data)
+
+        page_num += 1
+        time.sleep(2)  # Waktu tunggu tambahan untuk memastikan halaman dimuat
+
+    return all_article_data
+
+
+kategori_list = [
+    {"url": "https://www.tempo.co/kanal/ekonomi"},
+    {"url": "https://www.tempo.co/kanal/olahraga"},
+    {"url": "https://www.tempo.co/kanal/dunia"},
+    {"url": "https://www.tempo.co/kanal/nasional"},
+    {"url": "https://www.tempo.co/kanal/metro"}
+]
+
+all_data = []
+
+for category in kategori_list:
+    print(f"Scraping {category['url']} ...")
+    category_data = scrape_category_page(category["url"], max_articles=4)
+    all_data.extend(category_data)
+
+df = pd.DataFrame(all_data)
+
+# Menangani situasi di mana tidak ada artikel yang diambil
+if df.empty:
+    print("No articles were scraped. Please check the URLs and try again.")
+else:
+    print(df)
+
+    df_acak = df.sample(frac=1).reset_index(drop=True)
+
+    # Proses Text Preprocessing
+    def clean_lower(text):
+        if isinstance(text, str):
+            return text.lower()
+        return text
+
+    df_acak['lower case'] = df_acak['Content'].apply(clean_lower)
+
+    # Lanjutkan dengan kode preprocessing dan model Anda
+    ...
+
+
+casefolding = pd.DataFrame(df_acak['lower case'])
+
+def clean_punct(text):
+    if isinstance(text, str):
+        clean_patterns = re.compile(r'[0-9]|[/(){}\[\]\|@,;_]|[^a-z ]')
+        text = clean_patterns.sub(' ', text)
+        text = re.sub(r'\s+', ' ', text).strip()
+        return text
+    return text
+
+df_acak['tanda baca'] = df_acak['lower case'].apply(clean_punct)
+
+def _normalize_whitespace(text):
+    if isinstance(text, str):
+        corrected = re.sub(r'\s+', ' ', text)
+        return corrected.strip()
+    return text
+
+df_acak['spasi'] = df_acak['tanda baca'].apply(_normalize_whitespace)
+
+def clean_stopwords(text):
+    if isinstance(text, str):
+        stopword = set(stopwords.words('indonesian'))
+        text = ' '.join(word for word in text.split() if word not in stopword)
+        return text.strip()
+    return text
+
+df_acak['stopwords'] = df_acak['spasi'].apply(clean_stopwords)
+
+def sastrawistemmer(text):
+    factory = StemmerFactory()
+    st = factory.create_stemmer()
+    text = ' '.join(st.stem(word) for word in tqdm(text.split()) if word in text)
+    return text
+
+df_acak['stemming'] = df_acak['stopwords'].apply(sastrawistemmer)
+
+count_vectorizer = CountVectorizer()
+
+if 'stemming' in df_acak.columns:
+    corpus = df_acak['stemming'].tolist()
+else:
+    raise KeyError("Kolom 'stemming' tidak ada di DataFrame")
+
+x_count = count_vectorizer.fit_transform(corpus)
+feature_names = count_vectorizer.get_feature_names_out()
+x_count_df = pd.DataFrame(x_count.toarray(), columns=feature_names)
+
+print(x_count_df)
+
+# Load the saved model from file
+filename = 'tfidf_vectorizer.sav'
+tfidf_vectorizer = pickle.load(open(filename, 'rb'))
+
+corpus = df_acak['stemming'].tolist()
+x_tfidf = tfidf_vectorizer.transform(corpus)
+feature_names = tfidf_vectorizer.get_feature_names_out()
+tfidf_df = pd.DataFrame(x_tfidf.toarray(), columns=feature_names)
+cat_df = df_acak["Category"]
+tfidf_df['Category'] = cat_df.values
+tfidf_df = tfidf_df[['Category'] + [col for col in tfidf_df.columns if col != 'Category']]
+
+print(tfidf_df)
+
+# menggunakan label_encoder untuk merubah kata menjadi angka
+label_encoder = preprocessing.LabelEncoder()
+tfidf_df['Category'] = label_encoder.fit_transform(tfidf_df['Category'])
+
+print(tfidf_df)
+
+# Load the saved model from file
+filename = 'lr_model.sav'
+lr_model = pickle.load(open(filename, 'rb'))
+
+y_test = tfidf_df['Category']
+x_test = tfidf_df.drop(['Category'], axis=1)
+y_pred = lr_model.predict(x_test)
+
+print(y_pred)
+
+# melihat nilai actual dan predicted
+a = pd.DataFrame({'Actual value': y_test, 'Predicted value':y_pred})
+print(a)
+
+------------------
+
+----- stderr -----
+[nltk_data] Downloading package stopwords to /root/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package wordnet to /root/nltk_data...
+[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+----- stdout -----
+Scraping https://www.tempo.co/kanal/ekonomi ...
+----- stdout -----
+Failed to retrieve page content from https://www.tempo.co/kanal/ekonomi/?page=1
+No content found on page 1. Stopping.
+Scraping https://www.tempo.co/kanal/olahraga ...
+----- stdout -----
+Failed to retrieve page content from https://www.tempo.co/kanal/olahraga/?page=1
+No content found on page 1. Stopping.
+Scraping https://www.tempo.co/kanal/dunia ...
+----- stdout -----
+Failed to retrieve page content from https://www.tempo.co/kanal/dunia/?page=1
+No content found on page 1. Stopping.
+Scraping https://www.tempo.co/kanal/nasional ...
+----- stdout -----
+Failed to retrieve page content from https://www.tempo.co/kanal/nasional/?page=1
+No content found on page 1. Stopping.
+Scraping https://www.tempo.co/kanal/metro ...
+----- stdout -----
+Failed to retrieve page content from https://www.tempo.co/kanal/metro/?page=1
+No content found on page 1. Stopping.
+No articles were scraped. Please check the URLs and try again.
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-3-1bd42577e6a6>[0m in [0;36m<cell line: 129>[0;34m()[0m
+[1;32m    127[0m [0;34m[0m[0m
+[1;32m    128[0m [0;34m[0m[0m
+[0;32m--> 129[0;31m [0mcasefolding[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mDataFrame[0m[0;34m([0m[0mdf_acak[0m[0;34m[[0m[0;34m'lower case'[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    130[0m [0;34m[0m[0m
+[1;32m    131[0m [0;32mdef[0m [0mclean_punct[0m[0;34m([0m[0mtext[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'df_acak' is not defined
+
