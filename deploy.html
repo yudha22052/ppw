@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; My sample book</title>
+    <title>Tugas Deploy Aplikasi &#8212; My sample book</title>
   
   
   
@@ -60,9 +60,10 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'tugas 2 coba';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'deploy';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Tuas 8 : Fuzzy c-means" href="fuzzy%20c-means.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -113,8 +114,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -168,7 +167,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="tugas1shot.html">Tugas 1 : Crawling Web Berita tempo.co</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tugas2prepocessing.html">Tugas 02 : Membuat VSM dengan Bobot TFID</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tugas3shoot.html">Tugas 3 : Implementasi Algoritma Logistic Regression</a></li>
@@ -177,7 +176,7 @@
 <li class="toctree-l1"><a class="reference internal" href="keyword.html">Tuagas 6 ( UTS ) : Keyword extraction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tugas6new.html">tahap evaluasi model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fuzzy%20c-means.html">Tuas 8 : Fuzzy c-means</a></li>
-<li class="toctree-l1"><a class="reference internal" href="deploy.html">Tugas Deploy Aplikasi</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tugas Deploy Aplikasi</a></li>
 </ul>
 
     </div>
@@ -237,7 +236,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/tugas 2 coba.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/deploy.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -285,7 +284,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ftugas 2 coba.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdeploy.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -315,7 +314,7 @@
       
       
       
-      <li><a href="_sources/tugas 2 coba.ipynb" target="_blank"
+      <li><a href="_sources/deploy.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -391,7 +390,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Tugas Deploy Aplikasi</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -400,9 +399,12 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplikasi-klasifikasi-berita">Aplikasi Klasifikasi Berita</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-sentimen-berita-dengan-jaringan-graf">Visualisasi Sentimen Berita dengan Jaringan Graf</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplikasi-klasifikasi-berita-svd">Aplikasi Klasifikasi Berita (SVD)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplikasi-klasifikasi-berita-svd-fcm">Aplikasi Klasifikasi Berita (SVD &amp; FCM)</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -413,51 +415,32 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>sastrawi
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: sastrawi in /usr/local/lib/python3.10/dist-packages (1.0.1)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Library untuk data manipulation</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
-<span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">string</span>
-
-<span class="c1"># Library untuk text preprocessing</span>
-<span class="kn">import</span> <span class="nn">nltk</span>
-<span class="kn">from</span> <span class="nn">Sastrawi.Stemmer.StemmerFactory</span> <span class="kn">import</span> <span class="n">StemmerFactory</span>
-<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
-<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
-<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
-<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt_tab&#39;</span><span class="p">)</span>
-
-<span class="c1"># Library untuk text vectorization/TF-IDF</span>
-<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
-
-<span class="c1"># Library untuk save model</span>
-<span class="kn">import</span> <span class="nn">pickle</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /root/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package punkt_tab to /root/nltk_data...
-[nltk_data]   Unzipping tokenizers/punkt_tab.zip.
-</pre></div>
-</div>
-</div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="tugas-deploy-aplikasi">
+<h1>Tugas Deploy Aplikasi<a class="headerlink" href="#tugas-deploy-aplikasi" title="Link to this heading">#</a></h1>
+<p>NAMA : Yudha Nuur Cahyo</p>
+<p>NIM : 220411100052</p>
+<p>MATA KULIAH : Pencarian dan Penambangan Web - A</p>
+<section id="aplikasi-klasifikasi-berita">
+<h2>Aplikasi Klasifikasi Berita<a class="headerlink" href="#aplikasi-klasifikasi-berita" title="Link to this heading">#</a></h2>
+<p>Aplikasi ini memungkinkan pengguna untuk mengklasifikasikan teks berita ke dalam kategori “Nasional” atau “Bisnis” menggunakan model klasifikasi berbasis regresi logistik.</p>
+<p><a class="reference external" href="https://huggingface.co/spaces/yudhanuurcahyo/test-py">https://huggingface.co/spaces/yudhanuurcahyo/test-py</a></p>
+</section>
+<section id="visualisasi-sentimen-berita-dengan-jaringan-graf">
+<h2>Visualisasi Sentimen Berita dengan Jaringan Graf<a class="headerlink" href="#visualisasi-sentimen-berita-dengan-jaringan-graf" title="Link to this heading">#</a></h2>
+<p>Aplikasi ini memungkinkan pengguna untuk memproses teks berita dan menganalisis sentimen dari setiap kalimat menggunakan model klasifikasi sentimen berbasis regresi logistik.</p>
+<p><a class="reference external" href="https://huggingface.co/spaces/yudhanuurcahyo/graph-app">https://huggingface.co/spaces/yudhanuurcahyo/graph-app</a></p>
+</section>
+<section id="aplikasi-klasifikasi-berita-svd">
+<h2>Aplikasi Klasifikasi Berita (SVD)<a class="headerlink" href="#aplikasi-klasifikasi-berita-svd" title="Link to this heading">#</a></h2>
+<p>Aplikasi ini mengklasifikasikan berita ke dalam kategori Bisnis dan Nasional menggunakan Logistic Regression dan Reduksi Dimensi dengan Singular Value Decomposition (SVD).</p>
+<p><a class="reference external" href="https://huggingface.co/spaces/yudhanuurcahyo/Klasifikasi-Berita">https://huggingface.co/spaces/yudhanuurcahyo/Klasifikasi-Berita</a></p>
+</section>
+<section id="aplikasi-klasifikasi-berita-svd-fcm">
+<h2>Aplikasi Klasifikasi Berita (SVD &amp; FCM)<a class="headerlink" href="#aplikasi-klasifikasi-berita-svd-fcm" title="Link to this heading">#</a></h2>
+<p>Aplikasi ini mengklasifikasikan berita ke dalam kategori Otomotif dan Keuangan menggunakan pipeline SVD dan FCM.</p>
+<p><a class="reference external" href="https://huggingface.co/spaces/yudhanuurcahyo/fuzzy_cmeans">https://huggingface.co/spaces/yudhanuurcahyo/fuzzy_cmeans</a></p>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -489,6 +472,15 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="fuzzy%20c-means.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tuas 8 : Fuzzy c-means</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -505,9 +497,12 @@
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplikasi-klasifikasi-berita">Aplikasi Klasifikasi Berita</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-sentimen-berita-dengan-jaringan-graf">Visualisasi Sentimen Berita dengan Jaringan Graf</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplikasi-klasifikasi-berita-svd">Aplikasi Klasifikasi Berita (SVD)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplikasi-klasifikasi-berita-svd-fcm">Aplikasi Klasifikasi Berita (SVD &amp; FCM)</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

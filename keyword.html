@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Tuagas uts : Keyword extraction &#8212; My sample book</title>
+    <title>Tuagas 6 ( UTS ) : Keyword extraction &#8212; My sample book</title>
   
   
   
@@ -16,8 +16,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'keyword';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Tugas 6 : Query dengan kalimat" href="tugas6.html" />
+    <link rel="next" title="tahap evaluasi model" href="tugas6new.html" />
     <link rel="prev" title="Tugas 5 : meringkas satu berita" href="tugas_5.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -174,8 +174,10 @@
 <li class="toctree-l1"><a class="reference internal" href="Tugas3shoot.html">Tugas 3 : Implementasi Algoritma Logistic Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Ringkasan_Berita.html">Tugas 4 : meringkas tugas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tugas_5.html">Tugas 5 : meringkas satu berita</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tuagas uts : Keyword extraction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tugas6.html">Tugas 6 : Query dengan kalimat</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tuagas 6 ( UTS ) : Keyword extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tugas6new.html">tahap evaluasi model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fuzzy%20c-means.html">Tuas 8 : Fuzzy c-means</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy.html">Tugas Deploy Aplikasi</a></li>
 </ul>
 
     </div>
@@ -184,9 +186,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -217,6 +224,37 @@
         <div class="header-article-item">
 
 <div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/keyword.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
 
 
 
@@ -353,7 +391,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Tuagas uts : Keyword extraction</h1>
+    <h1>Tuagas 6 ( UTS ) : Keyword extraction</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -384,8 +422,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="tuagas-uts-keyword-extraction">
-<h1>Tuagas uts : Keyword extraction<a class="headerlink" href="#tuagas-uts-keyword-extraction" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="tuagas-6-uts-keyword-extraction">
+<h1>Tuagas 6 ( UTS ) : Keyword extraction<a class="headerlink" href="#tuagas-6-uts-keyword-extraction" title="Link to this heading">#</a></h1>
 <p>Keyword extraction adalah proses otomatis untuk mengidentifikasi dan mengekstrak kata-kata atau frasa yang paling penting atau relevan dari suatu dokumen teks.</p>
 <ul class="simple">
 <li><p><strong>Tujuan utama dari keyword extraction</strong> adalah untuk menemukan istilah kunci yang mewakili inti dari suatu teks tanpa harus membaca seluruh dokumen. Ini sangat berguna untuk berbagai tugas seperti pengindeksan, pencarian informasi, dan analisis teks.</p></li>
@@ -413,9 +451,11 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /root/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package punkt to /root/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
+[nltk_data]   Unzipping corpora/stopwords.zip.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Unzipping tokenizers/punkt.zip.
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
@@ -509,7 +549,9 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_text</span><span class="p">(</span><span class="n">content</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt_tab&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">preprocess_text</span><span class="p">(</span><span class="n">content</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">text</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tqdm</span><span class="p">(</span><span class="n">content</span><span class="p">)):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
@@ -532,11 +574,13 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 150/150 [00:02&lt;00:00, 66.60it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt_tab to /root/nltk_data...
+[nltk_data]   Unzipping tokenizers/punkt_tab.zip.
+100%|██████████| 150/150 [00:00&lt;00:00, 177.74it/s]
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-80addafa-b961-463b-ae5a-1c096c8fa785" class="colab-df-container">
+  <div id="df-9432518a-0f2d-4327-9adf-3a24f0388ce7" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -658,7 +702,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-80addafa-b961-463b-ae5a-1c096c8fa785')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-9432518a-0f2d-4327-9adf-3a24f0388ce7')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -710,12 +754,12 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 
     <script>
       const buttonEl =
-        document.querySelector('#df-80addafa-b961-463b-ae5a-1c096c8fa785 button.colab-df-convert');
+        document.querySelector('#df-9432518a-0f2d-4327-9adf-3a24f0388ce7 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-80addafa-b961-463b-ae5a-1c096c8fa785');
+        const element = document.querySelector('#df-9432518a-0f2d-4327-9adf-3a24f0388ce7');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -735,8 +779,8 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
   </div>
 
 
-<div id="df-e1f49ce2-61b5-441a-a8c8-5b25cb7b84ca">
-  <button class="colab-df-quickchart" onclick="quickchart('df-e1f49ce2-61b5-441a-a8c8-5b25cb7b84ca')"
+<div id="df-50ae01c2-9c36-425c-8d47-974a28b910cb">
+  <button class="colab-df-quickchart" onclick="quickchart('df-50ae01c2-9c36-425c-8d47-974a28b910cb')"
             title="Suggest charts"
             style="display:none;">
 
@@ -855,14 +899,14 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-e1f49ce2-61b5-441a-a8c8-5b25cb7b84ca button');
+        document.querySelector('#df-50ae01c2-9c36-425c-8d47-974a28b910cb button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
   </script>
 </div>
 
-  <div id="id_ef94f1d1-bb64-4f52-a732-c302206d4fad">
+  <div id="id_c28442a5-48c9-403e-b164-2915902d8f1e">
     <style>
       .colab-df-generate {
         background-color: #E8F0FE;
@@ -906,7 +950,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
     <script>
       (() => {
       const buttonEl =
-        document.querySelector('#id_ef94f1d1-bb64-4f52-a732-c302206d4fad button.colab-df-generate');
+        document.querySelector('#id_c28442a5-48c9-403e-b164-2915902d8f1e button.colab-df-generate');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
@@ -1003,195 +1047,195 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;rp&#39;,
- &#39;pemerintahan&#39;,
- &#39;ketiga&#39;,
- &#39;sepatu&#39;,
- &#39;tertuang&#39;,
- &#39;kesenian&#39;,
- &#39;jkp&#39;,
- &#39;restoran&#39;,
- &#39;tkn&#39;,
- &#39;wilayah&#39;,
- &#39;dibebaskan&#39;,
- &#39;september&#39;,
- &#39;ppn&#39;,
- &#39;pemerintah&#39;,
- &#39;danatau&#39;,
- &#39;pasal&#39;,
- &#39;mengacu&#39;,
- &#39;darat&#39;,
- &#39;daerah&#39;,
- &#39;didominasi&#39;,
- &#39;kena&#39;,
- &#39;jasa&#39;,
- &#39;keuangan&#39;,
- &#39;kosmetik&#39;,
- &#39;ekonom&#39;,
- &#39;perhotelan&#39;,
- &#39;kenaikan&#39;,
- &#39;ketentuan&#39;,
- &#39;angkutan&#39;,
- &#39;tas&#39;,
- &#39;ekspor&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;barang&#39;,
  &#39;air&#39;,
- &#39;perkakas&#39;,
- &#39;film&#39;,
- &#39;spotify&#39;,
- &#39;pendidikan&#39;,
- &#39;jawa&#39;,
- &#39;mewah&#39;,
- &#39;kantor&#39;,
- &#39;harmonisasi&#39;,
- &#39;seni&#39;,
- &#39;tarif&#39;,
- &#39;pajak&#39;,
- &#39;nomor&#39;,
- &#39;uu&#39;,
- &#39;jenis&#39;,
- &#39;januari&#39;,
- &#39;makan&#39;,
- &#39;prabowo&#39;,
- &#39;sehubungan&#39;,
- &#39;netflix&#39;,
- &#39;negeri&#39;,
- &#39;rr&#39;,
- &#39;disediakan&#39;,
- &#39;penerimaan&#39;,
- &#39;bkp&#39;,
- &#39;streaming&#39;,
- &#39;tempo.co&#39;,
- &#39;program&#39;,
- &#39;bentuk&#39;,
- &#39;musik&#39;,
- &#39;rumah&#39;,
- &#39;penjualan&#39;,
- &#39;telekomunikasi&#39;,
- &#39;pengenaan&#39;,
- &#39;penyediaan&#39;,
- &#39;sesuai&#39;,
- &#39;editor&#39;,
- &#39;dibutuhkan&#39;,
- &#39;terkena&#39;,
- &#39;otomotif&#39;,
- &#39;sistem&#39;,
- &#39;surat&#39;,
- &#39;berharga&#39;,
- &#39;boga&#39;,
- &#39;hpp&#39;,
- &#39;dikabarkan&#39;,
- &#39;pemanfaatan&#39;,
- &#39;djp&#39;,
- &#39;pembangunan&#39;,
- &#39;perundangundangan&#39;,
- &#39;impor&#39;,
- &#39;rabu&#39;,
- &#39;makanan&#39;,
- &#39;medis&#39;,
- &#39;dibatalkan&#39;,
- &#39;devisa&#39;,
- &#39;barang&#39;,
- &#39;ii&#39;,
- &#39;bidang&#39;,
- &#39;uang&#39;,
- &#39;jkn&#39;,
- &#39;terpisahkan&#39;,
- &#39;bagikan&#39;,
- &#39;perpajakan&#39;,
- &#39;pertambahan&#39;,
- &#39;warung&#39;,
- &#39;reporter&#39;,
+ &#39;yakti&#39;,
  &#39;emas&#39;,
- &#39;diserahkan&#39;,
- &#39;pekerja&#39;,
- &#39;wib&#39;,
- &#39;elektronik&#39;,
- &#39;dikenakan&#39;,
- &#39;sosial&#39;,
- &#39;dikenai&#39;,
- &#39;kesehatan&#39;,
- &#39;undangundang&#39;,
- &#39;negara&#39;,
- &#39;baca&#39;,
- &#39;minuman&#39;,
- &#39;katering&#39;,
- &#39;ruangan&#39;,
- &#39;melynda&#39;,
- &#39;pengusaha&#39;,
- &#39;rangka&#39;,
- &#39;pelayanan&#39;,
- &#39;lantas&#39;,
- &#39;pabean&#39;,
+ &#39;asuransi&#39;,
+ &#39;tempo.co&#39;,
+ &#39;bagikan&#39;,
+ &#39;ketiga&#39;,
+ &#39;nasional&#39;,
+ &#39;musik&#39;,
  &#39;pilihan&#39;,
+ &#39;nomor&#39;,
+ &#39;rumah&#39;,
+ &#39;uang&#39;,
+ &#39;rr&#39;,
+ &#39;perundangundangan&#39;,
+ &#39;dibutuhkan&#39;,
+ &#39;ukm&#39;,
+ &#39;dibebaskan&#39;,
+ &#39;peraturan&#39;,
+ &#39;film&#39;,
+ &#39;sehubungan&#39;,
+ &#39;jakarta&#39;,
+ &#39;ii&#39;,
+ &#39;pabean&#39;,
+ &#39;perpajakan&#39;,
+ &#39;wib&#39;,
+ &#39;daerah&#39;,
+ &#39;kelompok&#39;,
+ &#39;pertambahan&#39;,
+ &#39;ariyani&#39;,
+ &#39;usaha&#39;,
+ &#39;pajak&#39;,
+ &#39;lantas&#39;,
+ &#39;alasan&#39;,
+ &#39;perhotelan&#39;,
+ &#39;kena&#39;,
+ &#39;pokok&#39;,
+ &#39;dikenai&#39;,
+ &#39;produk&#39;,
+ &#39;jawa&#39;,
+ &#39;pembangunan&#39;,
+ &#39;contoh&#39;,
+ &#39;memecah&#39;,
+ &#39;mewah&#39;,
+ &#39;uu&#39;,
+ &#39;berwujud&#39;,
+ &#39;pasal&#39;,
+ &#39;jkp&#39;,
+ &#39;katering&#39;,
+ &#39;kepentingan&#39;,
+ &#39;tarif&#39;,
+ &#39;september&#39;,
+ &#39;negeri&#39;,
+ &#39;politik&#39;,
+ &#39;pekerja&#39;,
+ &#39;tertuang&#39;,
  &#39;batangan&#39;,
- &#39;kebutuhan&#39;,
+ &#39;angkutan&#39;,
+ &#39;pemilik&#39;,
+ &#39;dikonsumsi&#39;,
+ &#39;ekonom&#39;,
+ &#39;kecantikan&#39;,
+ &#39;diserahkan&#39;,
+ &#39;reporter&#39;,
+ &#39;pakaian&#39;,
+ &#39;kerja&#39;,
+ &#39;penyelenggaraan&#39;,
+ &#39;keagamaan&#39;,
+ &#39;ketentuan&#39;,
+ &#39;cadangan&#39;,
+ &#39;seni&#39;,
+ &#39;pemerintah&#39;,
+ &#39;pemanfaatan&#39;,
+ &#39;mengacu&#39;,
+ &#39;ekspor&#39;,
+ &#39;ruangan&#39;,
+ &#39;devisa&#39;,
+ &#39;tas&#39;,
+ &#39;kamar&#39;,
+ &#39;disediakan&#39;,
+ &#39;nilai&#39;,
+ &#39;rangka&#39;,
+ &#39;triliun&#39;,
+ &#39;perkakas&#39;,
+ &#39;parkir&#39;,
+ &#39;sesuai&#39;,
+ &#39;kesenian&#39;,
+ &#39;minuman&#39;,
+ &#39;pendidikan&#39;,
  &#39;udara&#39;,
+ &#39;meliputi&#39;,
+ &#39;negara&#39;,
+ &#39;kebutuhan&#39;,
+ &#39;penyewaan&#39;,
+ &#39;pemerintahan&#39;,
+ &#39;sosial&#39;,
+ &#39;penjualan&#39;,
+ &#39;kemenkop&#39;,
+ &#39;undangundang&#39;,
+ &#39;pengenaan&#39;,
+ &#39;jaminan&#39;,
+ &#39;wilayah&#39;,
+ &#39;kosmetik&#39;,
+ &#39;pelayanan&#39;,
+ &#39;editor&#39;,
+ &#39;otomotif&#39;,
+ &#39;restoran&#39;,
+ &#39;rakyat&#39;,
+ &#39;sistem&#39;,
+ &#39;didominasi&#39;,
+ &#39;dikenakan&#39;,
+ &#39;dwi&#39;,
+ &#39;jkn&#39;,
+ &#39;meningkat&#39;,
+ &#39;sepatu&#39;,
+ &#39;menyelenggarakan&#39;,
+ &#39;terkena&#39;,
+ &#39;puspita&#39;,
+ &#39;april&#39;,
+ &#39;oktober&#39;,
+ &#39;penerimaan&#39;,
+ &#39;darat&#39;,
  &#39;disajikan&#39;,
- &#39;pengelola&#39;,
- &#39;rencana&#39;,
+ &#39;a&#39;,
+ &#39;januari&#39;,
+ &#39;streaming&#39;,
+ &#39;impor&#39;,
+ &#39;kewenangannya&#39;,
+ &#39;layanan&#39;,
+ &#39;baca&#39;,
+ &#39;alat&#39;,
+ &#39;warung&#39;,
+ &#39;medis&#39;,
+ &#39;hiburan&#39;,
  &#39;target&#39;,
+ &#39;pengusaha&#39;,
+ &#39;direncanakan&#39;,
+ &#39;ppn&#39;,
+ &#39;bentuk&#39;,
+ &#39;boga&#39;,
+ &#39;widyastuti&#39;,
+ &#39;perubahan&#39;,
+ &#39;dikabarkan&#39;,
+ &#39;berdasarkan&#39;,
+ &#39;bkp&#39;,
+ &#39;pulsa&#39;,
+ &#39;elektronik&#39;,
+ &#39;spotify&#39;,
+ &#39;keuangan&#39;,
+ &#39;rabu&#39;,
+ &#39;rp&#39;,
+ &#39;terdampak&#39;,
+ &#39;telekomunikasi&#39;,
+ &#39;tkn&#39;,
+ &#39;surat&#39;,
+ &#39;berlaku&#39;,
+ &#39;hotel&#39;,
+ &#39;persen&#39;,
+ &#39;pengelola&#39;,
+ &#39;penyediaan&#39;,
+ &#39;penyerahan&#39;,
+ &#39;melynda&#39;,
+ &#39;hpp&#39;,
+ &#39;jenis&#39;,
+ &#39;danatau&#39;,
+ &#39;netflix&#39;,
+ &#39;dibatalkan&#39;,
+ &#39;rencana&#39;,
+ &#39;kesehatan&#39;,
+ &#39;terpisahkan&#39;,
+ &#39;kenaikan&#39;,
+ &#39;berharga&#39;,
+ &#39;prabowo&#39;,
+ &#39;aktivitas&#39;,
+ &#39;harmonisasi&#39;,
+ &#39;djp&#39;,
+ &#39;tenaga&#39;,
+ &#39;jasa&#39;,
+ &#39;program&#39;,
+ &#39;retribusi&#39;,
  &#39;:&#39;,
  &#39;dikecualikan&#39;,
- &#39;menyelenggarakan&#39;,
- &#39;kemenkop&#39;,
- &#39;yakti&#39;,
- &#39;layanan&#39;,
- &#39;direncanakan&#39;,
- &#39;berdasarkan&#39;,
- &#39;jakarta&#39;,
- &#39;meningkat&#39;,
- &#39;politik&#39;,
- &#39;hotel&#39;,
- &#39;memecah&#39;,
- &#39;produk&#39;,
- &#39;alat&#39;,
- &#39;triliun&#39;,
- &#39;a&#39;,
- &#39;cadangan&#39;,
- &#39;asuransi&#39;,
- &#39;peraturan&#39;,
- &#39;kepentingan&#39;,
- &#39;penyewaan&#39;,
- &#39;penyelenggaraan&#39;,
- &#39;dikonsumsi&#39;,
- &#39;ariyani&#39;,
- &#39;persen&#39;,
- &#39;nasional&#39;,
- &#39;april&#39;,
- &#39;kecantikan&#39;,
- &#39;nilai&#39;,
- &#39;berlaku&#39;,
- &#39;keagamaan&#39;,
+ &#39;kantor&#39;,
+ &#39;bidang&#39;,
  &#39;sejenisnya&#39;,
- &#39;rakyat&#39;,
  &#39;objek&#39;,
- &#39;kewenangannya&#39;,
- &#39;oktober&#39;,
- &#39;pokok&#39;,
- &#39;puspita&#39;,
- &#39;retribusi&#39;,
- &#39;perubahan&#39;,
- &#39;tenaga&#39;,
- &#39;pulsa&#39;,
- &#39;parkir&#39;,
- &#39;pemilik&#39;,
- &#39;jaminan&#39;,
- &#39;penyerahan&#39;,
- &#39;usaha&#39;,
- &#39;hiburan&#39;,
- &#39;aktivitas&#39;,
- &#39;terdampak&#39;,
- &#39;kelompok&#39;,
- &#39;dwi&#39;,
- &#39;meliputi&#39;,
- &#39;ukm&#39;,
- &#39;kamar&#39;,
- &#39;berwujud&#39;,
- &#39;contoh&#39;,
- &#39;pakaian&#39;,
- &#39;widyastuti&#39;,
- &#39;kerja&#39;,
- &#39;alasan&#39;]
+ &#39;makanan&#39;,
+ &#39;makan&#39;]
 </pre></div>
 </div>
 </div>
@@ -1236,7 +1280,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-d2909f0f-821e-4ff1-a1cb-097dbbeb44c1" class="colab-df-container">
+  <div id="df-9154ac1f-2fda-4186-966c-3abc28a9fef9" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1255,27 +1299,27 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>rp</th>
-      <th>pemerintahan</th>
+      <th>barang</th>
+      <th>air</th>
+      <th>yakti</th>
+      <th>emas</th>
+      <th>asuransi</th>
+      <th>tempo.co</th>
+      <th>bagikan</th>
       <th>ketiga</th>
-      <th>sepatu</th>
-      <th>tertuang</th>
-      <th>kesenian</th>
-      <th>jkp</th>
-      <th>restoran</th>
-      <th>tkn</th>
-      <th>wilayah</th>
+      <th>nasional</th>
+      <th>musik</th>
       <th>...</th>
-      <th>dwi</th>
-      <th>meliputi</th>
-      <th>ukm</th>
-      <th>kamar</th>
-      <th>berwujud</th>
-      <th>contoh</th>
-      <th>pakaian</th>
-      <th>widyastuti</th>
-      <th>kerja</th>
-      <th>alasan</th>
+      <th>program</th>
+      <th>retribusi</th>
+      <th>:</th>
+      <th>dikecualikan</th>
+      <th>kantor</th>
+      <th>bidang</th>
+      <th>sejenisnya</th>
+      <th>objek</th>
+      <th>makanan</th>
+      <th>makan</th>
     </tr>
   </thead>
   <tbody>
@@ -1292,7 +1336,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>0</td>
       <td>...</td>
-      <td>1</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1307,23 +1351,23 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <th>1</th>
       <td>0</td>
       <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>...</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
     </tr>
@@ -1333,7 +1377,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1377,34 +1421,34 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
     </tr>
     <tr>
       <th>4</th>
-      <td>1</td>
+      <td>4</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
+      <td>0</td>
       <td>...</td>
       <td>0</td>
+      <td>2</td>
+      <td>2</td>
       <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>5</th>
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1414,14 +1458,14 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>...</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>6</th>
@@ -1437,8 +1481,8 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>...</td>
       <td>0</td>
-      <td>1</td>
       <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1454,20 +1498,20 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>...</td>
       <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>1</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>0</td>
     </tr>
@@ -1485,20 +1529,20 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>...</td>
       <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>1</td>
       <td>0</td>
       <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
       <th>9</th>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1509,7 +1553,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>...</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1533,13 +1577,13 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>...</td>
       <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>1</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>0</td>
     </tr>
@@ -1557,18 +1601,19 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>...</td>
       <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>1</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>1</td>
+      <td>1</td>
       <td>0</td>
     </tr>
     <tr>
       <th>12</th>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1576,13 +1621,12 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>...</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1601,10 +1645,10 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>...</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1669,7 +1713,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1714,7 +1758,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
     <tr>
       <th>18</th>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1756,25 +1800,25 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
       <td>0</td>
     </tr>
     <tr>
       <th>20</th>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>...</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1815,7 +1859,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1848,7 +1892,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1863,7 +1907,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1896,7 +1940,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1920,7 +1964,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1935,7 +1979,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1953,10 +1997,10 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
     </tr>
     <tr>
       <th>28</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1969,8 +2013,8 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
-      <td>1</td>
+      <td>0</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1986,7 +2030,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>...</td>
       <td>0</td>
       <td>0</td>
@@ -2009,12 +2053,12 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
       <td>0</td>
       <td>...</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -2030,7 +2074,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-d2909f0f-821e-4ff1-a1cb-097dbbeb44c1')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-9154ac1f-2fda-4186-966c-3abc28a9fef9')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -2082,12 +2126,12 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 
     <script>
       const buttonEl =
-        document.querySelector('#df-d2909f0f-821e-4ff1-a1cb-097dbbeb44c1 button.colab-df-convert');
+        document.querySelector('#df-9154ac1f-2fda-4186-966c-3abc28a9fef9 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-d2909f0f-821e-4ff1-a1cb-097dbbeb44c1');
+        const element = document.querySelector('#df-9154ac1f-2fda-4186-966c-3abc28a9fef9');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -2107,8 +2151,8 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
   </div>
 
 
-<div id="df-08406279-855a-4d02-b0a3-5d90c108a729">
-  <button class="colab-df-quickchart" onclick="quickchart('df-08406279-855a-4d02-b0a3-5d90c108a729')"
+<div id="df-410e8f82-f724-415e-99a5-cab9eec3298b">
+  <button class="colab-df-quickchart" onclick="quickchart('df-410e8f82-f724-415e-99a5-cab9eec3298b')"
             title="Suggest charts"
             style="display:none;">
 
@@ -2227,14 +2271,14 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-08406279-855a-4d02-b0a3-5d90c108a729 button');
+        document.querySelector('#df-410e8f82-f724-415e-99a5-cab9eec3298b button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
   </script>
 </div>
 
-  <div id="id_d488ed83-5436-4f89-89a5-32cef640f186">
+  <div id="id_670fc379-170a-43c5-867b-da710b417c38">
     <style>
       .colab-df-generate {
         background-color: #E8F0FE;
@@ -2278,7 +2322,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
     <script>
       (() => {
       const buttonEl =
-        document.querySelector('#id_d488ed83-5436-4f89-89a5-32cef640f186 button.colab-df-generate');
+        document.querySelector('#id_670fc379-170a-43c5-867b-da710b417c38 button.colab-df-generate');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
@@ -2350,7 +2394,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-acec6631-78a1-463a-be0a-15ed216ce75b" class="colab-df-container">
+  <div id="df-4ffcf54f-f96a-4d0e-a7d2-bf07e01a571f" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2369,32 +2413,56 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>rp</th>
-      <th>pemerintahan</th>
+      <th>barang</th>
+      <th>air</th>
+      <th>yakti</th>
+      <th>emas</th>
+      <th>asuransi</th>
+      <th>bagikan</th>
       <th>ketiga</th>
-      <th>sepatu</th>
-      <th>tertuang</th>
-      <th>kesenian</th>
-      <th>jkp</th>
-      <th>restoran</th>
-      <th>tkn</th>
-      <th>wilayah</th>
+      <th>nasional</th>
+      <th>musik</th>
+      <th>pilihan</th>
       <th>...</th>
-      <th>dwi</th>
-      <th>meliputi</th>
-      <th>ukm</th>
-      <th>kamar</th>
-      <th>berwujud</th>
-      <th>contoh</th>
-      <th>pakaian</th>
-      <th>widyastuti</th>
-      <th>kerja</th>
-      <th>alasan</th>
+      <th>program</th>
+      <th>retribusi</th>
+      <th>:</th>
+      <th>dikecualikan</th>
+      <th>kantor</th>
+      <th>bidang</th>
+      <th>sejenisnya</th>
+      <th>objek</th>
+      <th>makanan</th>
+      <th>makan</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>rp</th>
+      <th>barang</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>air</th>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -2418,31 +2486,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
     </tr>
     <tr>
-      <th>pemerintahan</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>ketiga</th>
+      <th>yakti</th>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -2466,7 +2510,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
     </tr>
     <tr>
-      <th>sepatu</th>
+      <th>emas</th>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -2484,13 +2528,13 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>tertuang</th>
+      <th>asuransi</th>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -2538,7 +2582,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>...</td>
     </tr>
     <tr>
-      <th>contoh</th>
+      <th>bidang</th>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -2562,8 +2606,66 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
     </tr>
     <tr>
-      <th>pakaian</th>
+      <th>sejenisnya</th>
       <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>objek</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>makanan</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
@@ -2573,68 +2675,10 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>widyastuti</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>kerja</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>alasan</th>
+      <th>makan</th>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -2664,7 +2708,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-acec6631-78a1-463a-be0a-15ed216ce75b')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-4ffcf54f-f96a-4d0e-a7d2-bf07e01a571f')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -2716,12 +2760,12 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 
     <script>
       const buttonEl =
-        document.querySelector('#df-acec6631-78a1-463a-be0a-15ed216ce75b button.colab-df-convert');
+        document.querySelector('#df-4ffcf54f-f96a-4d0e-a7d2-bf07e01a571f button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-acec6631-78a1-463a-be0a-15ed216ce75b');
+        const element = document.querySelector('#df-4ffcf54f-f96a-4d0e-a7d2-bf07e01a571f');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -2741,8 +2785,8 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
   </div>
 
 
-<div id="df-56155413-4140-4f88-9e49-34a5b9d60034">
-  <button class="colab-df-quickchart" onclick="quickchart('df-56155413-4140-4f88-9e49-34a5b9d60034')"
+<div id="df-05069a56-fe06-4089-9a7d-74668155ad4f">
+  <button class="colab-df-quickchart" onclick="quickchart('df-05069a56-fe06-4089-9a7d-74668155ad4f')"
             title="Suggest charts"
             style="display:none;">
 
@@ -2861,14 +2905,14 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-56155413-4140-4f88-9e49-34a5b9d60034 button');
+        document.querySelector('#df-05069a56-fe06-4089-9a7d-74668155ad4f button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
   </script>
 </div>
 
-  <div id="id_7a8ce84c-0627-4a4a-9887-3a9031429831">
+  <div id="id_6ebf1897-6e8a-4d0b-8693-e4352bdde89a">
     <style>
       .colab-df-generate {
         background-color: #E8F0FE;
@@ -2912,7 +2956,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
     <script>
       (() => {
       const buttonEl =
-        document.querySelector('#id_7a8ce84c-0627-4a4a-9887-3a9031429831 button.colab-df-generate');
+        document.querySelector('#id_6ebf1897-6e8a-4d0b-8693-e4352bdde89a button.colab-df-generate');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
@@ -2942,79 +2986,6 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 
 <span class="c1"># cooccurrence_matrix = create_cooccurrence_matrix(kalimat)</span>
 <span class="c1"># cooccurrence_matrix</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">/usr/local/lib/python3.10/dist-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3804</span>         <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">3805</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3806</span>         <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-
-<span class="nn">index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
-
-<span class="nn">index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
-
-<span class="ne">KeyError</span>: &#39;tempoco&#39;
-
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
-
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-12-81a4e09bff74&gt;</span> in <span class="ni">&lt;cell line: 12&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>         <span class="k">return</span> <span class="n">vektor_kata</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> 
-<span class="ne">---&gt; </span><span class="mi">12</span> <span class="n">cooccurrence_matrix</span> <span class="o">=</span> <span class="n">create_cooccurrence_matrix</span><span class="p">(</span><span class="n">kalimat</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">cooccurrence_matrix</span>
-
-<span class="nn">&lt;ipython-input-12-81a4e09bff74&gt;</span> in <span class="ni">create_cooccurrence_matrix</span><span class="nt">(data)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>                 <span class="n">kata_kalimat</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">sent</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>                 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">kata_kalimat</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-<span class="ne">----&gt; </span><span class="mi">7</span>                         <span class="n">vektor_kata</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">kata_kalimat</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">kata_kalimat</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>                         <span class="n">vektor_kata</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">kata_kalimat</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">kata_kalimat</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> 
-
-<span class="nn">/usr/local/lib/python3.10/dist-packages/pandas/core/indexing.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2573</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">2574</span> 
-<span class="ne">-&gt; </span><span class="mi">2575</span>         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2576</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2577</span>     <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">/usr/local/lib/python3.10/dist-packages/pandas/core/indexing.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2525</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2526</span>         <span class="n">key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_convert_key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">2527</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">_get_value</span><span class="p">(</span><span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="n">takeable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_takeable</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2528</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2529</span>     <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">/usr/local/lib/python3.10/dist-packages/pandas/core/frame.py</span> in <span class="ni">_get_value</span><span class="nt">(self, index, col, takeable)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4212</span>             <span class="k">return</span> <span class="n">series</span><span class="o">.</span><span class="n">_values</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">4213</span> 
-<span class="ne">-&gt; </span><span class="mi">4214</span>         <span class="n">series</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_item_cache</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4215</span>         <span class="n">engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">_engine</span>
-<span class="g g-Whitespace">   </span><span class="mi">4216</span> 
-
-<span class="nn">/usr/local/lib/python3.10/dist-packages/pandas/core/frame.py</span> in <span class="ni">_get_item_cache</span><span class="nt">(self, item)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4636</span>             <span class="c1">#  pending resolution of GH#33047</span>
-<span class="g g-Whitespace">   </span><span class="mi">4637</span> 
-<span class="ne">-&gt; </span><span class="mi">4638</span>             <span class="n">loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4639</span>             <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ixs</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4640</span> 
-
-<span class="nn">/usr/local/lib/python3.10/dist-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3810</span>             <span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">3811</span>                 <span class="k">raise</span> <span class="n">InvalidIndexError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">3812</span>             <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
-<span class="g g-Whitespace">   </span><span class="mi">3813</span>         <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">3814</span>             <span class="c1"># If we have a listlike key, _check_indexing_error will raise</span>
-
-<span class="ne">KeyError</span>: &#39;tempoco&#39;
 </pre></div>
 </div>
 </div>
@@ -3061,7 +3032,7 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/daed4d4ed78578df4d187119f53fcfb0b3f3f49fd9ff62e7df768130ec5904b4.png" src="_images/daed4d4ed78578df4d187119f53fcfb0b3f3f49fd9ff62e7df768130ec5904b4.png" />
+<img alt="_images/38e829cc4de286f5c4c1ea019bea9259c01d3513dfac316d6eb1c305d9d7a2d4.png" src="_images/38e829cc4de286f5c4c1ea019bea9259c01d3513dfac316d6eb1c305d9d7a2d4.png" />
 </div>
 </div>
 </section>
@@ -3080,195 +3051,195 @@ Keyword extraction bekerja dengan mengidentifikasi kata-kata atau frasa yang mem
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Page Rank :
-Node 127: 0.0213
-Node 12: 0.0181
-Node 87: 0.0177
-Node 180: 0.0164
-Node 22: 0.0163
-Node 173: 0.0146
-Node 21: 0.0145
-Node 105: 0.0142
-Node 46: 0.0139
-Node 65: 0.0119
-Node 26: 0.0107
-Node 178: 0.0106
-Node 116: 0.0102
-Node 161: 0.0102
-Node 103: 0.0099
-Node 55: 0.0094
-Node 29: 0.0094
-Node 83: 0.0089
-Node 148: 0.0089
-Node 5: 0.0089
-Node 38: 0.0088
-Node 69: 0.0088
-Node 132: 0.0087
-Node 54: 0.0087
-Node 10: 0.0086
-Node 62: 0.0086
-Node 92: 0.0085
-Node 23: 0.0084
-Node 36: 0.0084
-Node 145: 0.0084
-Node 158: 0.0084
-Node 74: 0.0084
-Node 100: 0.0084
-Node 156: 0.0083
-Node 174: 0.0082
-Node 14: 0.0080
-Node 32: 0.0080
-Node 50: 0.0080
-Node 168: 0.0080
-Node 6: 0.0075
-Node 140: 0.0072
-Node 153: 0.0069
-Node 64: 0.0069
-Node 19: 0.0068
-Node 163: 0.0068
-Node 43: 0.0067
-Node 152: 0.0067
-Node 42: 0.0067
-Node 49: 0.0066
-Node 125: 0.0065
-Node 20: 0.0064
-Node 56: 0.0064
-Node 67: 0.0064
-Node 30: 0.0064
-Node 8: 0.0063
-Node 13: 0.0063
-Node 115: 0.0063
-Node 27: 0.0062
-Node 101: 0.0061
-Node 44: 0.0061
-Node 183: 0.0059
-Node 25: 0.0059
-Node 121: 0.0059
-Node 70: 0.0059
-Node 33: 0.0059
-Node 108: 0.0058
-Node 170: 0.0058
-Node 128: 0.0057
-Node 89: 0.0056
-Node 39: 0.0056
-Node 106: 0.0056
-Node 86: 0.0056
-Node 109: 0.0055
-Node 80: 0.0055
-Node 175: 0.0054
+Node 181: 0.0213
+Node 138: 0.0181
+Node 0: 0.0177
+Node 90: 0.0164
+Node 178: 0.0163
+Node 161: 0.0146
+Node 35: 0.0145
+Node 37: 0.0142
+Node 164: 0.0139
+Node 160: 0.0119
+Node 34: 0.0107
+Node 27: 0.0106
+Node 103: 0.0102
+Node 186: 0.0102
+Node 110: 0.0099
+Node 120: 0.0094
+Node 57: 0.0094
+Node 187: 0.0089
+Node 93: 0.0089
+Node 86: 0.0089
+Node 43: 0.0088
+Node 116: 0.0088
+Node 128: 0.0087
+Node 79: 0.0087
+Node 17: 0.0086
+Node 96: 0.0086
+Node 170: 0.0085
+Node 4: 0.0084
+Node 67: 0.0084
+Node 88: 0.0084
+Node 149: 0.0084
+Node 140: 0.0084
+Node 54: 0.0084
+Node 80: 0.0083
+Node 30: 0.0082
+Node 1: 0.0080
+Node 20: 0.0080
+Node 165: 0.0080
+Node 177: 0.0080
+Node 47: 0.0075
+Node 38: 0.0072
+Node 7: 0.0069
+Node 99: 0.0069
+Node 26: 0.0068
+Node 119: 0.0068
+Node 31: 0.0067
+Node 158: 0.0067
+Node 50: 0.0067
+Node 173: 0.0066
+Node 168: 0.0065
+Node 109: 0.0064
+Node 145: 0.0064
+Node 104: 0.0064
+Node 77: 0.0064
+Node 154: 0.0063
+Node 71: 0.0063
+Node 81: 0.0063
+Node 171: 0.0062
+Node 25: 0.0061
+Node 10: 0.0061
+Node 45: 0.0059
+Node 60: 0.0059
+Node 92: 0.0059
+Node 83: 0.0059
+Node 105: 0.0059
+Node 91: 0.0058
+Node 84: 0.0058
+Node 182: 0.0057
+Node 184: 0.0056
+Node 183: 0.0056
+Node 169: 0.0056
+Node 76: 0.0056
+Node 129: 0.0055
+Node 14: 0.0055
 Node 133: 0.0054
-Node 157: 0.0054
-Node 35: 0.0054
-Node 144: 0.0053
-Node 177: 0.0053
-Node 135: 0.0052
-Node 95: 0.0052
-Node 37: 0.0051
-Node 134: 0.0050
-Node 176: 0.0050
-Node 184: 0.0050
-Node 117: 0.0050
-Node 147: 0.0049
-Node 40: 0.0048
-Node 3: 0.0048
-Node 28: 0.0048
-Node 120: 0.0047
-Node 159: 0.0047
-Node 82: 0.0046
-Node 162: 0.0045
-Node 94: 0.0044
-Node 142: 0.0044
-Node 155: 0.0043
-Node 118: 0.0043
-Node 1: 0.0043
-Node 11: 0.0042
-Node 111: 0.0042
-Node 98: 0.0041
-Node 165: 0.0041
-Node 90: 0.0040
-Node 66: 0.0039
-Node 63: 0.0039
-Node 141: 0.0039
-Node 124: 0.0039
-Node 171: 0.0039
-Node 15: 0.0037
-Node 102: 0.0037
-Node 169: 0.0037
-Node 138: 0.0037
-Node 150: 0.0037
-Node 149: 0.0036
-Node 77: 0.0035
-Node 123: 0.0035
-Node 79: 0.0034
-Node 186: 0.0033
-Node 112: 0.0033
-Node 73: 0.0033
-Node 166: 0.0032
-Node 4: 0.0032
-Node 72: 0.0032
-Node 114: 0.0031
-Node 75: 0.0030
-Node 85: 0.0030
-Node 136: 0.0030
-Node 154: 0.0030
-Node 110: 0.0030
-Node 88: 0.0030
-Node 7: 0.0030
-Node 9: 0.0030
-Node 99: 0.0029
-Node 137: 0.0029
-Node 179: 0.0029
-Node 188: 0.0028
-Node 34: 0.0028
-Node 0: 0.0028
-Node 53: 0.0028
-Node 119: 0.0028
-Node 84: 0.0027
-Node 172: 0.0027
-Node 107: 0.0027
-Node 122: 0.0027
-Node 164: 0.0027
-Node 104: 0.0027
-Node 143: 0.0026
-Node 185: 0.0026
-Node 31: 0.0026
-Node 81: 0.0026
-Node 78: 0.0025
+Node 137: 0.0054
+Node 148: 0.0054
+Node 156: 0.0054
+Node 69: 0.0053
+Node 152: 0.0053
+Node 21: 0.0052
+Node 28: 0.0052
+Node 39: 0.0051
+Node 144: 0.0050
+Node 174: 0.0050
+Node 32: 0.0050
+Node 41: 0.0050
+Node 49: 0.0049
+Node 175: 0.0048
+Node 114: 0.0048
+Node 68: 0.0048
+Node 56: 0.0047
+Node 185: 0.0047
+Node 150: 0.0046
+Node 127: 0.0045
+Node 24: 0.0044
+Node 82: 0.0044
+Node 61: 0.0043
+Node 23: 0.0043
+Node 94: 0.0043
+Node 51: 0.0042
+Node 48: 0.0042
+Node 3: 0.0041
+Node 117: 0.0041
+Node 12: 0.0040
+Node 85: 0.0039
+Node 130: 0.0039
+Node 153: 0.0039
+Node 58: 0.0039
+Node 159: 0.0039
+Node 46: 0.0037
+Node 146: 0.0037
+Node 147: 0.0037
+Node 157: 0.0037
+Node 59: 0.0037
+Node 66: 0.0036
+Node 72: 0.0035
+Node 122: 0.0035
+Node 40: 0.0034
+Node 141: 0.0033
+Node 75: 0.0033
+Node 172: 0.0033
+Node 180: 0.0032
+Node 55: 0.0032
+Node 155: 0.0032
+Node 136: 0.0031
+Node 163: 0.0030
+Node 113: 0.0030
+Node 118: 0.0030
+Node 167: 0.0030
+Node 87: 0.0030
+Node 22: 0.0030
+Node 106: 0.0030
+Node 101: 0.0030
+Node 62: 0.0029
+Node 53: 0.0029
+Node 111: 0.0029
+Node 33: 0.0028
+Node 19: 0.0028
+Node 151: 0.0028
+Node 9: 0.0028
+Node 13: 0.0028
+Node 100: 0.0027
+Node 132: 0.0027
+Node 98: 0.0027
+Node 89: 0.0027
+Node 36: 0.0027
+Node 95: 0.0027
+Node 123: 0.0026
+Node 64: 0.0026
+Node 74: 0.0026
+Node 126: 0.0026
+Node 176: 0.0025
 Node 52: 0.0024
-Node 2: 0.0024
-Node 16: 0.0024
-Node 76: 0.0024
-Node 24: 0.0023
-Node 129: 0.0023
-Node 167: 0.0023
-Node 47: 0.0022
-Node 17: 0.0021
-Node 45: 0.0021
-Node 61: 0.0021
-Node 60: 0.0021
-Node 91: 0.0021
-Node 126: 0.0020
-Node 97: 0.0020
-Node 57: 0.0020
-Node 160: 0.0019
-Node 139: 0.0019
-Node 96: 0.0019
-Node 181: 0.0019
-Node 58: 0.0019
-Node 71: 0.0019
-Node 48: 0.0018
-Node 182: 0.0017
-Node 113: 0.0017
-Node 41: 0.0017
-Node 130: 0.0016
-Node 146: 0.0016
-Node 59: 0.0016
-Node 151: 0.0015
-Node 93: 0.0015
-Node 131: 0.0014
-Node 18: 0.0011
-Node 187: 0.0011
-Node 68: 0.0011
-Node 51: 0.0011
+Node 6: 0.0024
+Node 73: 0.0024
+Node 143: 0.0024
+Node 102: 0.0023
+Node 115: 0.0023
+Node 142: 0.0023
+Node 124: 0.0022
+Node 121: 0.0021
+Node 44: 0.0021
+Node 11: 0.0021
+Node 139: 0.0021
+Node 112: 0.0021
+Node 134: 0.0020
+Node 63: 0.0020
+Node 125: 0.0020
+Node 107: 0.0019
+Node 42: 0.0019
+Node 131: 0.0019
+Node 16: 0.0019
+Node 108: 0.0019
+Node 179: 0.0019
+Node 188: 0.0018
+Node 78: 0.0017
+Node 162: 0.0017
+Node 70: 0.0017
+Node 97: 0.0016
+Node 18: 0.0016
+Node 8: 0.0016
+Node 29: 0.0015
+Node 5: 0.0015
+Node 2: 0.0014
+Node 135: 0.0011
+Node 65: 0.0011
+Node 15: 0.0011
+Node 166: 0.0011
 </pre></div>
 </div>
 </div>
@@ -3290,12 +3261,38 @@ Node 51: 0.0011
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tiga Node Tertinggi Page Rank :
-Node 127: Page Rank = 0.0213
+Node 181: Page Rank = 0.0213
 Kalimat: :
-Node 12: Page Rank = 0.0181
+Node 138: Page Rank = 0.0181
 Kalimat: ppn
-Node 87: Page Rank = 0.0177
+Node 0: Page Rank = 0.0177
 Kalimat: barang
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+
+<span class="c1"># Contoh model (ubah ini sesuai model Anda)</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+
+<span class="c1"># Latih model dengan data (ganti dengan data Anda)</span>
+<span class="c1"># X_train dan y_train adalah data latih Anda</span>
+<span class="c1"># model.fit(X_train, y_train)</span>
+
+<span class="c1"># Simpan model ke file .pkl</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;model.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model berhasil disimpan ke file model.pkl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model berhasil disimpan ke file model.pkl
 </pre></div>
 </div>
 </div>
@@ -3343,11 +3340,11 @@ Kalimat: barang
       </div>
     </a>
     <a class="right-next"
-       href="tugas6.html"
+       href="tugas6new.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tugas 6 : Query dengan kalimat</p>
+        <p class="prev-next-title">tahap evaluasi model</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -3426,8 +3423,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
